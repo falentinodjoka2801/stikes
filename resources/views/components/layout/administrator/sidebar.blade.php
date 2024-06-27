@@ -1,9 +1,9 @@
 @php
-    $session        =   request()->session();
-    $administrator  =   $session->get('administrator');
+    $session = request()->session();
+    $administrator = $session->get('administrator');
 
-    $administratorNama      =   $administrator->nama;
-    $administratorUsername  =   $administrator->username;
+    $administratorNama = $administrator->nama;
+    $administratorUsername = $administrator->username;
 @endphp
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -29,6 +29,29 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">Menu Utama</li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tree"></i>
+                        <p>
+                            Item
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.item')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Item</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.item.add')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Item Baru</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
