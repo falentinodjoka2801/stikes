@@ -32,12 +32,9 @@ $userUsername = $user->npm;
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
-                        <p>
-                        Peminjaman
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
+                        <p>Peminjaman <i class="right fas fa-angle-left"></i></p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview pl-3 text-sm">
                         <li class="nav-item">
                             <a href="{{route('user.pinjam')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>

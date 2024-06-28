@@ -32,12 +32,9 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
-                        <p>
-                            Item
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
+                        <p>Item <i class="fas fa-angle-left right"></i></p>
                     </a>
-                    <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview text-sm pl-3">
                         <li class="nav-item">
                             <a href="{{route('admin.item')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>

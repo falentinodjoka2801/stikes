@@ -57,7 +57,7 @@ Route::prefix('/')->group(function(){
         Route::get('logout', [UserAutentikasi::class, 'logout'])->name('user.logout')->middleware('userAutentikasi');
     });
 
-    Route::prefix('/pinjam')->group(function(){
+    Route::prefix('/pinjam')->middleware('userAutentikasi')->group(function(){
         Route::get('/', [Pinjam::class, 'index'])->name('user.pinjam');
         Route::get('/data', [Pinjam::class, 'data'])->name('user.pinjam.data');
         Route::get('/add', [Pinjam::class, 'add'])->name('user.pinjam.add');
