@@ -4,6 +4,8 @@
 
     $administratorNama = $administrator->nama;
     $administratorUsername = $administrator->username;
+
+    $page   =   request()->segment(2);
 @endphp
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -29,7 +31,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">Menu Utama</li>
-                <li class="nav-item">
+                <li class="nav-item {{($page == 'item')? 'menu-is-opening menu-open' : ''}}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
                         <p>Item <i class="fas fa-angle-left right"></i></p>
