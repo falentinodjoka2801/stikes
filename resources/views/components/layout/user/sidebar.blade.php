@@ -1,9 +1,9 @@
 @php
-    $session = request()->session();
-    $user = $session->get('user');
+$session = request()->session();
+$user = $session->get('user');
 
-    $userNama   = $user->nama;
-    $userUsername = $user->npm;
+$userNama = $user->nama;
+$userUsername = $user->npm;
 @endphp
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -31,12 +31,26 @@
                 <li class="nav-header">Menu Utama</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tree"></i>
+                        <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Item
-                            <i class="fas fa-angle-left right"></i>
+                        Peminjaman
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('user.pinjam')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Riwayat Peminjaman</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('user.pinjam.add')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Pengajuan Peminjaman</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

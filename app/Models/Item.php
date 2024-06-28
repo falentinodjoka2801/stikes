@@ -13,16 +13,16 @@ class Item extends Model{
 
     public static function listJenis(): array{
         $listJenis    =   [
-            ['id' => 'tool', 'nama' => 'Alat Kesehatan'],
-            ['id' => 'room', 'nama' => 'Ruangan']
+            ['id' => 'alat', 'nama' => 'Alat'],
+            ['id' => 'ruang', 'nama' => 'Ruangan']
         ];
 
         return $listJenis;
     }
     public static function listKondisi(): array{
         $listKondisi    =   [
-            ['id' => 'good', 'nama' => 'Bagus'],
-            ['id' => 'broken', 'nama' => 'Rusak']
+            ['id' => 'bagus', 'nama' => 'Bagus'],
+            ['id' => 'rusak', 'nama' => 'Rusak']
         ];
 
         return $listKondisi;
@@ -30,7 +30,7 @@ class Item extends Model{
     public static function listStatus(): array{
         $listStatus    =   [
             ['id' => 'ready', 'nama' => 'Ready'],
-            ['id' => 'borrowed', 'nama' => 'Dipinjam']
+            ['id' => 'dipinjam', 'nama' => 'Dipinjam']
         ];
 
         return $listStatus;

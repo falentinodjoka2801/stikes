@@ -9,6 +9,7 @@ use App\Http\Controllers\administrator\Item;
 #User Controller
 use App\Http\Controllers\user\Home as UserHome;
 use App\Http\Controllers\user\Autentikasi as UserAutentikasi;
+use App\Http\Controllers\user\Pinjam;
 
 #Facede
 use Illuminate\Support\Facades\Route;
@@ -55,4 +56,12 @@ Route::prefix('/')->group(function(){
         
         Route::get('logout', [UserAutentikasi::class, 'logout'])->name('user.logout')->middleware('userAutentikasi');
     });
+
+    Route::prefix('/pinjam')->group(function(){
+        Route::get('/', [Pinjam::class, 'index'])->name('user.pinjam');
+        Route::get('/data', [Pinjam::class, 'data'])->name('user.pinjam.data');
+        Route::get('/add', [Pinjam::class, 'add'])->name('user.pinjam.add');
+        Route::post('/save', [Pinjam::class, 'save'])->name('user.pinjam.save');
+    });
+
 });
