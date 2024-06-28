@@ -1,9 +1,11 @@
 @php
-$session = request()->session();
-$user = $session->get('user');
+    $session = request()->session();
+    $user = $session->get('user');
 
-$userNama = $user->nama;
-$userUsername = $user->npm;
+    $userNama = $user->nama;
+    $userUsername = $user->npm;
+
+    $page   =   request()->segment(1);
 @endphp
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -29,7 +31,7 @@ $userUsername = $user->npm;
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">Menu Utama</li>
-                <li class="nav-item">
+                <li class="nav-item {{($page == 'pinjam')? 'menu-is-opening menu-open' : ''}}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>Peminjaman <i class="right fas fa-angle-left"></i></p>

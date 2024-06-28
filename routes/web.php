@@ -4,6 +4,7 @@
 use App\Http\Controllers\administrator\Home;
 use App\Http\Controllers\administrator\Autentikasi;
 use App\Http\Controllers\administrator\Item;
+use App\Http\Controllers\administrator\Pinjam as AdministratorPinjam;
 
 #User Controller
 use App\Http\Controllers\user\Home as UserHome;
@@ -28,6 +29,7 @@ Route::fallback(function(){
     return view('errors.404');
 });
 
+#Administrator
 Route::prefix('/admin')->group(function(){
     Route::get('/', [Home::class, 'dashboard'])->middleware('autentikasi')->name('admin.dashboard');
     
@@ -46,6 +48,14 @@ Route::prefix('/admin')->group(function(){
         Route::post('/save', [Item::class, 'save'])->name('admin.item.save');
         Route::post('/delete', [Item::class, 'delete'])->name('admin.item.delete');
         Route::get('/edit/{encryptedId}', [Item::class, 'add'])->name('admin.item.edit');
+    });
+
+    Route::prefix('/pinjam')->middleware('autentikasi')->group(function(){
+        Route::get('/peminjaman', [AdministratorPinjam::class, 'peminjaman'])->name('admin.pinjam.peminjaman');
+        Route::get('/pengembalian', [AdministratorPinjam::class, 'pengembalian'])->name('admin.pinjam.pengembalian');
+        Route::get('/pengembalian/{encryptedIdPeminjaman}', [AdministratorPinjam::class, 'pengembalian']);
+        Route::get('/peminjaman-data', [AdministratorPinjam::class, 'peminjamanData'])->name('admin.pinjam.peminjaman-data');
+        Route::post('/proses-pengembalian', [AdministratorPinjam::class, 'prosesPengembalian'])->name('admin.pinjam.proses-pengembalian');
     });
 });
 

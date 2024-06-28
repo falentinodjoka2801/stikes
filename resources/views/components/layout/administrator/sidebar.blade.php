@@ -51,6 +51,26 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item {{($page == 'pinjam')? 'menu-is-opening menu-open' : ''}}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tree"></i>
+                        <p>Pinjam & Kembali<i class="fas fa-angle-left right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview text-sm pl-3">
+                        <li class="nav-item">
+                            <a href="{{route('admin.pinjam.peminjaman')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Peminjaman</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.pinjam.pengembalian')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Pengembalian</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

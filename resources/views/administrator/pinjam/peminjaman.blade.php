@@ -1,4 +1,4 @@
-@extends('user.index')
+@extends('administrator.index')
 
 @section('content')
 
@@ -11,11 +11,6 @@
                         <div class="col">
                             <h6 class="mb-0">Riwayat Peminjaman</h6>
                         </div>
-                        <div class="col text-right">
-                            <a href="{{route('user.pinjam.add')}}">
-                                <button class="btn btn-link">Pengajuan Peminjaman</button>
-                            </a>
-                        </div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -24,9 +19,11 @@
                             <thead>
                                 <tr>
                                     <th class='text-center vam' rowspan='2' style='width: 75px;'>No.</th>
-                                    <th rowspan='2' class='vam'>Nomor</th>
+                                    <th rowspan='2' class='vam' style='width: 150px;'>Nomor</th>
+                                    <th rowspan='2' class='vam' style='width: 250px;'>Peminjam</th>
                                     <th rowspan='2' class='vam' style='width: 100px;'>Status</th>
                                     <th colspan='2' class='text-center vam' style='width: 27.5%;'>Tanggal</th>
+                                    <th rowspan='2' class='text-center vam' style='width: 50px;'>Act</th>
                                 </tr>
                                 <tr>
                                     <th>Peminjaman</th>
@@ -55,7 +52,7 @@
         processing: true,
         serverSide: true,
         ajax: {
-            url     :   `{{route('user.pinjam.data')}}`,
+            url     :   `{{route('admin.pinjam.peminjaman-data')}}`,
             dataSrc :   'listRiwayatPeminjaman'
         },
         columns: [
@@ -76,11 +73,23 @@
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let _returnedAt      =   data.returnedAt;
+                    let _peminjam           =   data.peminjam;
+                    let _peminjamNama       =   _peminjam.nama;
+                    let _peminjamUsername   =   _peminjam.npm;
+
+                    return `<h6 class='mb-1'>${_peminjamNama}</h6>
+                            <p class='text-sm text-muted mb-0'><b>NPM</b> ${_peminjamUsername}</p>`;
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    let _returnedAt         =   data.returnedAt;
+                    let _sudahPengembalian  =   _returnedAt != null;
 
                     let _statusHTML                 =   `<span class='badge badge-info'>Sedang Peminjaman</span>`;
                     let _tanggalPengambalianHTML    =   ``;
-                    if(_returnedAt != null){
+                    if(_sudahPengembalian){
                         _statusHTML                 =   `<span class='badge badge-success'>Sudah Pengembalian</span>`;
                         _tanggalPengambalianHTML    =   `<p class='text-sm text-muted mb-0'>Pengembalian pada <b>${convertDateTime(_returnedAt)}</b></p>`;
                     }
@@ -98,14 +107,45 @@
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let _returnedAt      =   data.returnedAt;
+                    let _returnedAt         =   data.returnedAt;
+                    let _sudahPengembalian  =   _returnedAt != null;
 
                     let _returnedAtHTML =   `<i class='text-sm'>-</i>`;
-                    if(_returnedAt != null){
+                    if(_sudahPengembalian){
                         _returnedAtHTML =   `${convertDateTime(_returnedAt)}`;
                     }
 
                     return `${_returnedAtHTML}`;
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    let _id                     =   data.id;
+                    let _encryptedIdPeminjaman  =   data.encryptedIdPeminjaman;
+                    let _returnedAt             =   data.returnedAt;
+
+                    let _sudahPengembalian      =   _returnedAt != null;
+
+                    let _button     =  `<a href='{{route('admin.pinjam.pengembalian')}}/${_encryptedIdPeminjaman}'>
+                                            <button class='btn btn-success btn-sm' title='Pengembalian'>
+                                                Pengembalian
+                                            </button>
+                                        </a>`; 
+                                                
+                    if(_sudahPengembalian){
+                        _button     =   `<a href='{{route('admin.pinjam.pengembalian')}}/${_encryptedIdPeminjaman}'>
+                                            <button class='btn btn-primary btn-sm' title='Detail Peminjaman'>
+                                                Detail
+                                            </button>
+                                        </a>`;
+                    }
+
+                    let _actionHTML         =   `<div class='text-center'>
+                                                    ${_button}
+                                                </div>`;
+
+                    return _actionHTML;
                 }
             }
         ]

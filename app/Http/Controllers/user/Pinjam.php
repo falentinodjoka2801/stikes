@@ -22,19 +22,10 @@ use Illuminate\Support\Facades\DB;
 class Pinjam extends Controller
 {
     public function index(): View{
-        $user       =   session()->get('user');
-        $userId     =   $user->npm;
-
         $pageTitle  =   'Peminjaman';
         $pageDesc   =   'Riwayat Peminjaman';
         
-        $listRiwayatPeminjaman  =   PinjamModel::query()->where('createdBy', $userId)->get();
-
-        $additionalData =   [
-            'listRiwayatPeminjaman' =>  $listRiwayatPeminjaman
-        ];
-        
-        return view('user.pinjam.index', compact(['pageTitle', 'pageDesc']))->with($additionalData);
+        return view('user.pinjam.index', compact(['pageTitle', 'pageDesc']));
     }
     public function add(): View{
         $pageTitle  =   'Peminjaman';
@@ -160,7 +151,7 @@ class Pinjam extends Controller
         
         $search         =   $request->search;
         
-        $recordsTotal   =   PinjamModel::count(['id']);   
+        $recordsTotal   =   PinjamModel::where('createdBy', $userId)->count(['id']);   
 
         $listRiwayatPeminjaman  =   PinjamModel::query()
                                     ->where('createdBy', $userId)
