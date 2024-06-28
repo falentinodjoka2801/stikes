@@ -24,7 +24,7 @@ Route::fallback(function(){
 });
 
 Route::prefix('/admin')->group(function(){
-    Route::get('/', [Home::class, 'dashboard'])->name('/');
+    Route::get('/', [Home::class, 'dashboard'])->middleware('autentikasi')->name('/');
     
     Route::prefix('/')->group(function(){
         //TODO : Untuk sekarang path login ketika diakses pada saat sudah login akan tetap mengarah ke halaman login. Untuk saat ini itu dibiarkan dulu, ke depannya akan ada perbaikan
