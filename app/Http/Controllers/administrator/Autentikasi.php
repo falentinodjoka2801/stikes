@@ -1,12 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\administrator;
 
 #Libraries
 use App\Libraries\APIRespondFormat;
-
-#Facades
-use Illuminate\Support\Facades\DB;
 
 #Models
 use App\Models\Administrator;
@@ -15,12 +12,12 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-use Illuminate\Database\Query\Builder as QueryBuilder;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 class Autentikasi extends Controller{
     public function login(): View{
-        return view('autentikasi.login');
+        return view('autentikasi.administrator.login');
     }
     public function loginProcess(Request $request): JsonResponse|RedirectResponse {
         $status     =   false;
@@ -45,9 +42,6 @@ class Autentikasi extends Controller{
         $respond            =   $apiRespondFormat->getRespond();
 
         return response()->json($respond);
-    }
-    public function lupaPassword(): View{
-        return view('autentikasi.lupa-password');
     }
     public function logout(Request $request): RedirectResponse{
         $request->session()->remove('administrator');

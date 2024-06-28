@@ -22,7 +22,7 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="{{route('/')}}" class="h1">STIKES <b>Columbia Asia</b></a>
+                <a href="{{route('admin.login')}}" class="h1">STIKES <b>Columbia Asia</b></a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg text-sm text-muted">Silahkan masuk untuk mengakses fitur Sistem Informasi</p>
@@ -97,7 +97,7 @@
             if(!_status){
                 await notifikasi('Autentikasi', _message ?? 'Gagal!', 'error');
             }else{
-                location.href   =   `{{route("/")}}`;
+                location.href   =   `{{route('admin.dashboard')}}`;
             }
         });
     });

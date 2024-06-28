@@ -1,9 +1,8 @@
 <?php
 
-#Controllers
-use App\Http\Controllers\Home;
-use App\Http\Controllers\Autentikasi;
-
+#Administrator Controllers
+use App\Http\Controllers\administrator\Home;
+use App\Http\Controllers\administrator\Autentikasi;
 use App\Http\Controllers\administrator\Item;
 
 #User Controller
@@ -30,7 +29,7 @@ Route::fallback(function(){
 });
 
 Route::prefix('/admin')->group(function(){
-    Route::get('/', [Home::class, 'dashboard'])->middleware('autentikasi')->name('/');
+    Route::get('/', [Home::class, 'dashboard'])->middleware('autentikasi')->name('admin.dashboard');
     
     Route::prefix('/')->group(function(){
         //TODO : Untuk sekarang path login ketika diakses pada saat sudah login akan tetap mengarah ke halaman login. Untuk saat ini itu dibiarkan dulu, ke depannya akan ada perbaikan
@@ -48,7 +47,7 @@ Route::prefix('/admin')->group(function(){
 });
 
 Route::prefix('/')->group(function(){
-    Route::get('/', [UserHome::class, 'dashboard'])->middleware('userAutentikasi')->name('/');
+    Route::get('/', [UserHome::class, 'dashboard'])->middleware('userAutentikasi')->name('user.dashboard');
 
     Route::prefix('/')->group(function(){
         Route::get('login', [UserAutentikasi::class, 'login'])->name('user.login');
