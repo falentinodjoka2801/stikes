@@ -27,7 +27,7 @@
             <div class="card-body">
                 <p class="login-box-msg text-sm text-muted">Silahkan masuk untuk mengakses fitur Sistem Informasi</p>
 
-                <form action="{{route('admin.login-process')}}" method="post" id='formLogin'>
+                <form action="{{route('user.login-process')}}" method="post" id='formLoginUser'>
                     @csrf
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -35,7 +35,7 @@
                                 <span class="fas fa-at"></span>
                             </div>
                         </div>
-                        <input type="text" class="form-control" placeholder="Username"
+                        <input type="text" class="form-control" placeholder="NPM"
                             name='username' required />
                     </div>
                     <div class="input-group mb-3" id='passwordInputGroup'>
@@ -62,7 +62,7 @@
     </div>
     <!-- /.login-box -->
 
-    @include('components/layout/administrator/javascript')
+    @include('components/layout/user/javascript')
 </body>
 </html>
 <script src='{{asset("admin-lte/plugins/sweetalert2/sweetalert2.min.js")}}'></script>
@@ -73,7 +73,7 @@
 <script src='{{asset("custom/js/custom-alert.js")}}'></script>
 <style type='text/css'>
     body {
-        background-image: url({{asset('img/background.jpg')}});
+        background-image: url({{asset('img/user-background.jpg')}});
         background-position: center center;
         background-size: cover;
     }
@@ -86,9 +86,9 @@
     }
 </style>
 <script language='Javascript'>
-    let _formLogin  =   $('#formLogin');
+    let _formLoginUser  =   $('#formLoginUser');
 
-    _formLogin.on('submit', async function(e) {
+    _formLoginUser.on('submit', async function(e) {
         e.preventDefault();
         await submitForm(this, async function(decodedRFS) {
             let _status     =   decodedRFS.status;
