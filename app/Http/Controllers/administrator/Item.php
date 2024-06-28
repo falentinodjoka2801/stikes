@@ -10,6 +10,7 @@ use App\Libraries\APIRespondFormat;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
@@ -17,8 +18,7 @@ use Illuminate\View\View;
 class Item extends Controller{
     public function index(Request $request): View{
         $data   =   [
-            'pageTitle'     =>  'List Item',
-            'listItem'      =>  []
+            'pageTitle'     =>  'List Item'
         ];
         return view('administrator.item.index', $data);
     }
@@ -95,5 +95,78 @@ class Item extends Controller{
         $respond            =   $apiRespondFormat->getRespond();
 
         return response()->json($respond);
-    } 
+    }
+    public function data(Request $request): JsonResponse{
+        $draw       =   $request->draw;
+
+        $start      =   $request->start;
+        $start      =   (!is_null($start))? $start : 0;
+
+        $length     =   $request->length;
+        $length     =   (!is_null($length))? $length : 10;
+        
+        $search         =   $request->search;
+        
+        $recordsTotal   =   ItemModel::count(['id']);   
+
+        $listItem       =   ItemModel::query()
+                            ->when(!empty($search), function(Builder $builder) use ($search){
+                                if(is_array($search)){
+                                    if(array_key_exists('value', $search)){
+                                        $searchValue    =   $search['value'];
+                                        if(!empty($searchValue)){
+                                            $builder->where('nama', 'like', '%'.$searchValue.'%');
+                                            $builder->orWhere('kode', 'like', '%'.$searchValue.'%');
+                                        }
+                                    }
+                                }
+
+                                return $builder;
+                            })
+                            ->limit($length)
+                            ->offset($start)
+                            ->get();
+
+        $nomorUrut  =   1;
+        foreach($listItem as $index => $item){
+            $listItem[$index]['nomorUrut'] =   $nomorUrut;
+            $nomorUrut++;
+        }
+
+        $respond   =   [
+            'listItem'          =>  $listItem,
+            'draw'              =>  $draw,
+            'recordsFiltered'   =>  $recordsTotal,
+            'recordsTotal'      =>  $recordsTotal
+        ];
+
+        return response()->json($respond);
+    }
+    public function delete(Request $request): JsonResponse{
+        $status     =   false;
+        $message    =   'Gagal menghapus item!';
+        $data       =   null;
+
+        try{
+            #Collect Data
+            $item     =   $request->item;
+            $detailItem     =   ItemModel::query()->find($item);
+            if(empty($detailItem)){
+                throw new Exception('Item tidak terdefinisi!');
+            }
+
+            $delete     =   $detailItem->delete();
+            if($delete){
+                $status     =   true;
+                $message    =   'Berhasil menghapus item!';
+            }
+        }catch(Exception $e){
+            $message    =   $e->getMessage();
+        }
+
+        $apiRespondFormat   =   new APIRespondFormat($status, $message, $data);
+        $respond            =   $apiRespondFormat->getRespond();
+
+        return response()->json($respond);
+    }
 }

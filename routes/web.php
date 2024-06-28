@@ -41,8 +41,10 @@ Route::prefix('/admin')->group(function(){
 
     Route::prefix('/item')->middleware('autentikasi')->group(function(){
         Route::get('', [Item::class, 'index'])->name('admin.item');
+        Route::get('/data', [Item::class, 'data'])->name('admin.item.data');
         Route::get('/add', [Item::class, 'add'])->name('admin.item.add');
         Route::post('/save', [Item::class, 'save'])->name('admin.item.save');
+        Route::post('/delete', [Item::class, 'delete'])->name('admin.item.delete');
     });
 });
 
