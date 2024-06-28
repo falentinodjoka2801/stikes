@@ -3,7 +3,12 @@
 #Controllers
 use App\Http\Controllers\Home;
 use App\Http\Controllers\Autentikasi;
+
 use App\Http\Controllers\administrator\Item;
+
+#User Controller
+use App\Http\Controllers\user\Home as UserHome;
+use App\Http\Controllers\user\Autentikasi as UserAutentikasi;
 
 #Facede
 use Illuminate\Support\Facades\Route;
@@ -31,7 +36,6 @@ Route::prefix('/admin')->group(function(){
         Route::get('login', [Autentikasi::class, 'login'])->name('admin.login');
         Route::post('login', [Autentikasi::class, 'loginProcess'])->name('admin.login-process');
         
-        Route::get('lupa-password', [Autentikasi::class, 'lupaPassword'])->name('admin.lupa-password')->middleware('autentikasi');
         Route::get('logout', [Autentikasi::class, 'logout'])->name('admin.logout')->middleware('autentikasi');
     });
 
@@ -39,5 +43,16 @@ Route::prefix('/admin')->group(function(){
         Route::get('', [Item::class, 'index'])->name('admin.item');
         Route::get('/add', [Item::class, 'add'])->name('admin.item.add');
         Route::post('/save', [Item::class, 'save'])->name('admin.item.save');
+    });
+});
+
+Route::prefix('/')->group(function(){
+    Route::get('/', [UserHome::class, 'dashboard'])->middleware('userAutentikasi')->name('/');
+
+    Route::prefix('/')->group(function(){
+        Route::get('login', [UserAutentikasi::class, 'login'])->name('user.login');
+        Route::post('login', [UserAutentikasi::class, 'loginProcess'])->name('user.login-process');
+        
+        Route::get('logout', [UserAutentikasi::class, 'logout'])->name('user.logout')->middleware('userAutentikasi');
     });
 });
