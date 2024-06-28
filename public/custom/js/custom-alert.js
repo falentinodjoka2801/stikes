@@ -2,7 +2,7 @@ async function konfirmasi(title, html){
     return Swal.fire({
         title   :   title,
         html    :   html,
-        type    :   'question',
+        icon    :   'question',
         showCancelButton    :   true,
         cancelButtonText    :   'Tidak',
         showConfirmButton   :   true,
