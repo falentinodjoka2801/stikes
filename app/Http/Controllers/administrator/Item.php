@@ -22,73 +22,106 @@ class Item extends Controller{
         ];
         return view('administrator.item.index', $data);
     }
-    public function add(Request $request): View{
-        $data   =   [
-            'pageTitle'     =>  'Item Baru',
-            'listJenis'     =>  ItemModel::listJenis(),
-            'listKondisi'   =>  ItemModel::listKondisi(),
-            'listStatus'    =>  ItemModel::listStatus(),
-        ];
-        return view('administrator.item.add', $data);
+    public function add(Request $request, ?string $encryptedId = null): View{
+        try{
+            $id     =   null;
+            $item   =   null;
+
+            if(!empty($encryptedId)){
+                $id     =   decrypt($encryptedId);
+                $item   =   ItemModel::find($id);
+            }
+
+            $doesUpdate =   !empty($item);
+
+            $data   =   [
+                'pageTitle'     =>  ($doesUpdate)? 'Update Item' : 'Item Baru',
+                'pageDesc'      =>  ($doesUpdate)? $item->nama : '',
+                'listJenis'     =>  ItemModel::listJenis(),
+                'listKondisi'   =>  ItemModel::listKondisi(),
+                'listStatus'    =>  ItemModel::listStatus(),
+                'item'          =>  $item
+            ];
+            return view('administrator.item.add', $data);
+        }catch(Exception $e){
+            abort(500);
+        }
     }
     public function save(Request $request): JsonResponse{
-        $administrator      =   session()->get('administrator');
-        $administratorId    =   $administrator->id;
-
         $status     =   false;
         $message    =   'Gagal memproses Item!';
         $data       =   null;
 
-        #Collect Data
-        $nama           =   $request->nama;
-        $jenis          =   $request->jenis;
-        $kelompok       =   $request->kelompok;
-        $kondisi        =   $request->kondisi;
-        $statusBarang   =   $request->status;
+        try{
+            $administrator      =   session()->get('administrator');
+            $administratorId    =   $administrator->id;
 
-        $dateToday      =   date('Y-m-d');
-        $dateTimeToday  =   date('Y-m-d H:i:s');
+            #Collect Data
+            $id             =   $request->id;
+            $nama           =   $request->nama;
+            $jenis          =   $request->jenis;
+            $kelompok       =   $request->kelompok;
+            $kondisi        =   $request->kondisi;
+            $statusBarang   =   $request->status;
 
-        $jumlahItemToday    =   ItemModel::query()
-                                ->where(function (Builder $builder) use ($dateToday) {
-                                    $builder->where('createdAt', '>=', $dateToday . ' 00:00:00');
-                                    $builder->where('createdAt', '<=', $dateToday . ' 23:59:59');
-                                })->where(function(Builder $builder) use ($jenis){
-                                    $builder->where('jenis', $jenis);
-                                })
-                                ->count();
+            $doesUpdate     =   !empty($id);
+            if($doesUpdate){
+                $item   =   ItemModel::find($id);
+                if(empty($item)){
+                    throw new Exception('Item tidak terdefinisi!');
+                }
+            }
 
-        if ($jumlahItemToday == 0) {
-            $urutanItemToday  =   1;
-        } else {
-            $urutanItemToday  =   $jumlahItemToday + 1;
-        }
+            if(!$doesUpdate){
+                $dateToday      =   date('Y-m-d');
+                $dateTimeToday  =   date('Y-m-d H:i:s');
 
-        $initialLetter  =   'A';
-        if($jenis == 'ruang'){
-            $initialLetter  =   'R';
-        }
-        
-        $urutan     =   str_pad($urutanItemToday, 3, '0', STR_PAD_LEFT);
-        $kode       =   $initialLetter.date('Ymd').$urutan;
+                $jumlahItemToday    =   ItemModel::query()
+                                        ->where(function (Builder $builder) use ($dateToday) {
+                                            $builder->where('createdAt', '>=', $dateToday . ' 00:00:00');
+                                            $builder->where('createdAt', '<=', $dateToday . ' 23:59:59');
+                                        })->where(function(Builder $builder) use ($jenis){
+                                            $builder->where('jenis', $jenis);
+                                        })
+                                        ->count();
 
-        $item   =   new ItemModel();
-        $item->kode         =   $kode;
-        $item->nama         =   $nama;
-        $item->jenis        =   $jenis;
-        $item->kelompok     =   $kelompok;
-        $item->kondisi      =   $kondisi;
-        $item->status       =   $statusBarang;
-        $item->createdBy    =   $administratorId;
-        $item->createdAt    =   $dateTimeToday;
-        $saveItem   =   $item->save();
+                if ($jumlahItemToday == 0) {
+                    $urutanItemToday  =   1;
+                } else {
+                    $urutanItemToday  =   $jumlahItemToday + 1;
+                }
 
-        if($saveItem){
-            $status     =   true;
-            $message    =   'Berhasil memproses item!';
-            $data       =   [
-                'id'    =>  $item->id
-            ];
+                $initialLetter  =   'A';
+                if($jenis == 'ruang'){
+                    $initialLetter  =   'R';
+                }
+                
+                $urutan     =   str_pad($urutanItemToday, 3, '0', STR_PAD_LEFT);
+                $kode       =   $initialLetter.date('Ymd').$urutan;
+
+                $item   =   new ItemModel();
+                $item->kode         =   $kode;
+                $item->createdBy    =   $administratorId;
+                $item->createdAt    =   $dateTimeToday;
+            }
+            
+            $item->nama         =   $nama;
+            $item->jenis        =   $jenis;
+            $item->kelompok     =   $kelompok;
+            $item->kondisi      =   $kondisi;
+            $item->status       =   $statusBarang;
+            $saveItem   =   $item->save();
+
+            if($saveItem){
+                $status     =   true;
+                $message    =   'Berhasil memproses item!';
+                $data       =   [
+                    'id'    =>  $item->id
+                ];
+            }
+
+        }catch(Exception $e){
+            $message    =   $e->getMessage();
         }
 
         $apiRespondFormat   =   new APIRespondFormat($status, $message, $data);
@@ -107,7 +140,19 @@ class Item extends Controller{
         
         $search         =   $request->search;
         
-        $recordsTotal   =   ItemModel::count(['id']);   
+        $recordsTotal   =   ItemModel::when(!empty($search), function(Builder $builder) use ($search){
+                                if(is_array($search)){
+                                    if(array_key_exists('value', $search)){
+                                        $searchValue    =   $search['value'];
+                                        if(!empty($searchValue)){
+                                            $builder->where('nama', 'like', '%'.$searchValue.'%');
+                                            $builder->orWhere('kode', 'like', '%'.$searchValue.'%');
+                                        }
+                                    }
+                                }
+
+                                return $builder;
+                            })->count(['id']);   
 
         $listItem       =   ItemModel::query()
                             ->when(!empty($search), function(Builder $builder) use ($search){
@@ -129,7 +174,13 @@ class Item extends Controller{
 
         $nomorUrut  =   1;
         foreach($listItem as $index => $item){
-            $listItem[$index]['nomorUrut'] =   $nomorUrut;
+            $itemId     =   $item->id;
+
+            $encryptedId    =   encrypt($itemId);
+
+            $listItem[$index]['nomorUrut']      =   $nomorUrut;
+            $listItem[$index]['encryptedId']    =   $encryptedId;
+
             $nomorUrut++;
         }
 

@@ -100,10 +100,13 @@
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let _id     =   data.id;
-                    let _nama   =   data.nama;
+                    let _id             =   data.id;
+                    let _encryptedId    =   data.encryptedId;
+                    let _nama           =   data.nama;
 
-                    let _buttonEdit     =   `<span class='cp fa fa-pen text-warning mr-1'></span>`;
+                    let _buttonEdit     =   `<a href='{{url('admin/item/edit/${_encryptedId}')}}'>
+                                                <span class='cp fa fa-pen text-warning mr-1'></span>
+                                            </a>`;
                     let _buttonDelete   =   `<span class='cp fa fa-trash text-danger ml-1' onClick='_delete(this)'
                                                 data-id='${_id}' data-nama='${_nama}'></span>`;
 

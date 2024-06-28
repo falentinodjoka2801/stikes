@@ -1,7 +1,9 @@
 @extends('administrator.index')
 
 @section('content')
-
+@php
+    $doesUpdate     =   !empty($item);
+@endphp
 <div class="container-fluid">
     <div class="row">
         <div class="col">
@@ -9,7 +11,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h6 class="mb-0">Item Baru</h6>
+                            <h6 class="mb-1">{{($doesUpdate)? 'Update Item' : 'Item Baru'}}</h6>
+                            @if($doesUpdate)
+                                <p class='text-sm text-muted mb-0'>{{$item->nama}}</p>
+                            @endif
                         </div>
                         <div class="col text-right">
                             <a href="{{route('admin.item')}}">
@@ -19,31 +24,57 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h5>Form Add Item</h5>
+                    <h5>Form {{($doesUpdate)? 'Update' : 'Add'}} Item</h5>
                     <form action="{{route('admin.item.save')}}" method='post' id='formAddItem' onSubmit='_submit(this, event)'>
                         @csrf
+                        @if($doesUpdate)
+                            <input type="hidden" name="id" value='{{$item->id}}' />
+                        @endif
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" name='nama' id="nama" placeholder='Nama Item' required />
+                                <input type="text" class="form-control" name='nama' id="nama" placeholder='Nama Item' required
+                                    value='{{($doesUpdate)? $item->nama : ""}}' />
                             </div>
                             <div class="form-group col-lg-2">
                                 <label for="jenis">Jenis</label>
                                 <select name="jenis" id="jenis" class="form-control" required>
                                     @foreach($listJenis as $jenis)
-                                        <option value="{{$jenis['id']}}">{{$jenis['nama']}}</option>
+                                        @php
+                                            $jenisId    =   $jenis['id'];
+                                            $jenisNama  =   $jenis['nama'];
+
+                                            $isSelected =   false;
+                                            if($doesUpdate){
+                                                $isSelected =   $jenisId == $item->jenis;
+                                            }
+                                            $selected   =   ($isSelected)? 'selected' : '';
+                                        @endphp
+                                        <option {{$selected}} value="{{$jenisId}}">{{$jenisNama}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-lg-2">
                                 <label for="kelompok">Kelompok</label>
-                                <input type="text" class="form-control" name='kelompok' id="kelompok" placeholder='Kelompok Item' required />
+                                <input type="text" class="form-control" name='kelompok' id="kelompok" 
+                                    placeholder='Kelompok Item'
+                                    value='{{($doesUpdate)? $item->kelompok : ""}}' required />
                             </div>
                             <div class="form-group col-lg-2">
                                 <label for="kondisi">Kondisi</label>
                                 <select name="kondisi" id="kondisi" class="form-control" required>
                                     @foreach($listKondisi as $kondisi)
-                                        <option value="{{$kondisi['id']}}">{{$kondisi['nama']}}</option>
+                                        @php
+                                            $kondisiId    =   $kondisi['id'];
+                                            $kondisiNama  =   $kondisi['nama'];
+
+                                            $isSelected =   false;
+                                            if($doesUpdate){
+                                                $isSelected =   $kondisiId == $item->kondisi;
+                                            }
+                                            $selected   =   ($isSelected)? 'selected' : '';
+                                        @endphp
+                                        <option {{$selected}} value="{{$kondisiId}}">{{$kondisiNama}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -51,13 +82,23 @@
                                 <label for="status">Status</label>
                                 <select name="status" id="status" class="form-control" required>
                                     @foreach($listStatus as $status)
-                                        <option value="{{$status['id']}}">{{$status['nama']}}</option>
+                                        @php
+                                            $statusId    =   $status['id'];
+                                            $statusNama  =   $status['nama'];
+
+                                            $isSelected =   false;
+                                            if($doesUpdate){
+                                                $isSelected =   $statusId == $item->status;
+                                            }
+                                            $selected   =   ($isSelected)? 'selected' : '';
+                                        @endphp
+                                        <option {{$selected}} value="{{$statusId}}">{{$statusNama}}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <hr />
-                        <button class="btn btn-success" id="buttonSubmit" type='submit'>Simpan</button>
+                        <button class="btn btn-success" id="buttonSubmit" type='submit'>Simpan {{($doesUpdate)? 'Perubahan' : ''}}</button>
                     </form>
                 </div>
             </div>

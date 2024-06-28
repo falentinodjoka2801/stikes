@@ -45,6 +45,7 @@ Route::prefix('/admin')->group(function(){
         Route::get('/add', [Item::class, 'add'])->name('admin.item.add');
         Route::post('/save', [Item::class, 'save'])->name('admin.item.save');
         Route::post('/delete', [Item::class, 'delete'])->name('admin.item.delete');
+        Route::get('/edit/{encryptedId}', [Item::class, 'add'])->name('admin.item.edit');
     });
 });
 
