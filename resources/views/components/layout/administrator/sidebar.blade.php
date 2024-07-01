@@ -33,7 +33,7 @@
                 <li class="nav-header">Menu Utama</li>
                 <li class="nav-item {{($page == 'item')? 'menu-is-opening menu-open' : ''}}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tree"></i>
+                        <i class="nav-icon fas fa-ellipsis-v"></i>
                         <p>Item <i class="fas fa-angle-left right"></i></p>
                     </a>
                     <ul class="nav nav-treeview text-sm pl-3">
@@ -53,7 +53,7 @@
                 </li>
                 <li class="nav-item {{($page == 'pinjam')? 'menu-is-opening menu-open' : ''}}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tree"></i>
+                        <i class="nav-icon fa fa-random"></i>
                         <p>Pinjam & Kembali<i class="fas fa-angle-left right"></i></p>
                     </a>
                     <ul class="nav nav-treeview text-sm pl-3">

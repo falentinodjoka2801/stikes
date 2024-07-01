@@ -20,7 +20,7 @@
                         <div class="table-responsive">
                             <div class="form-group">
                                 <div class="input-group mb-3">
-                                    <select name="listItems" id="listItems" class="form-control">
+                                    <select name="listItems" id="listItems" class="form-control" onChange='_addItem(this)'>
                                         <option value="">-- Pilih --</option>
                                         @foreach($listItems as $item)
                                             <option value="{{$item->id}}" data-detail='{{json_encode($item)}}'>{{$item->nama}}</option>
