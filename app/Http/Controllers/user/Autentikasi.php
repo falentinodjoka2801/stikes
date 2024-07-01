@@ -36,10 +36,6 @@ class Autentikasi extends Controller{
             $username   =   $request->username;
             $password   =   $request->password;
 
-            if(is_string($username)){
-                throw new Exception('Gunakan NPM/NIM sebagai username!');
-            }
-
             $mahasiswa  =   Mahasiswa::query()->where(function(Builder $builder) use ($username, $password){
                 $builder->where('npm', '=', $username);
                 $builder->where('password', '=', md5($password));
