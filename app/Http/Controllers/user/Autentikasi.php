@@ -20,6 +20,8 @@ use Illuminate\Http\RedirectResponse;
 
 use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
+use Exception;
+use Illuminate\Database\QueryException;
 
 class Autentikasi extends Controller{
     public function login(): View{
@@ -30,18 +32,28 @@ class Autentikasi extends Controller{
         $message    =   'Kombinasi username dan password tidak valid!';
         $data       =   null;
 
-        $username   =   $request->username;
-        $password   =   $request->password;
+        try{
+            $username   =   $request->username;
+            $password   =   $request->password;
 
-        $mahasiswa  =   Mahasiswa::query()->where(function(Builder $builder) use ($username, $password){
-            $builder->where('npm', '=', $username);
-            $builder->where('password', '=', md5($password));
-        })->first();
-        if(!empty($mahasiswa)){
-            session()->put('user', $mahasiswa);
+            if(is_string($username)){
+                throw new Exception('Gunakan NPM/NIM sebagai username!');
+            }
 
-            $status     =   true;
-            $message    =   'Berhasil!';
+            $mahasiswa  =   Mahasiswa::query()->where(function(Builder $builder) use ($username, $password){
+                $builder->where('npm', '=', $username);
+                $builder->where('password', '=', md5($password));
+            })->first();
+            if(!empty($mahasiswa)){
+                session()->put('user', $mahasiswa);
+
+                $status     =   true;
+                $message    =   'Berhasil!';
+            }
+        }catch(QueryException $e){
+            $message    =   $e;
+        }catch(Exception $e){
+            $message    =   $e->getMessage();
         }
 
         $apiRespondFormat   =   new APIRespondFormat($status, $message, $data);

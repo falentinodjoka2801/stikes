@@ -29,14 +29,18 @@ class Pinjam extends Controller
     }
     public function pengembalian(Request $request, ?string $encryptedIdPeminjaman = null): View{
         try{
+            $pageTitle  =   'Pengembalian';
+            $pageDesc   =   'Pengembalian Peminjaman Alat dan Ruangan';
+
+            if(empty($encryptedIdPeminjaman)){
+                return view('administrator.pinjam.input-peminjaman', compact(['pageTitle', 'pageDesc']));
+            }
+
             $idPeminjaman   =   decrypt($encryptedIdPeminjaman);
             $pinjam         =   PinjamModel::query()->find($idPeminjaman);
             if(empty($pinjam)){
                 throw new Exception('Data peminjaman tidak ditemukan!');
             }
-
-            $pageTitle  =   'Pengembalian';
-            $pageDesc   =   'Pengembalian Peminjaman Alat dan Ruangan';
             
             $additionalData =   [
                 'pinjam'        =>  $pinjam,
@@ -178,5 +182,25 @@ class Pinjam extends Controller
         $respond            =   $apiRespondFormat->getRespond();
 
         return response()->json($respond);
+    }
+    public function prosesNomorPengembalian(Request $request){
+        $nomorPeminjaman    =   $request->nomorPeminjaman;
+
+        try{
+            if(empty($nomorPeminjaman)){
+                throw new Exception('Nomor Peminjaman wajib diisi!');
+            }
+            
+            $pinjam     =   PinjamModel::query()->select(['id'])->where('nomor', $nomorPeminjaman)->first();
+            $pinjamId   =   $pinjam->id;
+
+            $encryptedIdPeminjaman  =   encrypt($pinjamId);
+
+            return redirect('admin/pinjam/pengembalian/'.$encryptedIdPeminjaman);
+        }catch(QueryException $e){
+            abort(500);
+        }catch(Exception $e){
+            abort(404);
+        }
     }
 }
