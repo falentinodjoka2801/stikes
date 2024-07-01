@@ -24,8 +24,13 @@ class Pinjam extends Controller
     public function peminjaman(): View{
         $pageTitle  =   'Peminjaman';
         $pageDesc   =   'Daftar Peminjaman Alat dan Ruangan';
+
+        $listStatusPeminjaman   =   PinjamModel::$statusPeminjaman;
+        $additionalData         =   [
+            'listStatusPeminjaman'  =>  $listStatusPeminjaman
+        ];
         
-        return view('administrator.pinjam.peminjaman', compact(['pageTitle', 'pageDesc']));
+        return view('administrator.pinjam.peminjaman', compact(['pageTitle', 'pageDesc']))->with($additionalData);
     }
     public function pengembalian(Request $request, ?string $encryptedIdPeminjaman = null): View{
         try{
@@ -64,11 +69,21 @@ class Pinjam extends Controller
         $length     =   (!is_null($length))? $length : 10;
         
         $search         =   $request->search;
+
+        #Filter
+        $statusPeminjaman   =   $request->statusPeminjaman;
         
         $recordsTotal   =   PinjamModel::count(['id']);   
 
         $listRiwayatPeminjaman  =   PinjamModel::query()
                                     ->with(['peminjam'])
+                                    ->when(!empty($statusPeminjaman), function(Builder $builder) use ($statusPeminjaman){
+                                        if($statusPeminjaman == PinjamModel::$statusPeminjaman_dipinjam){
+                                            return $builder->where('returnedAt', '=', null);
+                                        }else{
+                                            return $builder->where('returnedAt', '!=', null);
+                                        }
+                                    })
                                     ->when(!empty($search), function(Builder $builder) use ($search){
                                         if(is_array($search)){
                                             if(array_key_exists('value', $search)){

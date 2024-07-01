@@ -14,8 +14,23 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <h5 class='mb-3'><b>Filter</b></h5>
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered" id='tabelRiwayatPeminjaman'>
+                        <div class="form-group">
+                            <label for="statusPeminjaman">Status Peminjaman</label>
+                            <select name="statusPeminjaman" id="statusPeminjaman" class="form-control">
+                                <option value="">-- Semua Status Peminjaman --</option>
+                                @foreach($listStatusPeminjaman as $statusPeminjamanCode => $statusPeminjamanName)
+                                    <option value="{{$statusPeminjamanCode}}">{{$statusPeminjamanName}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button class="btn btn-success" id='buttonFilter' name='buttonFilter'
+                            onClick='_filter(this)'>Filter</button>
+                    </div>
+                    <hr />
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm table-bordered" id='tabelRiwayatPeminjaman'>
                             <thead>
                                 <tr>
                                     <th class='text-center vam' rowspan='2' style='width: 75px;'>No.</th>
@@ -46,13 +61,17 @@
 <script src='{{asset("custom/js/date-converter.js")}}'></script>
 
 <script language='Javascript'>
+    let _url    =   `{{route('admin.pinjam.peminjaman-data')}}`;
+
     let _tabelRiwayatPeminjamanEl    =   $('#tabelRiwayatPeminjaman');
+    let _statusPeminjaman   =   $('#statusPeminjaman');
+    let _buttonFilter   =   $('#buttonFilter');
 
     let _options    =   {
         processing: true,
         serverSide: true,
         ajax: {
-            url     :   `{{route('admin.pinjam.peminjaman-data')}}`,
+            url     :   _url,
             dataSrc :   'listRiwayatPeminjaman'
         },
         columns: [
@@ -151,5 +170,13 @@
         ]
     }
     let _tabelRiwayatPeminjaman =   _tabelRiwayatPeminjamanEl.DataTable(_options);
+
+    async function _filter(thisContext){
+        let _el     =   $(thisContext);
+        let _selectedStatusPeminjaman   =   _statusPeminjaman.val();
+        let _newAjaxURL                 =   `${_url}?statusPeminjaman=${_selectedStatusPeminjaman}`;
+
+        _tabelRiwayatPeminjaman.ajax.url(_newAjaxURL).load();
+    }
 </script>
 @endsection
