@@ -41,8 +41,8 @@
                                 <select name="jenis" id="jenis" class="form-control" required>
                                     @foreach($listJenis as $jenis)
                                         @php
-                                            $jenisId    =   $jenis['id'];
-                                            $jenisNama  =   $jenis['nama'];
+                                            $jenisId    =   $jenis->id;
+                                            $jenisNama  =   $jenis->nama;
 
                                             $isSelected =   false;
                                             if($doesUpdate){

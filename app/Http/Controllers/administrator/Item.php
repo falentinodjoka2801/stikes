@@ -10,6 +10,8 @@ use App\Libraries\APIRespondFormat;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Models\Jenis;
+
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
@@ -34,10 +36,12 @@ class Item extends Controller{
 
             $doesUpdate =   !empty($item);
 
+            $listJenis  =   Jenis::query()->select(['id', 'nama'])->get();
+
             $data   =   [
                 'pageTitle'     =>  ($doesUpdate)? 'Update Item' : 'Item Baru',
                 'pageDesc'      =>  ($doesUpdate)? $item->nama : '',
-                'listJenis'     =>  ItemModel::listJenis(),
+                'listJenis'     =>  $listJenis,
                 'listKondisi'   =>  ItemModel::listKondisi(),
                 'listStatus'    =>  ItemModel::listStatus(),
                 'item'          =>  $item

@@ -11,14 +11,6 @@ class Item extends Model{
     public $incrementing        =   false;
     public $timestamps          =   false;
 
-    public static function listJenis(): array{
-        $listJenis    =   [
-            ['id' => 'alat', 'nama' => 'Alat'],
-            ['id' => 'ruang', 'nama' => 'Ruangan']
-        ];
-
-        return $listJenis;
-    }
     public static function listKondisi(): array{
         $listKondisi    =   [
             ['id' => 'bagus', 'nama' => 'Bagus'],
