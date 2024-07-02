@@ -131,12 +131,15 @@ class Jenis extends Controller{
                 }
             }
 
+            $dateTimeToday  =   date('Y-m-d H:i:s');
+            
             if(!$doesUpdate){
-                $dateTimeToday  =   date('Y-m-d H:i:s');
-
                 $jenis   =   new JenisModel();
                 $jenis->createdBy    =   $administratorId;
                 $jenis->createdAt    =   $dateTimeToday;
+            }else{
+                $jenis->updatedBy   =   $administratorId;
+                $jenis->updatedAt   =   $dateTimeToday;
             }
             
             $jenis->nama        =   $nama;

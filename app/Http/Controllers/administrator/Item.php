@@ -77,10 +77,9 @@ class Item extends Controller{
                 }
             }
 
+            $dateToday      =   date('Y-m-d');
+            $dateTimeToday  =   date('Y-m-d H:i:s');
             if(!$doesUpdate){
-                $dateToday      =   date('Y-m-d');
-                $dateTimeToday  =   date('Y-m-d H:i:s');
-
                 $jumlahItemToday    =   ItemModel::query()
                                         ->where(function (Builder $builder) use ($dateToday) {
                                             $builder->where('createdAt', '>=', $dateToday . ' 00:00:00');
@@ -108,6 +107,9 @@ class Item extends Controller{
                 $item->kode         =   $kode;
                 $item->createdBy    =   $administratorId;
                 $item->createdAt    =   $dateTimeToday;
+            }else{
+                $item->updatedBy    =   $administratorId;
+                $item->updatedAt    =   $dateTimeToday;
             }
             
             $item->nama         =   $nama;
