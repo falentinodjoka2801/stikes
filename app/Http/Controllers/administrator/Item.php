@@ -184,14 +184,16 @@ class Item extends Controller{
         $nomorUrut  =   1;
         foreach($listItem as $index => $item){
             $itemId     =   $item->id;
-            $itemJenis  =   $item->jenis;
+            $itemJenis  =   $item->jenis()->select(['id', 'nama'])->first();
 
             $encryptedId    =   encrypt($itemId);
-            $hasDetail      =   in_array($itemJenis, $itemHaveDetail);
+            $hasDetail      =   in_array($itemJenis->id, $itemHaveDetail);
+            $jenisNama      =   $itemJenis->nama; 
 
             $listItem[$index]['nomorUrut']      =   $nomorUrut;
             $listItem[$index]['encryptedId']    =   $encryptedId;
             $listItem[$index]['hasDetail']      =   $hasDetail;
+            $listItem[$index]['jenis']          =   $jenisNama;
 
             $nomorUrut++;
         }
