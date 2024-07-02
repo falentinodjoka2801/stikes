@@ -4,6 +4,7 @@
 use App\Http\Controllers\administrator\Home;
 use App\Http\Controllers\administrator\Autentikasi;
 use App\Http\Controllers\administrator\Item;
+use App\Http\Controllers\administrator\Jenis;
 use App\Http\Controllers\administrator\Pinjam as AdministratorPinjam;
 
 #User Controller
@@ -50,6 +51,15 @@ Route::prefix('/admin')->group(function(){
         Route::get('/edit/{encryptedId}', [Item::class, 'add'])->name('admin.item.edit');
     });
 
+    Route::prefix('/jenis')->middleware('autentikasi')->group(function(){
+        Route::get('', [Jenis::class, 'index'])->name('admin.jenis');
+        Route::get('/data', [Jenis::class, 'data'])->name('admin.jenis.data');
+        Route::get('/add', [Jenis::class, 'add'])->name('admin.jenis.add');
+        Route::post('/save', [Jenis::class, 'save'])->name('admin.jenis.save');
+        Route::post('/delete', [Jenis::class, 'delete'])->name('admin.jenis.delete');
+        Route::get('/edit/{encryptedId}', [Jenis::class, 'add'])->name('admin.jenis.edit');
+    });
+
     Route::prefix('/pinjam')->middleware('autentikasi')->group(function(){
         Route::get('/peminjaman', [AdministratorPinjam::class, 'peminjaman'])->name('admin.pinjam.peminjaman');
         Route::get('/pengembalian', [AdministratorPinjam::class, 'pengembalian'])->name('admin.pinjam.pengembalian');
@@ -60,6 +70,7 @@ Route::prefix('/admin')->group(function(){
     });
 });
 
+#User
 Route::prefix('/')->group(function(){
     Route::get('/', [UserHome::class, 'dashboard'])->middleware('userAutentikasi')->name('user.dashboard');
 
