@@ -28,7 +28,7 @@
                                     <th>Kelompok</th>
                                     <th>Kondisi</th>
                                     <th>Status</th>
-                                    <th class='text-center' style='width: 100px;'>Action</th>
+                                    <th class='text-center' style='width: 150px;'>Action</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -103,15 +103,22 @@
                     let _id             =   data.id;
                     let _encryptedId    =   data.encryptedId;
                     let _nama           =   data.nama;
+                    let _hasDetail      =   data.hasDetail;
 
                     let _buttonEdit     =   `<a href='{{url('admin/item/edit/${_encryptedId}')}}'>
                                                 <span class='cp fa fa-pen text-warning mr-1'></span>
                                             </a>`;
+
+                    let _buttonDetail   =   (_hasDetail)? `<a href='{{url('admin/item/detail/${_encryptedId}')}}'>
+                                                <span class='cp fa fa-list text-primary mx-1'></span>
+                                            </a>` : '';
+
+
                     let _buttonDelete   =   `<span class='cp fa fa-trash text-danger ml-1' onClick='_delete(this)'
                                                 data-id='${_id}' data-nama='${_nama}'></span>`;
 
                     let _actionHTML     =   `<div class='text-center'>
-                                                ${_buttonEdit} ${_buttonDelete}
+                                                ${_buttonEdit} ${_buttonDetail} ${_buttonDelete}
                                             </div>`;
                     return `${_actionHTML}`;
                 }

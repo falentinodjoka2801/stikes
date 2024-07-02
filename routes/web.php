@@ -49,6 +49,9 @@ Route::prefix('/admin')->group(function(){
         Route::post('/save', [Item::class, 'save'])->name('admin.item.save');
         Route::post('/delete', [Item::class, 'delete'])->name('admin.item.delete');
         Route::get('/edit/{encryptedId}', [Item::class, 'add'])->name('admin.item.edit');
+        Route::get('/detail/{encryptedId}', [Item::class, 'detail'])->name('admin.item.detail');
+        Route::post('/save-item', [Item::class, 'saveItem'])->name('admin.item.save-item');
+        Route::post('/delete-item', [Item::class, 'deleteItem'])->name('admin.item.delete-item');
     });
 
     Route::prefix('/jenis')->middleware('autentikasi')->group(function(){

@@ -10,6 +10,7 @@ use App\Libraries\APIRespondFormat;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Models\ItemDetail;
 use App\Models\Jenis;
 
 use Exception;
@@ -144,6 +145,7 @@ class Item extends Controller{
         
         $search         =   $request->search;
         
+        $itemHaveDetail =   ItemModel::$itemsHaveDetail;
         $recordsTotal   =   ItemModel::when(!empty($search), function(Builder $builder) use ($search){
                                 if(is_array($search)){
                                     if(array_key_exists('value', $search)){
@@ -179,11 +181,14 @@ class Item extends Controller{
         $nomorUrut  =   1;
         foreach($listItem as $index => $item){
             $itemId     =   $item->id;
+            $itemJenis  =   $item->jenis;
 
             $encryptedId    =   encrypt($itemId);
+            $hasDetail      =   in_array($itemJenis, $itemHaveDetail);
 
             $listItem[$index]['nomorUrut']      =   $nomorUrut;
             $listItem[$index]['encryptedId']    =   $encryptedId;
+            $listItem[$index]['hasDetail']      =   $hasDetail;
 
             $nomorUrut++;
         }
@@ -214,6 +219,103 @@ class Item extends Controller{
             if($delete){
                 $status     =   true;
                 $message    =   'Berhasil menghapus item!';
+            }
+        }catch(Exception $e){
+            $message    =   $e->getMessage();
+        }
+
+        $apiRespondFormat   =   new APIRespondFormat($status, $message, $data);
+        $respond            =   $apiRespondFormat->getRespond();
+
+        return response()->json($respond);
+    }
+    public function detail(Request $request, ?string $encryptedId = null): View{
+        try{
+            $id     =   null;
+            $item   =   null;
+
+            if(!empty($encryptedId)){
+                $id     =   decrypt($encryptedId);
+                $item   =   ItemModel::find($id);
+            }
+            
+            $data   =   [
+                'pageTitle'     =>  'Detail Item',
+                'pageDesc'      =>  $item->nama,
+                'item'          =>  $item
+            ];
+            return view('administrator.item.detail', $data);
+        }catch(Exception $e){
+            abort(500);
+        }
+    }
+    public function saveItem(Request $request): JsonResponse{
+        $status     =   false;
+        $message    =   'Gagal memproses Detail Item!';
+        $data       =   null;
+
+        try{
+            $administrator      =   session()->get('administrator');
+            $administratorId    =   $administrator->id;
+
+            #Collect Data
+            $item           =   $request->item;
+            $detail         =   $request->detail;
+            $jumlah         =   $request->jumlah;
+            $satuan         =   $request->satuan;
+
+            #Checking Item
+            $item     =   ItemModel::query()->select(['id'])->find($item);
+            if(empty($item)){
+                throw new Exception('Item tidak terdefinisi!');
+            }
+
+            #Initial Data
+            $dateTimeToday  =   date('Y-m-d H:i:s');
+
+            $itemDetail             =   new ItemDetail();
+            $itemDetail->item       =   $item->id;
+            $itemDetail->detail     =   $detail;
+            $itemDetail->jumlah     =   $jumlah;
+            $itemDetail->satuan     =   $satuan;
+            $itemDetail->createdBy  =   $administratorId;
+            $itemDetail->createdAt  =   $dateTimeToday;
+            $saveItemDetail         =   $itemDetail->save();
+
+            if($saveItemDetail){
+                $status     =   true;
+                $message    =   'Berhasil memproses detail item!';
+                $data       =   [
+                    'id'    =>  $itemDetail->id
+                ];
+            }
+
+        }catch(Exception $e){
+            $message    =   $e->getMessage();
+        }
+
+        $apiRespondFormat   =   new APIRespondFormat($status, $message, $data);
+        $respond            =   $apiRespondFormat->getRespond();
+
+        return response()->json($respond);
+    }
+    public function deleteItem(Request $request): JsonResponse{
+        $status     =   false;
+        $message    =   'Gagal menghapus detail item!';
+        $data       =   null;
+
+        try{
+            #Collect Data
+            $id     =   $request->id;
+            $detailItem     =   ItemDetail::query()->find($id);
+            if(empty($detailItem)){
+                throw new Exception('Detail Item tidak terdefinisi!');
+            }
+
+            $delete     =   $detailItem->delete();
+            if($delete){
+                $status     =   true;
+                $message    =   'Berhasil menghapus detail item!';
             }
         }catch(Exception $e){
             $message    =   $e->getMessage();
