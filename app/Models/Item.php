@@ -9,7 +9,6 @@ class Item extends Model{
     protected $table            =   'item';
     protected $primaryKey       =   'id';
     protected $keyType          =   'integer';
-    public $incrementing        =   false;
     public $timestamps          =   false;
 
     #Item yang memiliki detail
