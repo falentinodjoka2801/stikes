@@ -79,6 +79,7 @@
                                         <th class='vam text-left'>Item</th>
                                         <th class='vam text-left' style='width: 250px;'>Kondisi Peminjaman</th>
                                         <th class='vam text-left' style='width: 250px;'>Kondisi Pengembalian</th>
+                                        <th class='vam text-left' style='width: 250px;'>Jumlah Pengembalian</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -87,8 +88,13 @@
                                             $pinjamItemItem             =   $pinjamItem->item;
                                             $pinjamItemKondisiPinjam    =   $pinjamItem->kondisiPinjam;
                                             $pinjamItemKondisiKembali   =   $pinjamItem->kondisiKembali;
+                                            $pinjamItemStokPinjam       =   $pinjamItem->stokPinjam;
+                                            $pinjamItemStokKembali      =   $pinjamItem->stokKembali;
 
-                                            $item   =   $pinjamItem->item()->select(['nama', 'kode'])->first();
+                                            $item       =   $pinjamItem->item()->select(['nama', 'kode', 'jenis'])->first();
+                                            $itemJenis  =   $item->jenis;
+
+                                            $itemHasStock   =   in_array($itemJenis, $itemHaveStock);
                                         @endphp
                                         <tr>
                                             <td class='vam text-center'><b>{{$loop->iteration}}</b></td>
@@ -117,6 +123,22 @@
                                                     <span class="badge badge-{{($pinjamItemKondisiKembali == 'bagus')? 'success' : 'danger'}}">
                                                         {{$pinjamItemKondisiKembali}}
                                                     </span>
+                                                @endif
+                                            </td>
+                                            <td class="vam text-left">
+                                                @if($sudahPengembalian)
+                                                    @if($itemHasStock)
+                                                        @php
+                                                            $jumlahTerpakai =   $pinjamItemStokPinjam - $pinjamItemStokKembali;
+                                                        @endphp
+                                                        <h6 class="mb-1 text-success">{{number_format($pinjamItemStokKembali)}} Satuan</h6>
+                                                        <p class="text-sm text-muted mb-0">Stok saat peminjaman <b class='text-info'>{{number_format($pinjamItemStokPinjam)}} satuan</b></p>
+                                                        <p class="text-sm text-muted mb-0">Stok saat pengembalian <b class='text-primary'>{{number_format($pinjamItemStokKembali)}} satuan</b></p>
+                                                        <p class="text-sm text-muted mb-0">Terpakai <b class='text-danger'>{{number_format($jumlahTerpakai)}} satuan</b></p>
+                                                    @endif
+                                                @else
+                                                    <input type="text" class="form-control" name='stokKembali[]' placeholder='Stok Kembali'
+                                                        {{($itemHasStock)? '' : 'readonly'}} />
                                                 @endif
                                             </td>
                                         </tr>

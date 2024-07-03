@@ -12,7 +12,9 @@ use App\Libraries\APIRespondFormat;
 use App\Models\Pinjam as PinjamModel;
 use App\Models\PinjamItem;
 use App\Models\Item;
+use App\Models\ItemStok;
 use App\Models\Jenis;
+
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\QueryException;
@@ -95,17 +97,34 @@ class Pinjam extends Controller
                 $item           =   $items[$i];
 
                 #Detail Item
-                $detailItem     =   Item::query()->select(['id', 'kondisi'])->find($item);
+                $detailItem     =   Item::query()->select(['id', 'kondisi', 'nama', 'jenis'])->find($item);
                 if(empty($detailItem)){
                     throw new Exception('Item #'.$item.' tidak terdefinisi!');
                 }
 
+                $itemId         =   $detailItem->id;
+                $itemNama       =   $detailItem->nama;
                 $itemKondisi    =   $detailItem->kondisi;
+                $itemJenis      =   $detailItem->jenis;
+
+                $itemHasStock   =   in_array($itemJenis, Item::$itemsHaveStock);
 
                 $pinjamItem     =   new PinjamItem();
                 $pinjamItem->pinjam         =   $idPeminjaman;
                 $pinjamItem->item           =   $item;
                 $pinjamItem->kondisiPinjam  =   $itemKondisi;
+                
+                if($itemHasStock){
+                    $getStokItem    =   ItemStok::query()->select([DB::raw('SUM(quantity) as stok')])->where('item', $itemId)->first();
+                    $stokItem       =   !empty($getStokItem)? $getStokItem->stok : 0;
+
+                    if($stokItem <= 0){
+                        throw new Exception('Maaf, stok '.$itemNama.' habis!');
+                    }
+
+                    $pinjamItem->stokPinjam =   $stokItem;
+                }
+
                 $pinjamItem->save();
 
                 #Update Status Item

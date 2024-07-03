@@ -12,6 +12,7 @@ use App\Libraries\APIRespondFormat;
 use App\Models\Pinjam as PinjamModel;
 use App\Models\PinjamItem;
 use App\Models\Item;
+use App\Models\ItemStok;
 
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
@@ -49,7 +50,8 @@ class Pinjam extends Controller
             
             $additionalData =   [
                 'pinjam'        =>  $pinjam,
-                'listKondisi'   =>  Item::listKondisi()  
+                'listKondisi'   =>  Item::listKondisi(),
+                'itemHaveStock' =>  Item::$itemsHaveStock
             ];
 
             return view('administrator.pinjam.pengembalian', compact(['pageTitle', 'pageDesc']))->with($additionalData);
@@ -133,6 +135,7 @@ class Pinjam extends Controller
             $idPeminjaman       =   $request->idPeminjaman;
             $items              =   $request->item;
             $kondisiKembalis    =   $request->kondisiKembali;
+            $stokKembalis       =   $request->stokKembali;
 
             $pinjam     =   PinjamModel::find($idPeminjaman);
             if(empty($pinjam)){
@@ -153,8 +156,11 @@ class Pinjam extends Controller
                 $item           =   $items[$i];
                 $kondisiKembali =   $kondisiKembalis[$i];
 
-                $detailItem     =   Item::query()->select(['id', 'nama'])->find($item);
+                $detailItem     =   Item::query()->select(['id', 'nama', 'jenis'])->find($item);
                 $itemNama       =   $detailItem->nama;
+                $itemJenis      =   $detailItem->jenis;
+
+                $stokKembali    =   (in_array($itemJenis, Item::$itemsHaveStock))? $stokKembalis[$i] : null;
 
                 $pinjamItem     =   PinjamItem::query()
                                     ->where('pinjam', $idPeminjaman)
@@ -173,6 +179,28 @@ class Pinjam extends Controller
                 }
                 $detailItem->kondisi    =   $kondisiKembali;
                 $detailItem->save();
+
+                #Pengurangan Stok Untuk Item yang memiliki stok
+                if(!empty($stokKembali)){
+                    $administrator      =   session()->get('administrator');
+                    $administratorId    =   $administrator->id;
+
+                    $stokSaatPeminjaman     =   $pinjamItem->stokPinjam;
+                    $stokSaatPengembalian   =   abs($stokKembali);
+
+                    $jumlahPemakaian    =   $stokSaatPeminjaman - $stokSaatPengembalian;
+
+                    $itemStok               =   new ItemStok();
+                    $itemStok->item         =   $item;
+                    $itemStok->quantity     =   -$jumlahPemakaian;
+                    $itemStok->createdBy    =   $administratorId;
+                    $itemStok->createdFrom  =   ItemStok::$createdFrom_pengembalian;
+                    $itemStok->createdAt    =   $dateTimeToday;
+                    $itemStok->save();
+
+                    $pinjamItem->stokKembali    =   $stokSaatPengembalian;
+                    $pinjamItem->save();
+                }
             }
 
             $pinjam->returnedAt =   $dateTimeToday;

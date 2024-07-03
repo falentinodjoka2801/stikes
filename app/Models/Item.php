@@ -13,7 +13,10 @@ class Item extends Model{
     public $timestamps          =   false;
 
     #Item yang memiliki detail
-    public static array $itemsHaveDetail  =   [5];
+    public static array $itemsHaveDetail    =   [5];
+
+    #Item yang memiliki stock
+    public static array $itemsHaveStock     =   [11];
 
     public static function listKondisi(): array{
         $listKondisi    =   [
