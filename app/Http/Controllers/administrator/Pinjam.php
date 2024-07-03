@@ -133,7 +133,6 @@ class Pinjam extends Controller
 
             $idPeminjaman       =   $request->idPeminjaman;
             $items              =   $request->item;
-            $kondisiKembalis    =   $request->kondisiKembali;
             $stokKembalis       =   $request->stokKembali;
 
             $pinjam     =   PinjamModel::find($idPeminjaman);
@@ -153,11 +152,11 @@ class Pinjam extends Controller
 
             for($i = 0; $i < $jumlahItem; $i++){
                 $item           =   $items[$i];
-                $kondisiKembali =   $kondisiKembalis[$i];
 
-                $detailItem     =   Items::query()->select(['id', 'nama', 'jenis'])->find($item);
-                $itemNama       =   $detailItem->nama;
-                $itemJenis      =   $detailItem->jenis;
+                $detailItem         =   Items::query()->select(['id', 'nama', 'jenis', 'quantityPinjam'])->find($item);
+                $itemNama           =   $detailItem->nama;
+                $itemJenis          =   $detailItem->jenis;
+                $itemQuantityPinjam =   $detailItem->quantityPinjam;
 
                 $stokKembali    =   (in_array($itemJenis, Items::$itemsHaveStock))? $stokKembalis[$i] : null;
 
@@ -169,14 +168,7 @@ class Pinjam extends Controller
                     throw new Exception('Item '.$itemNama.' tidak ada dalam peminjaman #'.$pinjamNomor.'!');
                 }
 
-                $pinjamItem->kondisiKembali     =   $kondisiKembali;
-                $pinjamItem->save();
-
-                if($kondisiKembali == 'bagus'){
-                    $detailItem->peminjam   =   null;
-                    $detailItem->status     =   'ready';
-                }
-                $detailItem->kondisi    =   $kondisiKembali;
+                $detailItem->quantityPinjam =   $itemQuantityPinjam - 1;
                 $detailItem->save();
 
                 #Pengurangan Stok Untuk Item yang memiliki stok

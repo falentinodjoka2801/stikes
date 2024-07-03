@@ -99,6 +99,10 @@
                 let _itemJenis      =   _detailItem.jenis;
                 let _itemKelompok   =   _detailItem.kelompok;
 
+                if(_itemKelompok == null){
+                    _itemKelompok   =   `<i class='text-sm text-muted'>Kelompok kosong!</i>`;
+                }
+
                 let _listItemHTML  =   `<tr class='item' data-item-id='${_selectedItemId}'>
                                             <td class='text-center vam'>
                                                 <span class='fa fa-trash text-danger cp'

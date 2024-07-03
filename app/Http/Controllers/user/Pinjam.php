@@ -97,14 +97,24 @@ class Pinjam extends Controller
                 $item           =   $items[$i];
 
                 #Detail Item
-                $detailItem     =   Items::query()->select(['id', 'nama', 'jenis'])->find($item);
+                $detailItem     =   Items::query()->select(['id', 'kode', 'nama', 'jenis', 'quantityStok', 'quantityPinjam'])->find($item);
                 if(empty($detailItem)){
                     throw new Exception('Item #'.$item.' tidak terdefinisi!');
                 }
 
-                $itemId         =   $detailItem->id;
-                $itemNama       =   $detailItem->nama;
-                $itemJenis      =   $detailItem->jenis;
+                $itemId                 =   $detailItem->id;
+                $itemKode               =   $detailItem->kode;
+                $itemNama               =   $detailItem->nama;
+                $itemJenis              =   $detailItem->jenis;
+                $itemQuantityStok       =   $detailItem->quantityStok;
+                $itemQuantityPinjam     =   $detailItem->quantityPinjam;
+
+                if($itemQuantityPinjam == $itemQuantityStok){
+                    throw new Exception('Item #'.$itemKode.' '.$itemNama.' sudah dipinjam semua!');
+                }
+
+                $detailItem->quantityPinjam     =   $itemQuantityPinjam + 1;
+                $detailItem->save();
 
                 $itemHasStock   =   in_array($itemJenis, Items::$itemsHaveStock);
 
@@ -124,11 +134,6 @@ class Pinjam extends Controller
                 }
 
                 $pinjamItem->save();
-
-                #Update Status Item
-                $detailItem->status     =   'dipinjam';
-                $detailItem->peminjam   =   $userId;
-                $detailItem->save();
             }
 
             $status     =   true;
@@ -208,8 +213,8 @@ class Pinjam extends Controller
         
         $listItems  =   Items::query()
                         ->select(['id', 'kode', 'nama', 'kelompok'])
-                        ->where('status', 'ready')
                         ->where('jenis', $jenis)
+                        ->whereColumn('quantityPinjam', '<', 'quantityStok')
                         ->get();
 
         foreach($listItems as $index => $item){

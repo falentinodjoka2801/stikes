@@ -77,7 +77,6 @@
                                     <tr>
                                         <th class='vam text-center' style='width: 50px;'>No.</th>
                                         <th class='vam text-left'>Item</th>
-                                        <th class='vam text-left' style='width: 250px;'>Kondisi Peminjaman</th>
                                         <th class='vam text-left' style='width: 250px;'>Jumlah Pengembalian</th>
                                     </tr>
                                 </thead>
@@ -85,8 +84,6 @@
                                     @foreach($pinjamItems as $pinjamItem)
                                         @php
                                             $pinjamItemItem             =   $pinjamItem->item;
-                                            $pinjamItemKondisiPinjam    =   $pinjamItem->kondisiPinjam;
-                                            $pinjamItemKondisiKembali   =   $pinjamItem->kondisiKembali;
                                             $pinjamItemStokPinjam       =   $pinjamItem->stokPinjam;
                                             $pinjamItemStokKembali      =   $pinjamItem->stokKembali;
 
@@ -106,7 +103,6 @@
                                                     <i class='text-sm text-muted'>Item tidak ditemukan!</i>
                                                 @endif
                                             </td>
-                                            <td class='vam text-left'>{{$pinjamItemKondisiPinjam}}</td>
                                             <td class="vam text-left">
                                                 @if($sudahPengembalian)
                                                     @if($itemHasStock)
@@ -121,6 +117,9 @@
                                                 @else
                                                     <input type="text" class="form-control" name='stokKembali[]' placeholder='Stok Kembali'
                                                         {{($itemHasStock)? '' : 'readonly'}} />
+                                                    @if(!$itemHasStock)
+                                                        <p class="text-sm text-muted mb-0 mt-1">Hanya aktif jika Item memiliki <b class='text-info'>stok</b> seperti BHP, dsb</p>
+                                                    @endif
                                                 @endif
                                             </td>
                                         </tr>
