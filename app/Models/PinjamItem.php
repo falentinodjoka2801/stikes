@@ -12,6 +12,6 @@ class PinjamItem extends Model{
     public $timestamps          =   false;    
 
     public function item(): HasOne{
-        return $this->hasOne(Item::class, 'id', 'item');
+        return $this->hasOne(Items::class, 'id', 'item');
     }
 }

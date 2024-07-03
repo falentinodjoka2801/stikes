@@ -78,7 +78,6 @@
                                         <th class='vam text-center' style='width: 50px;'>No.</th>
                                         <th class='vam text-left'>Item</th>
                                         <th class='vam text-left' style='width: 250px;'>Kondisi Peminjaman</th>
-                                        <th class='vam text-left' style='width: 250px;'>Kondisi Pengembalian</th>
                                         <th class='vam text-left' style='width: 250px;'>Jumlah Pengembalian</th>
                                     </tr>
                                 </thead>
@@ -108,23 +107,6 @@
                                                 @endif
                                             </td>
                                             <td class='vam text-left'>{{$pinjamItemKondisiPinjam}}</td>
-                                            <td class='vam text-left'>
-                                                @if(!$sudahPengembalian)
-                                                <select name="kondisiKembali[]" class="form-control kondisi-kembali" required>
-                                                    @foreach($listKondisi as $kondisi)
-                                                        @php
-                                                            $kondisiId    =   $kondisi['id'];
-                                                            $kondisiNama  =   $kondisi['nama'];
-                                                        @endphp
-                                                        <option value="{{$kondisiId}}">{{$kondisiNama}}</option>
-                                                    @endforeach
-                                                </select>
-                                                @else
-                                                    <span class="badge badge-{{($pinjamItemKondisiKembali == 'bagus')? 'success' : 'danger'}}">
-                                                        {{$pinjamItemKondisiKembali}}
-                                                    </span>
-                                                @endif
-                                            </td>
                                             <td class="vam text-left">
                                                 @if($sudahPengembalian)
                                                     @if($itemHasStock)

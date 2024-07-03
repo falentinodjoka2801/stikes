@@ -11,7 +11,7 @@ use App\Libraries\APIRespondFormat;
 #Model
 use App\Models\Pinjam as PinjamModel;
 use App\Models\PinjamItem;
-use App\Models\Item;
+use App\Models\Items;
 use App\Models\ItemStok;
 
 use Exception;
@@ -50,8 +50,7 @@ class Pinjam extends Controller
             
             $additionalData =   [
                 'pinjam'        =>  $pinjam,
-                'listKondisi'   =>  Item::listKondisi(),
-                'itemHaveStock' =>  Item::$itemsHaveStock
+                'itemHaveStock' =>  Items::$itemsHaveStock
             ];
 
             return view('administrator.pinjam.pengembalian', compact(['pageTitle', 'pageDesc']))->with($additionalData);
@@ -156,11 +155,11 @@ class Pinjam extends Controller
                 $item           =   $items[$i];
                 $kondisiKembali =   $kondisiKembalis[$i];
 
-                $detailItem     =   Item::query()->select(['id', 'nama', 'jenis'])->find($item);
+                $detailItem     =   Items::query()->select(['id', 'nama', 'jenis'])->find($item);
                 $itemNama       =   $detailItem->nama;
                 $itemJenis      =   $detailItem->jenis;
 
-                $stokKembali    =   (in_array($itemJenis, Item::$itemsHaveStock))? $stokKembalis[$i] : null;
+                $stokKembali    =   (in_array($itemJenis, Items::$itemsHaveStock))? $stokKembalis[$i] : null;
 
                 $pinjamItem     =   PinjamItem::query()
                                     ->where('pinjam', $idPeminjaman)

@@ -55,46 +55,20 @@
                                 </select>
                             </div>
                             <div class="form-group col-lg-2">
+                                <label for="quantityStok">Quantity Stok & Satuan</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" name='quantityStok' id="quantityStok" 
+                                        placeholder='Quantity Stok'
+                                        value='{{($doesUpdate)? $item->quantityStok : ""}}' required />
+                                    <input type="text" name="satuan" id="satuan" class='form-control'
+                                        placeholder='Satuan' />
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
                                 <label for="kelompok">Kelompok</label>
                                 <input type="text" class="form-control" name='kelompok' id="kelompok" 
                                     placeholder='Kelompok Item'
-                                    value='{{($doesUpdate)? $item->kelompok : ""}}' required />
-                            </div>
-                            <div class="form-group col-lg-2">
-                                <label for="kondisi">Kondisi</label>
-                                <select name="kondisi" id="kondisi" class="form-control" required>
-                                    @foreach($listKondisi as $kondisi)
-                                        @php
-                                            $kondisiId    =   $kondisi['id'];
-                                            $kondisiNama  =   $kondisi['nama'];
-
-                                            $isSelected =   false;
-                                            if($doesUpdate){
-                                                $isSelected =   $kondisiId == $item->kondisi;
-                                            }
-                                            $selected   =   ($isSelected)? 'selected' : '';
-                                        @endphp
-                                        <option {{$selected}} value="{{$kondisiId}}">{{$kondisiNama}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group col-lg-2">
-                                <label for="status">Status</label>
-                                <select name="status" id="status" class="form-control" required>
-                                    @foreach($listStatus as $status)
-                                        @php
-                                            $statusId    =   $status['id'];
-                                            $statusNama  =   $status['nama'];
-
-                                            $isSelected =   false;
-                                            if($doesUpdate){
-                                                $isSelected =   $statusId == $item->status;
-                                            }
-                                            $selected   =   ($isSelected)? 'selected' : '';
-                                        @endphp
-                                        <option {{$selected}} value="{{$statusId}}">{{$statusNama}}</option>
-                                    @endforeach
-                                </select>
+                                    value='{{($doesUpdate)? $item->kelompok : ""}}' />                                
                             </div>
                         </div>
                         <hr />

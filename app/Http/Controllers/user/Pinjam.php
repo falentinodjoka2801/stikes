@@ -11,7 +11,7 @@ use App\Libraries\APIRespondFormat;
 #Model
 use App\Models\Pinjam as PinjamModel;
 use App\Models\PinjamItem;
-use App\Models\Item;
+use App\Models\Items;
 use App\Models\ItemStok;
 use App\Models\Jenis;
 
@@ -97,22 +97,20 @@ class Pinjam extends Controller
                 $item           =   $items[$i];
 
                 #Detail Item
-                $detailItem     =   Item::query()->select(['id', 'kondisi', 'nama', 'jenis'])->find($item);
+                $detailItem     =   Items::query()->select(['id', 'nama', 'jenis'])->find($item);
                 if(empty($detailItem)){
                     throw new Exception('Item #'.$item.' tidak terdefinisi!');
                 }
 
                 $itemId         =   $detailItem->id;
                 $itemNama       =   $detailItem->nama;
-                $itemKondisi    =   $detailItem->kondisi;
                 $itemJenis      =   $detailItem->jenis;
 
-                $itemHasStock   =   in_array($itemJenis, Item::$itemsHaveStock);
+                $itemHasStock   =   in_array($itemJenis, Items::$itemsHaveStock);
 
                 $pinjamItem     =   new PinjamItem();
                 $pinjamItem->pinjam         =   $idPeminjaman;
                 $pinjamItem->item           =   $item;
-                $pinjamItem->kondisiPinjam  =   $itemKondisi;
                 
                 if($itemHasStock){
                     $getStokItem    =   ItemStok::query()->select([DB::raw('SUM(quantity) as stok')])->where('item', $itemId)->first();
@@ -208,7 +206,7 @@ class Pinjam extends Controller
         $detailJenis    =   Jenis::query()->select(['nama'])->find($jenis);
         $jenisNama      =   $detailJenis->nama;
         
-        $listItems  =   Item::query()
+        $listItems  =   Items::query()
                         ->select(['id', 'kode', 'nama', 'kelompok'])
                         ->where('status', 'ready')
                         ->where('jenis', $jenis)

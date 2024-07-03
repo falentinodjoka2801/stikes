@@ -16,7 +16,6 @@ use App\Models\Jenis;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class Item extends Controller{
@@ -44,8 +43,6 @@ class Item extends Controller{
                 'pageTitle'     =>  ($doesUpdate)? 'Update Item' : 'Item Baru',
                 'pageDesc'      =>  ($doesUpdate)? $item->nama : '',
                 'listJenis'     =>  $listJenis,
-                'listKondisi'   =>  ItemModel::listKondisi(),
-                'listStatus'    =>  ItemModel::listStatus(),
                 'item'          =>  $item
             ];
             return view('administrator.item.add', $data);
@@ -67,8 +64,8 @@ class Item extends Controller{
             $nama           =   $request->nama;
             $jenis          =   $request->jenis;
             $kelompok       =   $request->kelompok;
-            $kondisi        =   $request->kondisi;
-            $statusBarang   =   $request->status;
+            $quantityStok   =   $request->quantityStok;
+            $satuan         =   $request->satuan;
 
             $doesUpdate     =   !empty($id);
             if($doesUpdate){
@@ -76,6 +73,11 @@ class Item extends Controller{
                 if(empty($item)){
                     throw new Exception('Item tidak terdefinisi!');
                 }
+            }
+
+            $detailJenis    =   Jenis::query()->select(['nama'])->find($jenis);
+            if(empty($detailJenis)){
+                throw new Exception('Jenis tidak terdefinisi!');
             }
 
             $dateToday      =   date('Y-m-d');
@@ -96,11 +98,11 @@ class Item extends Controller{
                     $urutanItemToday  =   $jumlahItemToday + 1;
                 }
 
-                $initialLetter  =   'A';
-                if($jenis == 'ruang'){
-                    $initialLetter  =   'R';
+                $initialLetter  =   Jenis::getInitialLetter($jenis);
+                if(empty($initialLetter)){
+                    $initialLetter  =   'X';
                 }
-                
+
                 $urutan     =   str_pad($urutanItemToday, 3, '0', STR_PAD_LEFT);
                 $kode       =   $initialLetter.date('Ymd').$urutan;
 
@@ -113,12 +115,12 @@ class Item extends Controller{
                 $item->updatedAt    =   $dateTimeToday;
             }
             
-            $item->nama         =   $nama;
-            $item->jenis        =   $jenis;
-            $item->kelompok     =   $kelompok;
-            $item->kondisi      =   $kondisi;
-            $item->status       =   $statusBarang;
-            $saveItem   =   $item->save();
+            $item->nama             =   $nama;
+            $item->jenis            =   $jenis;
+            $item->kelompok         =   $kelompok;
+            $item->quantityStok     =   $quantityStok;
+            $item->satuan           =   $satuan;
+            $saveItem               =   $item->save();
 
             if($saveItem){
                 $status     =   true;
