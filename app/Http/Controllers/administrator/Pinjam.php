@@ -153,10 +153,11 @@ class Pinjam extends Controller
             for($i = 0; $i < $jumlahItem; $i++){
                 $item           =   $items[$i];
 
-                $detailItem         =   Items::query()->select(['id', 'nama', 'jenis', 'quantityPinjam'])->find($item);
+                $detailItem         =   Items::query()->select(['id', 'nama', 'jenis', 'quantityPinjam', 'quantityStok'])->find($item);
                 $itemNama           =   $detailItem->nama;
                 $itemJenis          =   $detailItem->jenis;
                 $itemQuantityPinjam =   $detailItem->quantityPinjam;
+                $itemQuantityStok   =   $detailItem->quantityStok;
 
                 $stokKembali    =   (in_array($itemJenis, Items::$itemsHaveStock))? $stokKembalis[$i] : null;
 
@@ -168,9 +169,10 @@ class Pinjam extends Controller
                     throw new Exception('Item '.$itemNama.' tidak ada dalam peminjaman #'.$pinjamNomor.'!');
                 }
 
-                $pinjamItemQuantityRequest  =   $pinjamItem->quantityRequest;
+                $pinjamItemQuantityDistribusi  =   $pinjamItem->quantityDistribusi;
 
-                $detailItem->quantityPinjam =   $itemQuantityPinjam - $pinjamItemQuantityRequest;
+                $detailItem->quantityPinjam =   $itemQuantityPinjam - $pinjamItemQuantityDistribusi;
+                $detailItem->quantityStok   =   $itemQuantityStok + $pinjamItemQuantityDistribusi;
                 $detailItem->save();
 
                 #Pengurangan Stok Untuk Item yang memiliki stok
@@ -297,9 +299,11 @@ class Pinjam extends Controller
             for($i = 0; $i < $jumlahItem; $i++){
                 $item                   =   $items[$i];
                 $quantityDistribusi     =   $quantityDistribusis[$i];
-
-                $detailItem         =   Items::query()->select(['id', 'nama', 'quantityPinjam'])->find($item);
+                
+                $detailItem         =   Items::query()->select(['id', 'nama', 'quantityPinjam', 'quantityStok'])->find($item);
                 $itemNama           =   $detailItem->nama;
+                $itemQuantityPinjam =   $detailItem->quantityPinjam;
+                $itemQuantityStok   =   $detailItem->quantityStok;
 
                 $pinjamItem     =   PinjamItem::query()
                                     ->where('pinjam', $idPeminjaman)
@@ -311,6 +315,12 @@ class Pinjam extends Controller
 
                 $pinjamItem->quantityDistribusi =   $quantityDistribusi;
                 $pinjamItem->save();
+
+                $pinjamItemQuantityDistribusi  =   $pinjamItem->quantityDistribusi;
+
+                $detailItem->quantityPinjam =   $itemQuantityPinjam + $pinjamItemQuantityDistribusi;
+                $detailItem->quantityStok   =   $itemQuantityStok - $pinjamItemQuantityDistribusi;
+                $detailItem->save();
             }
 
             $pinjam->distributedBy =   $administratorId;

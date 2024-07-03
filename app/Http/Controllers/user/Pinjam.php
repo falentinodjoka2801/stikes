@@ -29,7 +29,7 @@ class Pinjam extends Controller
         
         return view('user.pinjam.index', compact(['pageTitle', 'pageDesc']));
     }
-    public function add(): View{
+    public function add(){
         $pageTitle  =   'Peminjaman';
         $pageDesc   =   'Halaman Peminjaman Alat dan Ruangan';
 
@@ -223,7 +223,7 @@ class Pinjam extends Controller
         $listItems  =   Items::query()
                         ->select(['id', 'kode', 'nama', 'kelompok'])
                         ->where('jenis', $jenis)
-                        ->whereColumn('quantityPinjam', '<', 'quantityStok')
+                        ->where('quantityStok', '>=', 1)
                         ->get();
 
         foreach($listItems as $index => $item){
