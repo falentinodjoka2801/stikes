@@ -300,10 +300,12 @@ class Pinjam extends Controller
                 $item                   =   $items[$i];
                 $quantityDistribusi     =   $quantityDistribusis[$i];
                 
-                $detailItem         =   Items::query()->select(['id', 'nama', 'quantityPinjam', 'quantityStok'])->find($item);
+                $detailItem         =   Items::query()->select(['id', 'kode', 'nama', 'quantityPinjam', 'quantityStok', 'satuan'])->find($item);
                 $itemNama           =   $detailItem->nama;
+                $itemKode           =   $detailItem->kode;
                 $itemQuantityPinjam =   $detailItem->quantityPinjam;
                 $itemQuantityStok   =   $detailItem->quantityStok;
+                $itemSatuan         =   $detailItem->satuan;
 
                 $pinjamItem     =   PinjamItem::query()
                                     ->where('pinjam', $idPeminjaman)
@@ -311,6 +313,10 @@ class Pinjam extends Controller
                                     ->first();
                 if(empty($pinjamItem)){
                     throw new Exception('Item '.$itemNama.' tidak ada dalam peminjaman #'.$pinjamNomor.'!');
+                }
+
+                if($itemQuantityStok < $quantityDistribusi){
+                    throw new Exception('Item #'.$itemKode.' '.$itemNama.' hanya tersisa '.number_format($itemQuantityStok).' '.$itemSatuan.'!');
                 }
 
                 $pinjamItem->quantityDistribusi =   $quantityDistribusi;

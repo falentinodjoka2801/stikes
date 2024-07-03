@@ -121,9 +121,6 @@ class Pinjam extends Controller
                     throw new Exception('Item #'.$itemKode.' '.$itemNama.' hanya tersisa '.number_format($quantityTersisa).' '.$itemSatuan.'!');
                 }
 
-                $detailItem->quantityPinjam     =   $itemQuantityPinjam + $quantityRequest;
-                $detailItem->save();
-
                 $itemHasStock   =   in_array($itemJenis, Items::$itemsHaveStock);
 
                 $pinjamItem     =   new PinjamItem();
