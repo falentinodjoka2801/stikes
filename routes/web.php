@@ -91,6 +91,7 @@ Route::prefix('/')->group(function(){
         Route::get('/data', [Pinjam::class, 'data'])->name('user.pinjam.data');
         Route::get('/add', [Pinjam::class, 'add'])->name('user.pinjam.add');
         Route::post('/save', [Pinjam::class, 'save'])->name('user.pinjam.save');
+        Route::get('/data-item', [Pinjam::class, 'dataItem'])->name('user.pinjam.data-item');
     });
 
 });

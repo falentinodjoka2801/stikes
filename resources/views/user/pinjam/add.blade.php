@@ -14,17 +14,26 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h6 class='mb-3'>Form Pengajuan Peminjaman</h6>
+                    <h5 class='mb-3'>Form Pengajuan Peminjaman</h5>
                     <form action="{{route('user.pinjam.save')}}" method='post' id='formAddPengajuan' onSubmit='_submit(this, event)'>
                         @csrf
-                        <div class="table-responsive">
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <select name="listItems" id="listItems" class="form-control" onChange='_addItem(this)'>
-                                        <option value="">-- Pilih --</option>
-                                        @foreach($listItems as $item)
-                                            <option value="{{$item->id}}" data-detail='{{json_encode($item)}}'>{{$item->nama}}</option>
-                                        @endforeach
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                <label for="jenis">Jenis Item</label>
+                                <select name="jenis" id="jenis" class="form-control"
+                                    onChange='_jenisChanged(this)'
+                                    required>
+                                    <option value="">-- Pilih Jenis Item --</option>
+                                    @foreach($listJenis as $jenis)
+                                        <option value="{{$jenis->id}}">{{$jenis->nama}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-8">
+                                <label for="listItems">Pilihan Items</label>
+                                <div class="input-group">
+                                    <select name="listItems" id="listItems" class="form-control" onChange='_addItem(this)' required>
+                                        <option value="">-- Pilih Item --</option>
                                     </select>
                                     <div class="input-group-append">
                                         <button class="btn btn-success" type="button" onClick='_addItem(this)'>
@@ -33,6 +42,8 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="table-responsive">
                             <table class="table table-bordered mt-3" id='tableItem'>
                                 <thead>
                                     <tr>
@@ -65,9 +76,10 @@
 <script language='Javascript'>
     let _listItems          =   $('#listItems');
     let _listItemPinjam     =   $('#listItemPinjam');
+    let _jenis              =   $('#jenis');
 
     $('#listItems').select2({
-        theme: 'bootstrap'
+        theme: 'bootstrap4'
     });
 
     let _selectedItems     =   [];
@@ -133,6 +145,26 @@
                 location.href   =   `{{route('user.pinjam')}}`;
             }
         });
+    }
+
+    async function _jenisChanged(thisContext){
+        let _selectedJenis  =   _jenis.val();
+        let _getListItems   =   await $.ajax({
+            url     :   `{{route('user.pinjam.data-item')}}`,
+            data    :   `jenis=${_selectedJenis}`,
+            success :   async (decodedRFS) => {
+                return decodedRFS;
+            }
+        });
+
+        let _data               =   _getListItems.data;
+        let _listItemsFromData  =   _data.listItem;
+
+        let _optionsHTML    =   ``;
+        _listItemsFromData.forEach((item) => {
+            _optionsHTML    +=  `<option value='${item.id}' data-detail='${JSON.stringify(item)}'>${item.kode} | ${item.nama}</option>`;
+        });
+        _listItems.html(_optionsHTML);
     }
 </script>
 @endsection

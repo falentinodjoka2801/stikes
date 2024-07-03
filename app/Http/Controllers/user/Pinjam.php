@@ -12,7 +12,7 @@ use App\Libraries\APIRespondFormat;
 use App\Models\Pinjam as PinjamModel;
 use App\Models\PinjamItem;
 use App\Models\Item;
-
+use App\Models\Jenis;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\QueryException;
@@ -31,13 +31,10 @@ class Pinjam extends Controller
         $pageTitle  =   'Peminjaman';
         $pageDesc   =   'Halaman Peminjaman Alat dan Ruangan';
 
-        $listItems  =   Item::query()
-                        ->select(['id', 'kode', 'nama', 'jenis', 'kelompok'])
-                        ->where('status', 'ready')
-                        ->get();
+        $listJenis  =   Jenis::query()->select(['id', 'nama'])->get();
 
         $additionalData =   [
-            'listItems' =>  $listItems
+            'listJenis' =>  $listJenis
         ];
 
         return view('user.pinjam.add', compact(['pageTitle', 'pageDesc']))->with($additionalData);
@@ -184,6 +181,26 @@ class Pinjam extends Controller
             'recordsTotal'          =>  $recordsTotal
         ];
 
+        return response()->json($respond);
+    }
+    public function dataItem(Request $request): JsonResponse{
+        $jenis          =   $request->jenis;
+
+        $detailJenis    =   Jenis::query()->select(['nama'])->find($jenis);
+        $jenisNama      =   $detailJenis->nama;
+        
+        $listItems  =   Item::query()
+                        ->select(['id', 'kode', 'nama', 'kelompok'])
+                        ->where('status', 'ready')
+                        ->where('jenis', $jenis)
+                        ->get();
+
+        foreach($listItems as $index => $item){
+            $listItems[$index]['jenis'] =   $jenisNama;
+        }
+
+        $arf        =   new APIRespondFormat(true, null, ['listItem' => $listItems]);
+        $respond    =   $arf->getRespond();
         return response()->json($respond);
     }
 }
