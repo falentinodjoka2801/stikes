@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\administrator;
 
 #Models
-use App\Models\Item as ItemModel;
+use App\Models\Items as ItemModel;
 
 #Libraries
 use App\Libraries\APIRespondFormat;

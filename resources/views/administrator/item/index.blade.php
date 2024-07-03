@@ -23,12 +23,14 @@
                         <table class="table table-striped table-bordered" id='tabelItem'>
                             <thead>
                                 <tr>
-                                    <th class='text-center' style='width: 75px;'>No.</th>
-                                    <th>Item</th>
-                                    <th>Kelompok</th>
-                                    <th>Kondisi</th>
-                                    <th>Status</th>
-                                    <th class='text-center' style='width: 150px;'>Action</th>
+                                    <th rowspan='2' class='vam text-center' style='width: 75px;'>No.</th>
+                                    <th rowspan='2' class='vam'>Item</th>
+                                    <th colspan='2' class='vam text-center'>Quantity</th>
+                                    <th rowspan='2' class='vam text-center' style='width: 100px;'>Action</th>
+                                </tr>
+                                <tr>
+                                    <th class='text-center vam' style='width: 100px;'>Stok</th>
+                                    <th class='text-center vam' style='width: 100px;'>Pinjam</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -46,6 +48,7 @@
 <script src='{{asset("admin-lte/plugins/sweetalert2/sweetalert2.min.js")}}'></script>
 <link rel="stylesheet" href='{{asset("admin-lte/plugins/sweetalert2/sweetalert2.min.css")}}' />
 <script src='{{asset("custom/js/custom-alert.js")}}'></script>
+<script src='{{asset("admin-lte/plugins/numeral/numeral.js")}}'></script>
 
 <script language='Javascript'>
     let _tabelItemEl    =   $('#tabelItem');
@@ -79,22 +82,15 @@
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let _kelompok   =   data.kelompok;
-                    return _kelompok;
+                    let _quantityStok   =   data.quantityStok;
+                    return `<div class='text-center'>${numeral(_quantityStok).format('0,0')}</div>`;
                 }
             },
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let _kondisi   =   data.kondisi;
-                    return _kondisi;
-                }
-            },
-            {
-                data: null,
-                render: function(data, type, row, meta) {
-                    let _status   =   data.status;
-                    return _status;
+                    let _quantityPinjam   =   data.quantityPinjam;
+                    return `<div class='text-center'>${numeral(_quantityPinjam).format('0,0')}</div>`;
                 }
             },
             {
