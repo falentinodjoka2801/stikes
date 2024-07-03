@@ -47,10 +47,15 @@
                             <table class="table table-bordered mt-3" id='tableItem'>
                                 <thead>
                                     <tr>
-                                        <th class='text-center' style='width: 100px;'>Act</th>
-                                        <th class='text-left'>Nama</th>
-                                        <th class='text-left' style='width: 350px;'>Jenis</th>
-                                        <th class='text-left' style='width: 350px;'>Kelompok</th>
+                                        <th rowspan='2' class='vam text-center' style='width: 100px;'>Act</th>
+                                        <th rowspan='2' class='vam text-left'>Nama</th>
+                                        <th class='vam text-center' colspan='2'>Quantity</th>
+                                        <th rowspan='2' class='vam text-left' style='width: 150px;'>Jenis</th>
+                                        <th rowspan='2' class='vam text-left' style='width: 150px;'>Kelompok</th>
+                                    </tr>
+                                    <tr>
+                                        <th class='vam text-center'>Request</th>
+                                        <th class='vam text-center' style='width: 100px;'>Distribusi</th>
                                     </tr>
                                 </thead>
                                 <tbody id='listItemPinjam'></tbody>
@@ -98,9 +103,14 @@
                 let _itemKode       =   _detailItem.kode;
                 let _itemJenis      =   _detailItem.jenis;
                 let _itemKelompok   =   _detailItem.kelompok;
+                let _itemSatuan     =   _detailItem.satuan;
 
                 if(_itemKelompok == null){
                     _itemKelompok   =   `<i class='text-sm text-muted'>Kelompok kosong!</i>`;
+                }
+
+                if(_itemSatuan == null){
+                    _itemSatuan =   `<i class='text-sm text-muted'>Satuan belum ditentukan</i>`;
                 }
 
                 let _listItemHTML  =   `<tr class='item' data-item-id='${_selectedItemId}'>
@@ -113,7 +123,17 @@
                                                 <span class='text-sm text-muted'><b>Kode</b> ${_itemKode}</span>
                                                 <input type='hidden' name='item[]' value='${_selectedItemId}' />
                                             </td>
-                                            <td class='vam text-left'>${_itemJenis}</th>
+                                            <td class='vam text-center'>
+                                                <div class='input-group'> 
+                                                    <input type='number' name='quantityRequest[]' class='form-control text-right' placeholder='Request Quantity'
+                                                        style='width:150px;' />
+                                                    <div class='input-group-prepend'>
+                                                        <span class='input-group-text'>${_itemSatuan}</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class='vam text-center'>0</td>
+                                            <td class='vam text-left'>${_itemJenis}</td>
                                             <td class='vam text-left'>${_itemKelompok}</td>
                                         </tr>`;
 

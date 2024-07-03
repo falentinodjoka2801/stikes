@@ -143,14 +143,23 @@
                     let _id                     =   data.id;
                     let _encryptedIdPeminjaman  =   data.encryptedIdPeminjaman;
                     let _returnedAt             =   data.returnedAt;
+                    let _distributedBy          =   data.distributedBy;
 
                     let _sudahPengembalian      =   _returnedAt != null;
+                    let _sudahDidistribusikan   =   _distributedBy != null;
 
-                    let _button     =  `<a href='{{route('admin.pinjam.pengembalian')}}/${_encryptedIdPeminjaman}'>
+                    let _button     =   `<a href='{{url('admin/pinjam/distribusi')}}/${_encryptedIdPeminjaman}'>
+                                            <button class='btn btn-primary btn-sm' title='Distribusi'>
+                                                Distribusi
+                                            </button>
+                                        </a>`;
+                    if(_sudahDidistribusikan){
+                        _button     =  `<a href='{{route('admin.pinjam.pengembalian')}}/${_encryptedIdPeminjaman}'>
                                             <button class='btn btn-success btn-sm' title='Pengembalian'>
                                                 Pengembalian
                                             </button>
                                         </a>`; 
+                    }
                                                 
                     if(_sudahPengembalian){
                         _button     =   `<a href='{{route('admin.pinjam.pengembalian')}}/${_encryptedIdPeminjaman}'>

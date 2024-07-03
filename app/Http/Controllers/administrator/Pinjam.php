@@ -168,7 +168,9 @@ class Pinjam extends Controller
                     throw new Exception('Item '.$itemNama.' tidak ada dalam peminjaman #'.$pinjamNomor.'!');
                 }
 
-                $detailItem->quantityPinjam =   $itemQuantityPinjam - 1;
+                $pinjamItemQuantityRequest  =   $pinjamItem->quantityRequest;
+
+                $detailItem->quantityPinjam =   $itemQuantityPinjam - $pinjamItemQuantityRequest;
                 $detailItem->save();
 
                 #Pengurangan Stok Untuk Item yang memiliki stok
@@ -236,5 +238,103 @@ class Pinjam extends Controller
         }catch(Exception $e){
             abort(404);
         }
+    }
+    public function distribusi(Request $request, string $encryptedIdPeminjaman): View{
+        try{
+            $pageTitle  =   'Distribusi';
+            $pageDesc   =   'Distribusi Peminjaman Alat dan Ruangan';
+
+            // if(empty($encryptedIdPeminjaman)){
+            //     return view('administrator.pinjam.input-peminjaman', compact(['pageTitle', 'pageDesc']));
+            // }
+
+            $idPeminjaman   =   decrypt($encryptedIdPeminjaman);
+            $pinjam         =   PinjamModel::query()->find($idPeminjaman);
+            if(empty($pinjam)){
+                throw new Exception('Data peminjaman tidak ditemukan!');
+            }
+            
+            $additionalData =   [
+                'pinjam'        =>  $pinjam,
+                'itemHaveStock' =>  Items::$itemsHaveStock
+            ];
+
+            return view('administrator.pinjam.distribusi', compact(['pageTitle', 'pageDesc']))->with($additionalData);
+        }catch(Exception $e){
+            abort(500, $e->getMessage());
+        }
+    }    
+    public function prosesDistribusi(Request $request): JsonResponse{
+        $status     =   false;
+        $message    =   'Gagal memperoses distribusi peminjaman!';
+        $data       =   null;
+
+        try{
+            DB::beginTransaction();
+
+            $administrator      =   session()->get('administrator');
+            $administratorId    =   $administrator->id;
+            
+            $idPeminjaman           =   $request->idPeminjaman;
+            $items                  =   $request->item;
+            $quantityDistribusis    =   $request->quantityDistribusi;
+
+            $pinjam     =   PinjamModel::find($idPeminjaman);
+            if(empty($pinjam)){
+                throw new Exception('Peminjaman tidak terdefinisi!');
+            }
+
+            #Detail Peminjaman
+            $pinjamNomor    =   $pinjam->nomor;
+
+            $dateTimeToday      =   date('Y-m-d H:i:s');
+            $jumlahItem         =   (!empty($items))? count($items) : 0;
+            $jumlahItemDatabase =   $pinjam->items()->count('id');
+            if($jumlahItemDatabase != $jumlahItem){
+                throw new Exception('Jumlah item yang diproses tidak sama dengan jumlah item yang tercatat dalam database!');
+            }
+
+            for($i = 0; $i < $jumlahItem; $i++){
+                $item                   =   $items[$i];
+                $quantityDistribusi     =   $quantityDistribusis[$i];
+
+                $detailItem         =   Items::query()->select(['id', 'nama', 'quantityPinjam'])->find($item);
+                $itemNama           =   $detailItem->nama;
+
+                $pinjamItem     =   PinjamItem::query()
+                                    ->where('pinjam', $idPeminjaman)
+                                    ->where('item', $item)
+                                    ->first();
+                if(empty($pinjamItem)){
+                    throw new Exception('Item '.$itemNama.' tidak ada dalam peminjaman #'.$pinjamNomor.'!');
+                }
+
+                $pinjamItem->quantityDistribusi =   $quantityDistribusi;
+                $pinjamItem->save();
+            }
+
+            $pinjam->distributedBy =   $administratorId;
+            $pinjam->distributedAt =   $dateTimeToday;
+            $pinjam->save();
+
+            $status     =   true;
+            $message    =   'Berhasil memproses distribusi peminjaman #'.$pinjamNomor.'!';
+            $data       =   ['pinjam' => $idPeminjaman];
+
+            if($status){
+                DB::commit();
+            }
+        }catch(Exception $e){
+            DB::rollBack();
+            $message    =   $e->getMessage();
+        }catch(QueryException $e){
+            DB::rollBack();
+            $message    =   $e->getMessage();
+        }
+
+        $apiRespondFormat   =   new APIRespondFormat($status, $message, $data);
+        $respond            =   $apiRespondFormat->getRespond();
+
+        return response()->json($respond);
     }
 }

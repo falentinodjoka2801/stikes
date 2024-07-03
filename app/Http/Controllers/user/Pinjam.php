@@ -49,7 +49,8 @@ class Pinjam extends Controller
         try{
             DB::beginTransaction();
 
-            $items      =   $request->item;
+            $items              =   $request->item;
+            $quantityRequests   =   $request->quantityRequest;
             
             if(empty($items)){
                 throw new Exception('Minimal harus ada 1 Item yang dipilih untuk pengajuan peminjaman!');
@@ -94,10 +95,11 @@ class Pinjam extends Controller
             $idPeminjaman   =   $pinjam->id;
 
             for($i = 0; $i < $jumlahItem; $i++){
-                $item           =   $items[$i];
+                $item               =   $items[$i];
+                $quantityRequest    =   $quantityRequests[$i];
 
                 #Detail Item
-                $detailItem     =   Items::query()->select(['id', 'kode', 'nama', 'jenis', 'quantityStok', 'quantityPinjam'])->find($item);
+                $detailItem     =   Items::query()->select(['id', 'kode', 'nama', 'jenis', 'quantityStok', 'quantityPinjam', 'satuan'])->find($item);
                 if(empty($detailItem)){
                     throw new Exception('Item #'.$item.' tidak terdefinisi!');
                 }
@@ -108,19 +110,26 @@ class Pinjam extends Controller
                 $itemJenis              =   $detailItem->jenis;
                 $itemQuantityStok       =   $detailItem->quantityStok;
                 $itemQuantityPinjam     =   $detailItem->quantityPinjam;
+                $itemSatuan             =   $detailItem->satuan;
 
                 if($itemQuantityPinjam == $itemQuantityStok){
                     throw new Exception('Item #'.$itemKode.' '.$itemNama.' sudah dipinjam semua!');
                 }
 
-                $detailItem->quantityPinjam     =   $itemQuantityPinjam + 1;
+                $quantityTersisa    =   $itemQuantityStok - $itemQuantityPinjam;
+                if($quantityTersisa < $quantityRequest){
+                    throw new Exception('Item #'.$itemKode.' '.$itemNama.' hanya tersisa '.number_format($quantityTersisa).' '.$itemSatuan.'!');
+                }
+
+                $detailItem->quantityPinjam     =   $itemQuantityPinjam + $quantityRequest;
                 $detailItem->save();
 
                 $itemHasStock   =   in_array($itemJenis, Items::$itemsHaveStock);
 
                 $pinjamItem     =   new PinjamItem();
-                $pinjamItem->pinjam         =   $idPeminjaman;
-                $pinjamItem->item           =   $item;
+                $pinjamItem->pinjam             =   $idPeminjaman;
+                $pinjamItem->item               =   $item;
+                $pinjamItem->quantityRequest    =   $quantityRequest;
                 
                 if($itemHasStock){
                     $getStokItem    =   ItemStok::query()->select([DB::raw('SUM(quantity) as stok')])->where('item', $itemId)->first();

@@ -70,8 +70,10 @@ Route::prefix('/admin')->group(function(){
         Route::get('/pengembalian', [AdministratorPinjam::class, 'pengembalian'])->name('admin.pinjam.pengembalian');
         Route::post('/proses-nomor-peminjaman', [AdministratorPinjam::class, 'prosesNomorPengembalian'])->name('admin.pinjam.proses-nomor-peminjaman');
         Route::get('/pengembalian/{encryptedIdPeminjaman}', [AdministratorPinjam::class, 'pengembalian']);
+        Route::get('/distribusi/{encryptedIdPeminjaman}', [AdministratorPinjam::class, 'distribusi'])->name('admin.pinjam.distribusi');
         Route::get('/peminjaman-data', [AdministratorPinjam::class, 'peminjamanData'])->name('admin.pinjam.peminjaman-data');
         Route::post('/proses-pengembalian', [AdministratorPinjam::class, 'prosesPengembalian'])->name('admin.pinjam.proses-pengembalian');
+        Route::post('/proses-distribusi', [AdministratorPinjam::class, 'prosesDistribusi'])->name('admin.pinjam.proses-distribusi');
     });
 });
 
