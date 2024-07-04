@@ -78,10 +78,11 @@
                                     <tr>
                                         <th rowspan='2' class='vam text-center' style='width: 50px;'>No.</th>
                                         <th rowspan='2' class='vam text-left'>Item</th>
-                                        <th class='vam text-center' colspan='2'>Quantity</th>
+                                        <th class='vam text-center' colspan='3'>Quantity</th>
                                     </tr>
                                     <tr>
                                         <th class='text-center'>Request</th>
+                                        <th class='text-center'>Sisa (Tidak Terpakai)</th>
                                         <th class='text-center'>Distribusi</th>
                                     </tr>
                                 </thead>
@@ -93,6 +94,7 @@
                                             $pinjamItemStokKembali          =   $pinjamItem->stokKembali;
                                             $pinjamItemQuantityRequest      =   $pinjamItem->quantityRequest;
                                             $pinjamItemQuantityDistribusi   =   $pinjamItem->quantityDistribusi;
+                                            $pinjamItemQuantityStok         =   $pinjamItem->quantityStok;
 
                                             $item           =   $pinjamItem->item()->select(['nama', 'kode', 'jenis', 'satuan'])->first();
                                             $itemJenis      =   $item->jenis;
@@ -102,7 +104,7 @@
                                                 $itemSatuan =   'Satuan belum ditentukan';
                                             }
 
-                                            $itemHasStock   =   in_array($itemJenis, $itemHaveStock);
+                                            $itemHasStock       =   in_array($itemJenis, $itemHaveStock);
                                         @endphp
                                         <tr>
                                             <td class='vam text-center'><b>{{$loop->iteration}}</b></td>
@@ -117,6 +119,9 @@
                                             </td>
                                             <td class="vam text-right">
                                                 {{number_format($pinjamItemQuantityRequest)}} {{$itemSatuan}}
+                                            </td>
+                                            <td class="vam text-right">
+                                                {{number_format($pinjamItemQuantityStok)}} {{$itemSatuan}}
                                             </td>
                                             <td class="vam text-right">
                                                 @if($sudahDistribusi)

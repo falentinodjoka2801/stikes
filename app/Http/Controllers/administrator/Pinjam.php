@@ -299,6 +299,9 @@ class Pinjam extends Controller
             for($i = 0; $i < $jumlahItem; $i++){
                 $item                   =   $items[$i];
                 $quantityDistribusi     =   $quantityDistribusis[$i];
+
+                #Reassignment
+                $quantityDistribusi =   abs($quantityDistribusi);
                 
                 $detailItem         =   Items::query()->select(['id', 'kode', 'nama', 'quantityPinjam', 'quantityStok', 'satuan'])->find($item);
                 $itemNama           =   $detailItem->nama;

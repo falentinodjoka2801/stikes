@@ -218,7 +218,7 @@ class Pinjam extends Controller
         $jenisNama      =   $detailJenis->nama;
         
         $listItems  =   Items::query()
-                        ->select(['id', 'kode', 'nama', 'kelompok'])
+                        ->select(['id', 'kode', 'nama', 'kelompok', 'quantityStok'])
                         ->where('jenis', $jenis)
                         ->where('quantityStok', '>=', 1)
                         ->get();
