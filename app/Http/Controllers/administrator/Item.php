@@ -21,9 +21,17 @@ use Illuminate\View\View;
 class Item extends Controller{
     public function index(Request $request): View{
         $data   =   [
-            'pageTitle'     =>  'List Item'
+            'pageTitle'     =>  'List Item',
+            'pageDesc'      =>  'Daftar Alat, Ruang, BHP, dsb'
         ];
-        return view('administrator.item.index', $data);
+
+        $listJenis  =   Jenis::query()->select(['id', 'nama'])->get();
+
+        $additionalData     =   [
+            'listJenis' =>  $listJenis
+        ];
+
+        return view('administrator.item.index', $data)->with($additionalData);
     }
     public function add(Request $request, ?string $encryptedId = null): View{
         try{
@@ -151,6 +159,7 @@ class Item extends Controller{
         return response()->json($respond);
     }
     public function data(Request $request): JsonResponse{
+        #Collect Data
         $draw       =   $request->draw;
 
         $start      =   $request->start;
@@ -159,10 +168,17 @@ class Item extends Controller{
         $length     =   $request->length;
         $length     =   (!is_null($length))? $length : 10;
         
-        $search         =   $request->search;
+        $search     =   $request->search;
+
+        $jenis      =   $request->jenis;
         
         $itemHaveDetail =   ItemModel::$itemsHaveDetail;
-        $recordsTotal   =   ItemModel::when(!empty($search), function(Builder $builder) use ($search){
+        $recordsTotal   =   ItemModel::query()
+                            ->when(!empty($jenis), function(Builder $builder) use ($jenis){
+                                $builder->where('jenis', $jenis);
+                                return $builder;
+                            })
+                            ->when(!empty($search), function(Builder $builder) use ($search){
                                 if(is_array($search)){
                                     if(array_key_exists('value', $search)){
                                         $searchValue    =   $search['value'];
@@ -177,6 +193,10 @@ class Item extends Controller{
                             })->count(['id']);   
 
         $listItem       =   ItemModel::query()
+                            ->when(!empty($jenis), function(Builder $builder) use ($jenis){
+                                $builder->where('jenis', $jenis);
+                                return $builder;
+                            })
                             ->when(!empty($search), function(Builder $builder) use ($search){
                                 if(is_array($search)){
                                     if(array_key_exists('value', $search)){

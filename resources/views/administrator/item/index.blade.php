@@ -19,6 +19,21 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <h5 class='mb-3'><b>Filter</b></h5>
+                    <div class="table-responsive">
+                        <div class="form-group">
+                            <label for="jenisItem">Jenis Item</label>
+                            <select name="jenisItem" id="jenisItem" class="form-control">
+                                <option value="">-- Jenis Item --</option>
+                                @foreach($listJenis as $jenis)
+                                    <option value="{{$jenis->id}}">{{$jenis->nama}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button class="btn btn-success" id='buttonFilter' name='buttonFilter'
+                            onClick='_filter(this)'>Filter</button>
+                    </div>
+                    <hr />
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id='tabelItem'>
                             <thead>
@@ -51,14 +66,16 @@
 <script src='{{asset("admin-lte/plugins/numeral/numeral.js")}}'></script>
 
 <script language='Javascript'>
+    let _jenisItem      =   $('#jenisItem');
     let _tabelItemEl    =   $('#tabelItem');
     let _token          =   `{{csrf_token()}}`;
+    let _url            =   `{{route('admin.item.data')}}`;
 
     let _options    =   {
         processing: true,
         serverSide: true,
         ajax: {
-            url     :   `{{route('admin.item.data')}}`,
+            url     :   _url,
             dataSrc :   'listItem'
         },
         columns: [
@@ -152,6 +169,14 @@
                 }
             })
         }
+    }
+
+    async function _filter(thisContext){
+        let _el     =   $(thisContext);
+        let _selectedJenisItem      =   _jenisItem.val();
+        let _newAjaxURL             =   `${_url}?jenis=${_selectedJenisItem}`;
+
+        _tabelItem.ajax.url(_newAjaxURL).load();
     }
 </script>
 @endsection
