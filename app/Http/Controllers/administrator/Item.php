@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Models\ItemDetail;
+use App\Models\ItemStok;
 use App\Models\Jenis;
 
 use Exception;
@@ -89,6 +90,8 @@ class Item extends Controller{
             if(empty($detailJenis)){
                 throw new Exception('Jenis tidak terdefinisi!');
             }
+            
+            $itemHasStok            =   in_array($detailJenis->id, ItemModel::$itemsHaveStock);
 
             $dateToday      =   date('Y-m-d');
             $dateTimeToday  =   date('Y-m-d H:i:s');
@@ -140,6 +143,18 @@ class Item extends Controller{
             
             $item->satuan           =   $satuan;
             $saveItem               =   $item->save();
+
+            if(!$doesUpdate){
+                if($itemHasStok){
+                    $itemStock  =   new ItemStok();
+                    $itemStock->item        =   $item->id;
+                    $itemStock->quantity    =   $quantityStok;
+                    $itemStock->createdBy   =   $administratorId;
+                    $itemStock->createdFrom =   'item';
+                    $itemStock->createdAt   =   $dateTimeToday;
+                    $itemStock->save();
+                }
+            }
 
             if($saveItem){
                 $status     =   true;
