@@ -67,7 +67,9 @@ class Item extends Controller{
             $quantityStok   =   $request->quantityStok;
             $satuan         =   $request->satuan;
 
-            $doesUpdate     =   !empty($id);
+            $doesUpdate             =   !empty($id);
+            $canUpdateQuantityStok  =   true;
+
             if($doesUpdate){
                 $item   =   ItemModel::find($id);
                 if(empty($item)){
@@ -111,6 +113,11 @@ class Item extends Controller{
                 $item->createdBy    =   $administratorId;
                 $item->createdAt    =   $dateTimeToday;
             }else{
+                $itemQuantityStok   =   $item->quantityStok;
+                if(!empty($itemQuantityStok)){
+                    $canUpdateQuantityStok  =   false;
+                }
+                
                 $item->updatedBy    =   $administratorId;
                 $item->updatedAt    =   $dateTimeToday;
             }
@@ -118,7 +125,11 @@ class Item extends Controller{
             $item->nama             =   $nama;
             $item->jenis            =   $jenis;
             $item->kelompok         =   $kelompok;
-            $item->quantityStok     =   $quantityStok;
+
+            if($canUpdateQuantityStok){
+                $item->quantityStok     =   $quantityStok;
+            }
+            
             $item->satuan           =   $satuan;
             $saveItem               =   $item->save();
 
