@@ -46,14 +46,20 @@ class Item extends Controller{
 
             $doesUpdate =   !empty($item);
 
-            $listJenis  =   Jenis::query()->select(['id', 'nama'])->get();
-
+            $listJenis      =   Jenis::query()->select(['id', 'nama'])->get();
+            
             $data   =   [
                 'pageTitle'     =>  ($doesUpdate)? 'Update Item' : 'Item Baru',
                 'pageDesc'      =>  ($doesUpdate)? $item->nama : '',
                 'listJenis'     =>  $listJenis,
                 'item'          =>  $item
             ];
+
+            if($doesUpdate){
+                $itemHasStock       =   in_array($item->jenis, ItemModel::$itemsHaveStock);
+                $data['hasStock']   =   $itemHasStock;
+            }
+
             return view('administrator.item.add', $data);
         }catch(Exception $e){
             abort(500);
@@ -86,7 +92,7 @@ class Item extends Controller{
                 }
             }
 
-            $detailJenis    =   Jenis::query()->select(['nama'])->find($jenis);
+            $detailJenis    =   Jenis::query()->select(['id', 'nama'])->find($jenis);
             if(empty($detailJenis)){
                 throw new Exception('Jenis tidak terdefinisi!');
             }
@@ -143,24 +149,23 @@ class Item extends Controller{
             
             $item->satuan           =   $satuan;
             $saveItem               =   $item->save();
+            $itemId                 =   $item->id;
 
-            if(!$doesUpdate){
-                if($itemHasStok){
-                    $itemStock  =   new ItemStok();
-                    $itemStock->item        =   $item->id;
-                    $itemStock->quantity    =   $quantityStok;
-                    $itemStock->createdBy   =   $administratorId;
-                    $itemStock->createdFrom =   'item';
-                    $itemStock->createdAt   =   $dateTimeToday;
-                    $itemStock->save();
-                }
+            if($itemHasStok){
+                $itemStock              =   new ItemStok();
+                $itemStock->item        =   $itemId;
+                $itemStock->quantity    =   $quantityStok;
+                $itemStock->createdBy   =   $administratorId;
+                $itemStock->createdFrom =   'item';
+                $itemStock->createdAt   =   $dateTimeToday;
+                $itemStock->save();
             }
 
             if($saveItem){
                 $status     =   true;
                 $message    =   'Berhasil memproses item!';
                 $data       =   [
-                    'id'    =>  $item->id
+                    'id'    =>  $itemId
                 ];
             }
 

@@ -44,8 +44,8 @@
                                     <th rowspan='2' class='vam text-center' style='width: 100px;'>Action</th>
                                 </tr>
                                 <tr>
-                                    <th class='text-center vam' style='width: 100px;'>Stok</th>
-                                    <th class='text-center vam' style='width: 100px;'>Pinjam</th>
+                                    <th class='text-center vam' style='width: 150px;'>Stok</th>
+                                    <th class='text-center vam' style='width: 150px;'>Pinjam</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -99,15 +99,29 @@
             {
                 data: null,
                 render: function(data, type, row, meta) {
+                    let _satuan         =   data.satuan;
                     let _quantityStok   =   data.quantityStok;
-                    return `<div class='text-center'>${numeral(_quantityStok).format('0,0')}</div>`;
+
+                    let _satuanHTML     =   ``;
+                    if(_satuan != null){
+                        _satuanHTML =   `<b>${_satuan}</b>`;
+                    }
+
+                    return `<div class='text-center'>${numeral(_quantityStok).format('0,0')} ${_satuanHTML}</div>`;
                 }
             },
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let _quantityPinjam   =   data.quantityPinjam;
-                    return `<div class='text-center'>${numeral(_quantityPinjam).format('0,0')}</div>`;
+                    let _satuan             =   data.satuan;
+                    let _quantityPinjam     =   data.quantityPinjam;
+                    
+                    let _satuanHTML     =   ``;
+                    if(_satuan != null){
+                        _satuanHTML =   `<b>${_satuan}</b>`;
+                    }
+                    
+                    return `<div class='text-center'>${numeral(_quantityPinjam).format('0,0')} ${_satuanHTML}</div>`;
                 }
             },
             {

@@ -59,7 +59,7 @@
                                 <div class="input-group">
                                     <input type="number" class="form-control" name='quantityStok' id="quantityStok" 
                                         placeholder='Quantity Stok'
-                                        value='{{($doesUpdate)? $item->quantityStok : ""}}' required {{($doesUpdate)? (!empty($item->quantityStok)? 'disabled' : '')  : ''}} />
+                                        value='{{($doesUpdate)? $item->quantityStok : ""}}' required {{($doesUpdate)? ((!empty($item->quantityStok) && !$hasStock)? 'disabled' : '')  : ''}} />
                                     <input type="text" name="satuan" id="satuan" class='form-control'
                                         placeholder='Satuan' value='{{($doesUpdate)? $item->satuan : ""}}' />
                                 </div>
