@@ -1,10 +1,10 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Localhost
+ Source Server         : Local SQL Server
  Source Server Type    : SQL Server
  Source Server Version : 16001000 (16.00.1000)
- Source Host           : DESKTOP-SIAKMAR\SQLEXPRESS:1433
+ Source Host           : DESKTOP-QP17IL6\SQLEXPRESS:1433
  Source Catalog        : stikes
  Source Schema         : dbo
 
@@ -12,7 +12,7 @@
  Target Server Version : 16001000 (16.00.1000)
  File Encoding         : 65001
 
- Date: 05/07/2024 16:51:04
+ Date: 05/07/2024 22:25:11
 */
 
 
@@ -2760,13 +2760,13 @@ GO
 SET IDENTITY_INSERT [dbo].[items] ON
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'1', N'A20240703100', N'½ koher', N'3', N'10', N'0', N'2', N'2024-07-03 12:03:03.000', N'2', N'2024-07-05 15:37:50.000', NULL, N'pcs', NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'1', N'A20240703100', N'½ koher', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', N'2', N'2024-07-05 15:37:50.000', NULL, N'pcs', NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'2', N'BHP202407032001', N'Abocath No.18', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', N'2', N'2024-07-04 10:31:51.000', NULL, N'pcs', NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'3', N'BHP20240703300', N'Abocath No.20', N'11', N'940', N'60', N'2', N'2024-07-03 12:03:03.000', N'2', N'2024-07-05 15:35:00.000', NULL, N'ml', N'1000')
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'3', N'BHP20240703300', N'Abocath No.20', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', N'2', N'2024-07-05 15:35:00.000', NULL, N'ml', N'1000')
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'4', N'BHP20240703400', N'Abocath No.24', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -2778,40 +2778,40 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'6', N'BHP202407036001', N'Akkohol 76%', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'7', N'A20240703700', N'Ambubag', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'7', N'A20240703700', N'Ambubag', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'8', N'A202407038001', N'Arteri Klem Bengkok', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'8', N'A202407038001', N'Arteri Klem Bengkok', N'3', N'6', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'9', N'A20240703900', N'Arteri Klem Lurus', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'9', N'A20240703900', N'Arteri Klem Lurus', N'3', N'18', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'10', N'A202407031001', N'Baju bayi', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', N'5', N'2024-07-03 14:23:06.000', N'Baju', N'potong', NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'10', N'A202407031001', N'Baju bayi', N'3', N'5', N'0', N'2', N'2024-07-03 12:03:03.000', N'5', N'2024-07-03 14:23:06.000', N'Baju', N'potong', NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'11', N'A20240703110', N'Baju pasien + celana', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'11', N'A20240703110', N'Baju pasien + celana', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'12', N'A20240703120', N'Bak Injeksi', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'12', N'A20240703120', N'Bak Injeksi', N'3', N'3', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'13', N'A20240703130', N'Bak Instrumen Besar', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'13', N'A20240703130', N'Bak Instrumen Besar', N'3', N'5', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'14', N'A20240703140', N'Baki', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'14', N'A20240703140', N'Baki', N'3', N'3', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'15', N'P20240703150', N'Bayi', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'15', N'P20240703150', N'Bayi', N'10', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'16', N'P20240703160', N'Bayi Baru Lahir', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'16', N'P20240703160', N'Bayi Baru Lahir', N'10', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'17', N'P20240703170', N'Bayi Leng. Plasenta', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'17', N'P20240703170', N'Bayi Leng. Plasenta', N'10', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'18', N'A202407031801', N'Bedong', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'18', N'A202407031801', N'Bedong', N'3', N'5', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'19', N'BHP202407031901', N'Benang/Hecting', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -2820,28 +2820,28 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'20', N'BHP20240703200', N'Bethadine ', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'21', N'P20240703210', N'Bola Mata', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'21', N'P20240703210', N'Bola Mata', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'22', N'A20240703220', N'Celana dalam dewasa', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'22', N'A20240703220', N'Celana dalam dewasa', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'23', N'A20240703230', N'Celemek', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'23', N'A20240703230', N'Celemek', N'3', N'5', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'24', N'A20240703240', N'Corong Kaca', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'24', N'A20240703240', N'Corong Kaca', N'3', N'6', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'25', N'P20240703250', N'Dekubitus', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'25', N'P20240703250', N'Dekubitus', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'26', N'BHP20240703260', N'Dele/slim seher', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'27', N'P20240703270', N'Dental', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'27', N'P20240703270', N'Dental', N'10', N'4', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'28', N'P20240703280', N'Dilatasi Vagina', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'28', N'P20240703280', N'Dilatasi Vagina', N'10', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'29', N'BHP20240703290', N'ETT 2,5', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -2868,49 +2868,49 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'36', N'BHP20240703360', N'Foley Catheter No.16', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'37', N'A20240703370', N'Forceps ', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'37', N'A20240703370', N'Forceps ', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'38', N'A20240703380', N'Gelas kumur', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'38', N'A20240703380', N'Gelas kumur', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'39', N'P20240703390', N'Ginjal', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'39', N'P20240703390', N'Ginjal', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'40', N'A20240703400', N'Gown pasien ', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'40', N'A20240703400', N'Gown pasien ', N'3', N'5', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'41', N'A20240703410', N'Guedel 0', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'41', N'A20240703410', N'Guedel 0', N'3', N'3', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'42', N'A20240703420', N'Guedel 1', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'42', N'A20240703420', N'Guedel 1', N'3', N'4', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'43', N'A20240703430', N'Guedel 2', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'43', N'A20240703430', N'Guedel 2', N'3', N'3', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'44', N'A20240703440', N'Guedel 3', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'44', N'A20240703440', N'Guedel 3', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'45', N'A20240703450', N'Guedel 4', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'45', N'A20240703450', N'Guedel 4', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'46', N'A20240703460', N'Guedel 5', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'46', N'A20240703460', N'Guedel 5', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'47', N'A20240703470', N'Gunting episiotomy', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'47', N'A20240703470', N'Gunting episiotomy', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'48', N'A20240703480', N'Gunting Epsiotomi', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'48', N'A20240703480', N'Gunting Epsiotomi', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'49', N'A20240703490', N'Gunting Jaringan', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'49', N'A20240703490', N'Gunting Jaringan', N'3', N'7', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'50', N'A20240703500', N'Gunting Tali Pusar', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'50', N'A20240703500', N'Gunting Tali Pusar', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'51', N'A20240703510', N'Gunting tali pusat', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'51', N'A20240703510', N'Gunting tali pusat', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'52', N'BHP20240703520', N'Handscoen Steril No.7', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -2922,19 +2922,19 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'54', N'BHP20240703540', N'Handscoon panjang', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'55', N'A20240703550', N'Handuk bayi', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'55', N'A20240703550', N'Handuk bayi', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'56', N'A20240703560', N'Handuk dewasa', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'56', N'A20240703560', N'Handuk dewasa', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'57', N'P20240703570', N'Hati', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'57', N'P20240703570', N'Hati', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'58', N'P20240703580', N'Human Celebral Artery', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'58', N'P20240703580', N'Human Celebral Artery', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'59', N'A20240703590', N'Implan ', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'59', N'A20240703590', N'Implan ', N'3', N'3', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'60', N'BHP20240703600', N'Infus Set Makro', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -2943,19 +2943,19 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'61', N'BHP20240703610', N'Infus Set Mikro', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'62', N'P20240703620', N'Inkubasi Bayi', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'62', N'P20240703620', N'Inkubasi Bayi', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'63', N'A20240703630', N'IUD', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'63', N'A20240703630', N'IUD', N'3', N'3', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'64', N'P20240703640', N'Jantung', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'64', N'P20240703640', N'Jantung', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'65', N'A20240703650', N'Kaca mata google', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'65', N'A20240703650', N'Kaca mata google', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'66', N'P20240703660', N'Kantong Empedu', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'66', N'P20240703660', N'Kantong Empedu', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'67', N'BHP20240703670', N'Kapas cebok', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -2964,124 +2964,124 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'68', N'BHP20240703680', N'Kapas Lidi', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'69', N'P20240703690', N'Karpal', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'69', N'P20240703690', N'Karpal', N'10', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'70', N'A202407037001', N'Kasa steril', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'70', N'A202407037001', N'Kasa steril', N'3', N'10', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'71', N'P20240703710', N'Kepala Bayi', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'71', N'P20240703710', N'Kepala Bayi', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'72', N'P20240703720', N'Kerangka Foot Joint with Ligamen', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'72', N'P20240703720', N'Kerangka Foot Joint with Ligamen', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'73', N'P20240703730', N'Kerangka Tulang Panggul', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'73', N'P20240703730', N'Kerangka Tulang Panggul', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'74', N'P20240703740', N'Kerangka Tulang Sendi Bahu', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'74', N'P20240703740', N'Kerangka Tulang Sendi Bahu', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'75', N'A20240703750', N'Klem Implan', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'75', N'A20240703750', N'Klem Implan', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'76', N'A20240703760', N'Kom Besar', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'76', N'A20240703760', N'Kom Besar', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'77', N'A20240703770', N'Kom Kecil', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'77', N'A20240703770', N'Kom Kecil', N'3', N'4', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'78', N'A20240703780', N'Kom kecil (bertutup)', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'78', N'A20240703780', N'Kom kecil (bertutup)', N'3', N'10', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'79', N'A20240703790', N'Kom Sedang', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'79', N'A20240703790', N'Kom Sedang', N'3', N'7', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'80', N'A20240703800', N'Kom sedang (bertutup)', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'80', N'A20240703800', N'Kom sedang (bertutup)', N'3', N'10', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'81', N'A20240703810', N'Kondom', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'81', N'A20240703810', N'Kondom', N'3', N'3', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'82', N'A20240703820', N'korentang', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'82', N'A20240703820', N'korentang', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'83', N'A20240703830', N'Korentang set', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'83', N'A20240703830', N'Korentang set', N'3', N'7', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'84', N'R20240703840', N'Laboratorium Anak', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'84', N'R20240703840', N'Laboratorium Anak', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'85', N'R20240703850', N'Laboratorium Antenatal Care', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'85', N'R20240703850', N'Laboratorium Antenatal Care', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'86', N'R20240703860', N'Laboratorium AUDIVISUAL', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'86', N'R20240703860', N'Laboratorium AUDIVISUAL', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'87', N'R20240703870', N'Laboratorium Bayi Baru Lahir', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'87', N'R20240703870', N'Laboratorium Bayi Baru Lahir', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'88', N'R20240703880', N'Laboratorium Biomedik', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'88', N'R20240703880', N'Laboratorium Biomedik', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'89', N'R20240703890', N'Laboratorium EPIDEMIOLOGI', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'89', N'R20240703890', N'Laboratorium EPIDEMIOLOGI', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'90', N'R20240703900', N'Laboratorium Farmakologi', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'90', N'R20240703900', N'Laboratorium Farmakologi', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'91', N'R20240703910', N'Laboratorium Gerontik', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'91', N'R20240703910', N'Laboratorium Gerontik', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'92', N'R20240703920', N'Laboratorium Gizi dan Diet', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'92', N'R20240703920', N'Laboratorium Gizi dan Diet', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'93', N'R20240703930', N'Laboratorium Internatal Care', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'93', N'R20240703930', N'Laboratorium Internatal Care', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'94', N'R20240703940', N'Laboratorium Jiwa', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'94', N'R20240703940', N'Laboratorium Jiwa', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'95', N'R20240703950', N'Laboratorium Keluarga Berencana', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'95', N'R20240703950', N'Laboratorium Keluarga Berencana', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'96', N'R20240703960', N'Laboratorium Kesehatan Lingkungan', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'96', N'R20240703960', N'Laboratorium Kesehatan Lingkungan', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'97', N'R20240703970', N'Laboratorium Keselamatan dan Kesehatan Kerja', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'97', N'R20240703970', N'Laboratorium Keselamatan dan Kesehatan Kerja', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'98', N'R20240703980', N'Laboratorium Keterampilan Dasar', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'98', N'R20240703980', N'Laboratorium Keterampilan Dasar', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'99', N'R20240703990', N'Laboratorium Komputer 1', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'99', N'R20240703990', N'Laboratorium Komputer 1', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'100', N'R20240703100', N'Laboratorium Komputer 2', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'100', N'R20240703100', N'Laboratorium Komputer 2', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'101', N'R20240703101', N'Laboratorium Komunitas', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'101', N'R20240703101', N'Laboratorium Komunitas', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'102', N'R20240703102', N'Laboratorium Konseling Care', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'102', N'R20240703102', N'Laboratorium Konseling Care', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'103', N'R20240703103', N'Laboratorium Medikal Bedah', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'103', N'R20240703103', N'Laboratorium Medikal Bedah', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'104', N'R20240703104', N'Laboratorium Post Natal Care', N'5', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'104', N'R20240703104', N'Laboratorium Post Natal Care', N'5', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'105', N'P20240703105', N'Lambung', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'105', N'P20240703105', N'Lambung', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'106', N'P20240703106', N'Lengan Infus', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'106', N'P20240703106', N'Lengan Infus', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'107', N'BHP20240703107', N'LMA', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'108', N'A20240703108', N'Nalt Holder', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'108', N'A20240703108', N'Nalt Holder', N'3', N'11', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'109', N'BHP20240703109', N'Nassal Oksigen Anak', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -3102,13 +3102,13 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'114', N'BHP20240703114', N'NGT No.16', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'115', N'A20240703115', N'Nierbeken Besar', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'115', N'A20240703115', N'Nierbeken Besar', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'116', N'A20240703116', N'Nierbeken Kecil', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'116', N'A20240703116', N'Nierbeken Kecil', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'117', N'A20240703117', N'Nierbeken Sedang', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'117', N'A20240703117', N'Nierbeken Sedang', N'3', N'36', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'118', N'BHP20240703118', N'NRM Anak', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -3120,70 +3120,70 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'120', N'BHP20240703120', N'Okitosin ', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'121', N'A20240703121', N'Ompreng', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'121', N'A20240703121', N'Ompreng', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'122', N'P20240703122', N'Organ Tubuh Uk. Besar', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'122', N'P20240703122', N'Organ Tubuh Uk. Besar', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'123', N'P20240703123', N'Organ Tubuh Uk. Kecil', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'123', N'P20240703123', N'Organ Tubuh Uk. Kecil', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'124', N'P20240703124', N'Pankreas', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'124', N'P20240703124', N'Pankreas', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'125', N'BHP20240703125', N'Pasta gigi', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'126', N'P20240703126', N'Payudara', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'126', N'P20240703126', N'Payudara', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'127', N'BHP20240703127', N'Pembalut wanita (camelux)', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'128', N'P20240703128', N'Penis', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'128', N'P20240703128', N'Penis', N'10', N'3', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'129', N'P20240703129', N'Perawatan Kolostomi', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'129', N'P20240703129', N'Perawatan Kolostomi', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'130', N'P20240703130', N'Perkembangan Janin', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'130', N'P20240703130', N'Perkembangan Janin', N'10', N'10', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'131', N'P20240703131', N'Phantom ANC', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'131', N'P20240703131', N'Phantom ANC', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'132', N'P20240703132', N'Phantom payudara', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'132', N'P20240703132', N'Phantom payudara', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'133', N'P20240703133', N'Phantom pemasangan implan', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'133', N'P20240703133', N'Phantom pemasangan implan', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'134', N'P20240703134', N'Phantom pemasangan IUD', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'134', N'P20240703134', N'Phantom pemasangan IUD', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'135', N'P20240703135', N'Phantom uterus', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'135', N'P20240703135', N'Phantom uterus', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'136', N'BHP20240703136', N'Pil KB', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'137', N'A20240703137', N'Pinset anatomis', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'137', N'A20240703137', N'Pinset anatomis', N'3', N'15', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'138', N'A20240703138', N'Pinset Chirurgis', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'138', N'A20240703138', N'Pinset Chirurgis', N'3', N'6', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'139', N'A20240703139', N'Pinset sirurgis', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'139', N'A20240703139', N'Pinset sirurgis', N'3', N'10', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'140', N'A202407031401', N'Piring plasenta', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'140', N'A202407031401', N'Piring plasenta', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'141', N'A20240703141', N'Refleks Hammer', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'141', N'A20240703141', N'Refleks Hammer', N'3', N'6', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'142', N'P20240703142', N'RJP', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'142', N'P20240703142', N'RJP', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'143', N'BHP20240703143', N'Sabun mandi bayi', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -3192,16 +3192,16 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'144', N'BHP20240703144', N'Salep mata', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'145', N'A20240703145', N'Sarung', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'145', N'A20240703145', N'Sarung', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'146', N'A20240703146', N'Sarung tangan + kaki', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'146', N'A20240703146', N'Sarung tangan + kaki', N'3', N'5', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'147', N'BHP20240703147', N'Selang Nebulizer', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'148', N'A20240703148', N'Sepatu boot', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'148', N'A20240703148', N'Sepatu boot', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'149', N'BHP20240703149', N'Shampoo bayi', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -3210,19 +3210,19 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'150', N'BHP20240703150', N'Sikat gigi', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'151', N'P20240703151', N'Sistem Kerangka Manusia', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'151', N'P20240703151', N'Sistem Kerangka Manusia', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'152', N'P20240703152', N'Sistem Perkemihan', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'152', N'P20240703152', N'Sistem Perkemihan', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'153', N'P20240703153', N'Sistem Perkemihan Laki-Laki', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'153', N'P20240703153', N'Sistem Perkemihan Laki-Laki', N'10', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'154', N'A20240703154', N'Sonde uterus', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'154', N'A20240703154', N'Sonde uterus', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'155', N'A20240703155', N'Speculum vagina', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'155', N'A20240703155', N'Speculum vagina', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'156', N'BHP20240703156', N'Spuit 10cc', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -3243,19 +3243,19 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'161', N'BHP20240703161', N'Spuit 5cc', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'162', N'A20240703162', N'Spuit Gliserin', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'162', N'A20240703162', N'Spuit Gliserin', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'163', N'A20240703163', N'Stetoskop ', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'163', N'A20240703163', N'Stetoskop ', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'164', N'A20240703164', N'Stick Sprayer Mata Besar', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'164', N'A20240703164', N'Stick Sprayer Mata Besar', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'165', N'A20240703165', N'Stick Sprayer Mata Kecil', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'165', N'A20240703165', N'Stick Sprayer Mata Kecil', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'166', N'A20240703166', N'Stick Sprayer Mata Sedang', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'166', N'A20240703166', N'Stick Sprayer Mata Sedang', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'167', N'BHP20240703167', N'Suction Catheter No.14', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -3264,22 +3264,22 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'168', N'BHP20240703168', N'Sungkup Dewasa', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'169', N'P20240703169', N'Suture Pad ', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'169', N'P20240703169', N'Suture Pad ', N'10', N'3', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'170', N'A20240703170', N'Tabung Reaksi', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'170', N'A20240703170', N'Tabung Reaksi', N'3', N'10', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'171', N'A20240703171', N'Tali dua', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'171', N'A20240703171', N'Tali dua', N'3', N'5', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'172', N'BHP20240703172', N'Tegaderm', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'173', N'A20240703173', N'Tempat Sampel Urin', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'173', N'A20240703173', N'Tempat Sampel Urin', N'3', N'8', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'174', N'A20240703174', N'Tenakulum ', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'174', N'A20240703174', N'Tenakulum ', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'175', N'BHP20240703175', N'Tetes Telinga', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -3288,37 +3288,37 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'176', N'BHP20240703176', N'Threeway', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'177', N'A20240703177', N'Tongue Spatel', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'177', N'A20240703177', N'Tongue Spatel', N'3', N'7', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'178', N'A20240703178', N'Topi', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'178', N'A20240703178', N'Topi', N'3', N'5', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'179', N'A20240703179', N'Tourniquet', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'179', N'A20240703179', N'Tourniquet', N'3', N'4', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'180', N'A20240703180', N'Trolley 3 tingkat', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'180', N'A20240703180', N'Trolley 3 tingkat', N'3', N'3', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'181', N'A20240703181', N'Trolley emergency +isi', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'181', N'A20240703181', N'Trolley emergency +isi', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'182', N'A20240703182', N'Trolley tindakan 2 tingkat', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'182', N'A20240703182', N'Trolley tindakan 2 tingkat', N'3', N'4', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'183', N'A20240703183', N'Tromol besar', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'183', N'A20240703183', N'Tromol besar', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'184', N'A20240703184', N'Umbilical cord', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'184', N'A20240703184', N'Umbilical cord', N'3', N'5', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'185', N'A20240703185', N'Under pad/ perlak', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'185', N'A20240703185', N'Under pad/ perlak', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'186', N'BHP20240703186', N'Urin Bag', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'187', N'P20240703187', N'Vagina', N'10', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'187', N'P20240703187', N'Vagina', N'10', N'4', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'188', N'BHP20240703188', N'Vaksin BCG', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -3336,7 +3336,7 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'192', N'BHP20240703192', N'Vaksin Polio', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'193', N'A20240703193', N'Wadah Korentang', N'3', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'193', N'A20240703193', N'Wadah Korentang', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'194', N'BHP20240703194', N'Wingidel', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
