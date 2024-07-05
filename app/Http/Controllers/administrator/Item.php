@@ -17,6 +17,7 @@ use App\Models\Jenis;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class Item extends Controller{
@@ -192,7 +193,9 @@ class Item extends Controller{
 
         $jenis      =   $request->jenis;
         
-        $itemHaveDetail =   ItemModel::$itemsHaveDetail;
+        $itemHaveDetail     =   ItemModel::$itemsHaveDetail;
+        $itemsHaveStock     =   ItemModel::$itemsHaveStock;
+
         $recordsTotal   =   ItemModel::query()
                             ->when(!empty($jenis), function(Builder $builder) use ($jenis){
                                 $builder->where('jenis', $jenis);
@@ -241,12 +244,30 @@ class Item extends Controller{
 
             $encryptedId    =   encrypt($itemId);
             $hasDetail      =   in_array($itemJenis->id, $itemHaveDetail);
+            $hasStock       =   in_array($itemJenis->id, $itemsHaveStock);
             $jenisNama      =   $itemJenis->nama; 
 
             $listItem[$index]['nomorUrut']      =   $nomorUrut;
             $listItem[$index]['encryptedId']    =   $encryptedId;
             $listItem[$index]['hasDetail']      =   $hasDetail;
             $listItem[$index]['jenis']          =   $jenisNama;
+
+            if($hasStock){
+                $getQuantityStok        =   ItemStok::query()->select([DB::raw('SUM(quantity) as quantityStok')])
+                                            ->where('item', $itemId)
+                                            ->where('quantity', '>=', 0)
+                                            ->first();
+                $quantityStok           =   !empty($getQuantityStok)? $getQuantityStok->quantityStok : 0;
+                
+                $getQuantityTerpakai    =   ItemStok::query()->select([DB::raw('ABS(SUM(quantity)) as quantityTerpakai')])
+                                            ->where('item', $itemId)
+                                            ->where('quantity', '<=', -1)
+                                            ->first();
+                $quantityTerpakai       =   !empty($getQuantityTerpakai)? $getQuantityTerpakai->quantityTerpakai : 0;
+
+                $listItem[$index]['quantityStok']       =   $quantityStok  - $quantityTerpakai;
+                $listItem[$index]['quantityPinjam']     =   $quantityTerpakai;
+            }
 
             $nomorUrut++;
         }
