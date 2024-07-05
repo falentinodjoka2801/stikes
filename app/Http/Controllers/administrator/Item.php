@@ -642,4 +642,22 @@ class Item extends Controller{
 
         return response()->json($respond);
     }
+    public function import(Request $request){
+        $listItemDanStok    =   json_decode(file_get_contents('item-dan-stok.json'), true);
+        foreach($listItemDanStok as $index => $itemAndStok){
+            $nama   =   $itemAndStok['nama'];
+            $jenis  =   $itemAndStok['jenis'];
+            $stok   =   $itemAndStok['stok'];
+
+            if($jenis != 11){ #bukan BHP
+                $item   =   ItemModel::where('nama', $nama)->first();
+                if(!empty($item)){
+                    $item->quantityStok     =   $stok;
+                    $item->save();
+                }
+            }
+
+            // var_dump($itemAndStok).'<br />';
+        }
+    }
 }

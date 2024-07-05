@@ -1,0 +1,1748 @@
+[
+  {
+    "nama": "½ koher",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Abocath No.18",
+    "stok": 7,
+    "jenis": "11"
+  },
+  {
+    "nama": "Abocath No.20",
+    "stok": 6,
+    "jenis": "11"
+  },
+  {
+    "nama": "Abocath No.24",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Abocath No.26",
+    "stok": 11,
+    "jenis": "11"
+  },
+  {
+    "nama": "Akkohol 76%",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Ambubag",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Arteri Klem Bengkok",
+    "stok": 6,
+    "jenis": "3"
+  },
+  {
+    "nama": "Arteri Klem Lurus",
+    "stok": 18,
+    "jenis": "3"
+  },
+  {
+    "nama": "Baju bayi",
+    "stok": 5,
+    "jenis": "3"
+  },
+  {
+    "nama": "Baju pasien + celana",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Bak Injeksi",
+    "stok": 3,
+    "jenis": "3"
+  },
+  {
+    "nama": "Bak Instrumen Besar",
+    "stok": 5,
+    "jenis": "3"
+  },
+  {
+    "nama": "Baki",
+    "stok": 3,
+    "jenis": "3"
+  },
+  {
+    "nama": "Bayi",
+    "stok": 2,
+    "jenis": "10"
+  },
+  {
+    "nama": "Bayi Baru Lahir",
+    "stok": 2,
+    "jenis": "10"
+  },
+  {
+    "nama": "Bayi Leng. Plasenta",
+    "stok": 2,
+    "jenis": "10"
+  },
+  {
+    "nama": "Bedong",
+    "stok": 5,
+    "jenis": "3"
+  },
+  {
+    "nama": "Benang/Hecting",
+    "stok": 12,
+    "jenis": "11"
+  },
+  {
+    "nama": "Bethadine ",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Bola Mata",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Celana dalam dewasa",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Celemek",
+    "stok": 5,
+    "jenis": "3"
+  },
+  {
+    "nama": "Corong Kaca",
+    "stok": 6,
+    "jenis": "3"
+  },
+  {
+    "nama": "Dekubitus",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Dele/slim seher",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Dental",
+    "stok": 4,
+    "jenis": "10"
+  },
+  {
+    "nama": "Dilatasi Vagina",
+    "stok": 2,
+    "jenis": "10"
+  },
+  {
+    "nama": "ETT 2,5",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "ETT 3,5",
+    "stok": 5,
+    "jenis": "11"
+  },
+  {
+    "nama": "ETT 6,5",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Extension Tube",
+    "stok": 7,
+    "jenis": "11"
+  },
+  {
+    "nama": "Foley Catheter No. 18",
+    "stok": 5,
+    "jenis": "11"
+  },
+  {
+    "nama": "Foley Catheter No.12",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Foley Catheter No.14",
+    "stok": 2,
+    "jenis": "11"
+  },
+  {
+    "nama": "Foley Catheter No.16",
+    "stok": 2,
+    "jenis": "11"
+  },
+  {
+    "nama": "Forceps ",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Gelas kumur",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Ginjal",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Gown pasien ",
+    "stok": 5,
+    "jenis": "3"
+  },
+  {
+    "nama": "Guedel 0",
+    "stok": 3,
+    "jenis": "3"
+  },
+  {
+    "nama": "Guedel 1",
+    "stok": 4,
+    "jenis": "3"
+  },
+  {
+    "nama": "Guedel 2",
+    "stok": 3,
+    "jenis": "3"
+  },
+  {
+    "nama": "Guedel 3",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Guedel 4",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Guedel 5",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Gunting episiotomy",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Gunting Epsiotomi",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Gunting Jaringan",
+    "stok": 7,
+    "jenis": "3"
+  },
+  {
+    "nama": "Gunting Tali Pusar",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Gunting tali pusat",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Handscoen Steril No.7",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Handscoen Steril No.7,5 ",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Handscoon panjang",
+    "stok": 5,
+    "jenis": "11"
+  },
+  {
+    "nama": "Handuk bayi",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Handuk dewasa",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Hati",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Human Celebral Artery",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Implan ",
+    "stok": 3,
+    "jenis": "3"
+  },
+  {
+    "nama": "Infus Set Makro",
+    "stok": 2,
+    "jenis": "11"
+  },
+  {
+    "nama": "Infus Set Mikro",
+    "stok": 6,
+    "jenis": "11"
+  },
+  {
+    "nama": "Inkubasi Bayi",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "IUD",
+    "stok": 3,
+    "jenis": "3"
+  },
+  {
+    "nama": "Jantung",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Kaca mata google",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Kantong Empedu",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Kapas cebok",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Kapas Lidi",
+    "stok": 16,
+    "jenis": "11"
+  },
+  {
+    "nama": "Karpal",
+    "stok": 2,
+    "jenis": "10"
+  },
+  {
+    "nama": "Kasa steril",
+    "stok": 10,
+    "jenis": "3"
+  },
+  {
+    "nama": "Kepala Bayi",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Kerangka Foot Joint with Ligamen",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Kerangka Tulang Panggul",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Kerangka Tulang Sendi Bahu",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Klem Implan",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Kom Besar",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Kom Kecil",
+    "stok": 4,
+    "jenis": "3"
+  },
+  {
+    "nama": "Kom kecil (bertutup)",
+    "stok": 10,
+    "jenis": "3"
+  },
+  {
+    "nama": "Kom Sedang",
+    "stok": 7,
+    "jenis": "3"
+  },
+  {
+    "nama": "Kom sedang (bertutup)",
+    "stok": 10,
+    "jenis": "3"
+  },
+  {
+    "nama": "Kondom",
+    "stok": 3,
+    "jenis": "3"
+  },
+  {
+    "nama": "korentang",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Korentang set",
+    "stok": 7,
+    "jenis": "3"
+  },
+  {
+    "nama": "Laboratorium Anak",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Antenatal Care",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium AUDIVISUAL",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Bayi Baru Lahir",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Biomedik",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium EPIDEMIOLOGI",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Farmakologi",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Gerontik",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Gizi dan Diet",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Internatal Care",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Jiwa",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Keluarga Berencana",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Kesehatan Lingkungan",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Keselamatan dan Kesehatan Kerja",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Keterampilan Dasar",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Komputer 1",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Komputer 2",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Komunitas",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Konseling Care",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Medikal Bedah",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Laboratorium Post Natal Care",
+    "stok": 1,
+    "jenis": "5"
+  },
+  {
+    "nama": "Lambung",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Lengan Infus",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "LMA",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Nalt Holder",
+    "stok": 11,
+    "jenis": "3"
+  },
+  {
+    "nama": "Nassal Oksigen Anak",
+    "stok": 5,
+    "jenis": "11"
+  },
+  {
+    "nama": "Nassal Oksigen Bayi",
+    "stok": 2,
+    "jenis": "11"
+  },
+  {
+    "nama": "Nassal Oksigen Dewasa",
+    "stok": 2,
+    "jenis": "11"
+  },
+  {
+    "nama": "Ners Cap",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "NGT No.14",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "NGT No.16",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Nierbeken Besar",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Nierbeken Kecil",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Nierbeken Sedang",
+    "stok": 36,
+    "jenis": "3"
+  },
+  {
+    "nama": "NRM Anak",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "NRM Dewasa",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Okitosin ",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Ompreng",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Organ Tubuh Uk. Besar",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Organ Tubuh Uk. Kecil",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Pankreas",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Pasta gigi",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Payudara",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Pembalut wanita (camelux)",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Penis",
+    "stok": 3,
+    "jenis": "10"
+  },
+  {
+    "nama": "Perawatan Kolostomi",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Perkembangan Janin",
+    "stok": 10,
+    "jenis": "10"
+  },
+  {
+    "nama": "Phantom ANC",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Phantom payudara",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Phantom pemasangan implan",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Phantom pemasangan IUD",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Phantom uterus",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Pil KB",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Pinset anatomis",
+    "stok": 15,
+    "jenis": "3"
+  },
+  {
+    "nama": "Pinset Chirurgis",
+    "stok": 6,
+    "jenis": "3"
+  },
+  {
+    "nama": "Pinset sirurgis",
+    "stok": 10,
+    "jenis": "3"
+  },
+  {
+    "nama": "Piring plasenta",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Refleks Hammer",
+    "stok": 6,
+    "jenis": "3"
+  },
+  {
+    "nama": "RJP",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Sabun mandi bayi",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Salep mata",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Sarung",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Sarung tangan + kaki",
+    "stok": 5,
+    "jenis": "3"
+  },
+  {
+    "nama": "Selang Nebulizer",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Sepatu boot",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Shampoo bayi",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Sikat gigi",
+    "stok": 2,
+    "jenis": "11"
+  },
+  {
+    "nama": "Sistem Kerangka Manusia",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Sistem Perkemihan",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Sistem Perkemihan Laki-Laki",
+    "stok": 1,
+    "jenis": "10"
+  },
+  {
+    "nama": "Sonde uterus",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Speculum vagina",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Spuit 10cc",
+    "stok": 17,
+    "jenis": "11"
+  },
+  {
+    "nama": "Spuit 1cc",
+    "stok": 16,
+    "jenis": "11"
+  },
+  {
+    "nama": "Spuit 30cc",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Spuit 3cc",
+    "stok": 8,
+    "jenis": "11"
+  },
+  {
+    "nama": "Spuit 50cc",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Spuit 5cc",
+    "stok": 12,
+    "jenis": "11"
+  },
+  {
+    "nama": "Spuit Gliserin",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Stetoskop ",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Stick Sprayer Mata Besar",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Stick Sprayer Mata Kecil",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Stick Sprayer Mata Sedang",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Suction Catheter No.14",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Sungkup Dewasa",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Suture Pad ",
+    "stok": 3,
+    "jenis": "10"
+  },
+  {
+    "nama": "Tabung Reaksi",
+    "stok": 10,
+    "jenis": "3"
+  },
+  {
+    "nama": "Tali dua",
+    "stok": 5,
+    "jenis": "3"
+  },
+  {
+    "nama": "Tegaderm",
+    "stok": 2,
+    "jenis": "11"
+  },
+  {
+    "nama": "Tempat Sampel Urin",
+    "stok": 8,
+    "jenis": "3"
+  },
+  {
+    "nama": "Tenakulum ",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Tetes Telinga",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Threeway",
+    "stok": 11,
+    "jenis": "11"
+  },
+  {
+    "nama": "Tongue Spatel",
+    "stok": 7,
+    "jenis": "3"
+  },
+  {
+    "nama": "Topi",
+    "stok": 5,
+    "jenis": "3"
+  },
+  {
+    "nama": "Tourniquet",
+    "stok": 4,
+    "jenis": "3"
+  },
+  {
+    "nama": "Trolley 3 tingkat",
+    "stok": 3,
+    "jenis": "3"
+  },
+  {
+    "nama": "Trolley emergency +isi",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Trolley tindakan 2 tingkat",
+    "stok": 4,
+    "jenis": "3"
+  },
+  {
+    "nama": "Tromol besar",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Umbilical cord",
+    "stok": 5,
+    "jenis": "3"
+  },
+  {
+    "nama": "Under pad/ perlak",
+    "stok": 2,
+    "jenis": "3"
+  },
+  {
+    "nama": "Urin Bag",
+    "stok": 1,
+    "jenis": "11"
+  },
+  {
+    "nama": "Vagina",
+    "stok": 4,
+    "jenis": "10"
+  },
+  {
+    "nama": "Vaksin BCG",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Vaksin campak",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Vaksin DPT",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Vaksin Hepatitis",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Vaksin Polio",
+    "stok": 3,
+    "jenis": "11"
+  },
+  {
+    "nama": "Wadah Korentang",
+    "stok": 1,
+    "jenis": "3"
+  },
+  {
+    "nama": "Wingidel",
+    "stok": 8,
+    "jenis": "11"
+  },
+  {
+    "nama": "½ koher",
+    "jenis": 3
+  },
+  {
+    "nama": "Abocath No.18",
+    "jenis": 11
+  },
+  {
+    "nama": "Abocath No.20",
+    "jenis": 11
+  },
+  {
+    "nama": "Abocath No.24",
+    "jenis": 11
+  },
+  {
+    "nama": "Abocath No.26",
+    "jenis": 11
+  },
+  {
+    "nama": "Akkohol 76%",
+    "jenis": 11
+  },
+  {
+    "nama": "Ambubag",
+    "jenis": 3
+  },
+  {
+    "nama": "Arteri Klem Bengkok",
+    "jenis": 3
+  },
+  {
+    "nama": "Arteri Klem Lurus",
+    "jenis": 3
+  },
+  {
+    "nama": "Baju bayi",
+    "jenis": 3
+  },
+  {
+    "nama": "Baju pasien + celana",
+    "jenis": 3
+  },
+  {
+    "nama": "Bak Injeksi",
+    "jenis": 3
+  },
+  {
+    "nama": "Bak Instrumen Besar",
+    "jenis": 3
+  },
+  {
+    "nama": "Baki",
+    "jenis": 3
+  },
+  {
+    "nama": "Bayi",
+    "jenis": 10
+  },
+  {
+    "nama": "Bayi Baru Lahir",
+    "jenis": 10
+  },
+  {
+    "nama": "Bayi Leng. Plasenta",
+    "jenis": 10
+  },
+  {
+    "nama": "Bedong",
+    "jenis": 3
+  },
+  {
+    "nama": "Benang/Hecting",
+    "jenis": 11
+  },
+  {
+    "nama": "Bethadine ",
+    "jenis": 11
+  },
+  {
+    "nama": "Bola Mata",
+    "jenis": 10
+  },
+  {
+    "nama": "Celana dalam dewasa",
+    "jenis": 3
+  },
+  {
+    "nama": "Celemek",
+    "jenis": 3
+  },
+  {
+    "nama": "Corong Kaca",
+    "jenis": 3
+  },
+  {
+    "nama": "Dekubitus",
+    "jenis": 10
+  },
+  {
+    "nama": "Dele/slim seher",
+    "jenis": 11
+  },
+  {
+    "nama": "Dental",
+    "jenis": 10
+  },
+  {
+    "nama": "Dilatasi Vagina",
+    "jenis": 10
+  },
+  {
+    "nama": "ETT 2,5",
+    "jenis": 11
+  },
+  {
+    "nama": "ETT 3,5",
+    "jenis": 11
+  },
+  {
+    "nama": "ETT 6,5",
+    "jenis": 11
+  },
+  {
+    "nama": "Extension Tube",
+    "jenis": 11
+  },
+  {
+    "nama": "Foley Catheter No. 18",
+    "jenis": 11
+  },
+  {
+    "nama": "Foley Catheter No.12",
+    "jenis": 11
+  },
+  {
+    "nama": "Foley Catheter No.14",
+    "jenis": 11
+  },
+  {
+    "nama": "Foley Catheter No.16",
+    "jenis": 11
+  },
+  {
+    "nama": "Forceps ",
+    "jenis": 3
+  },
+  {
+    "nama": "Gelas kumur",
+    "jenis": 3
+  },
+  {
+    "nama": "Ginjal",
+    "jenis": 10
+  },
+  {
+    "nama": "Gown pasien ",
+    "jenis": 3
+  },
+  {
+    "nama": "Guedel 0",
+    "jenis": 3
+  },
+  {
+    "nama": "Guedel 1",
+    "jenis": 3
+  },
+  {
+    "nama": "Guedel 2",
+    "jenis": 3
+  },
+  {
+    "nama": "Guedel 3",
+    "jenis": 3
+  },
+  {
+    "nama": "Guedel 4",
+    "jenis": 3
+  },
+  {
+    "nama": "Guedel 5",
+    "jenis": 3
+  },
+  {
+    "nama": "Gunting episiotomy",
+    "jenis": 3
+  },
+  {
+    "nama": "Gunting Epsiotomi",
+    "jenis": 3
+  },
+  {
+    "nama": "Gunting Jaringan",
+    "jenis": 3
+  },
+  {
+    "nama": "Gunting Tali Pusar",
+    "jenis": 3
+  },
+  {
+    "nama": "Gunting tali pusat",
+    "jenis": 3
+  },
+  {
+    "nama": "Handscoen Steril No.7",
+    "jenis": 11
+  },
+  {
+    "nama": "Handscoen Steril No.7,5 ",
+    "jenis": 11
+  },
+  {
+    "nama": "Handscoon panjang",
+    "jenis": 11
+  },
+  {
+    "nama": "Handuk bayi",
+    "jenis": 3
+  },
+  {
+    "nama": "Handuk dewasa",
+    "jenis": 3
+  },
+  {
+    "nama": "Hati",
+    "jenis": 10
+  },
+  {
+    "nama": "Human Celebral Artery",
+    "jenis": 10
+  },
+  {
+    "nama": "Implan ",
+    "jenis": 3
+  },
+  {
+    "nama": "Infus Set Makro",
+    "jenis": 11
+  },
+  {
+    "nama": "Infus Set Mikro",
+    "jenis": 11
+  },
+  {
+    "nama": "Inkubasi Bayi",
+    "jenis": 10
+  },
+  {
+    "nama": "IUD",
+    "jenis": 3
+  },
+  {
+    "nama": "Jantung",
+    "jenis": 10
+  },
+  {
+    "nama": "Kaca mata google",
+    "jenis": 3
+  },
+  {
+    "nama": "Kantong Empedu",
+    "jenis": 10
+  },
+  {
+    "nama": "Kapas cebok",
+    "jenis": 11
+  },
+  {
+    "nama": "Kapas Lidi",
+    "jenis": 11
+  },
+  {
+    "nama": "Karpal",
+    "jenis": 10
+  },
+  {
+    "nama": "Kasa steril",
+    "jenis": 3
+  },
+  {
+    "nama": "Kepala Bayi",
+    "jenis": 10
+  },
+  {
+    "nama": "Kerangka Foot Joint with Ligamen",
+    "jenis": 10
+  },
+  {
+    "nama": "Kerangka Tulang Panggul",
+    "jenis": 10
+  },
+  {
+    "nama": "Kerangka Tulang Sendi Bahu",
+    "jenis": 10
+  },
+  {
+    "nama": "Klem Implan",
+    "jenis": 3
+  },
+  {
+    "nama": "Kom Besar",
+    "jenis": 3
+  },
+  {
+    "nama": "Kom Kecil",
+    "jenis": 3
+  },
+  {
+    "nama": "Kom kecil (bertutup)",
+    "jenis": 3
+  },
+  {
+    "nama": "Kom Sedang",
+    "jenis": 3
+  },
+  {
+    "nama": "Kom sedang (bertutup)",
+    "jenis": 3
+  },
+  {
+    "nama": "Kondom",
+    "jenis": 3
+  },
+  {
+    "nama": "korentang",
+    "jenis": 3
+  },
+  {
+    "nama": "Korentang set",
+    "jenis": 3
+  },
+  {
+    "nama": "Laboratorium Anak",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Antenatal Care",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium AUDIVISUAL",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Bayi Baru Lahir",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Biomedik",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium EPIDEMIOLOGI",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Farmakologi",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Gerontik",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Gizi dan Diet",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Internatal Care",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Jiwa",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Keluarga Berencana",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Kesehatan Lingkungan",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Keselamatan dan Kesehatan Kerja",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Keterampilan Dasar",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Komputer 1",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Komputer 2",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Komunitas",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Konseling Care",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Medikal Bedah",
+    "jenis": 5
+  },
+  {
+    "nama": "Laboratorium Post Natal Care",
+    "jenis": 5
+  },
+  {
+    "nama": "Lambung",
+    "jenis": 10
+  },
+  {
+    "nama": "Lengan Infus",
+    "jenis": 10
+  },
+  {
+    "nama": "LMA",
+    "jenis": 11
+  },
+  {
+    "nama": "Nalt Holder",
+    "jenis": 3
+  },
+  {
+    "nama": "Nassal Oksigen Anak",
+    "jenis": 11
+  },
+  {
+    "nama": "Nassal Oksigen Bayi",
+    "jenis": 11
+  },
+  {
+    "nama": "Nassal Oksigen Dewasa",
+    "jenis": 11
+  },
+  {
+    "nama": "Ners Cap",
+    "jenis": 11
+  },
+  {
+    "nama": "NGT No.14",
+    "jenis": 11
+  },
+  {
+    "nama": "NGT No.16",
+    "jenis": 11
+  },
+  {
+    "nama": "Nierbeken Besar",
+    "jenis": 3
+  },
+  {
+    "nama": "Nierbeken Kecil",
+    "jenis": 3
+  },
+  {
+    "nama": "Nierbeken Sedang",
+    "jenis": 3
+  },
+  {
+    "nama": "NRM Anak",
+    "jenis": 11
+  },
+  {
+    "nama": "NRM Dewasa",
+    "jenis": 11
+  },
+  {
+    "nama": "Okitosin ",
+    "jenis": 11
+  },
+  {
+    "nama": "Ompreng",
+    "jenis": 3
+  },
+  {
+    "nama": "Organ Tubuh Uk. Besar",
+    "jenis": 10
+  },
+  {
+    "nama": "Organ Tubuh Uk. Kecil",
+    "jenis": 10
+  },
+  {
+    "nama": "Pankreas",
+    "jenis": 10
+  },
+  {
+    "nama": "Pasta gigi",
+    "jenis": 11
+  },
+  {
+    "nama": "Payudara",
+    "jenis": 10
+  },
+  {
+    "nama": "Pembalut wanita (camelux)",
+    "jenis": 11
+  },
+  {
+    "nama": "Penis",
+    "jenis": 10
+  },
+  {
+    "nama": "Perawatan Kolostomi",
+    "jenis": 10
+  },
+  {
+    "nama": "Perkembangan Janin",
+    "jenis": 10
+  },
+  {
+    "nama": "Phantom ANC",
+    "jenis": 10
+  },
+  {
+    "nama": "Phantom payudara",
+    "jenis": 10
+  },
+  {
+    "nama": "Phantom pemasangan implan",
+    "jenis": 10
+  },
+  {
+    "nama": "Phantom pemasangan IUD",
+    "jenis": 10
+  },
+  {
+    "nama": "Phantom uterus",
+    "jenis": 10
+  },
+  {
+    "nama": "Pil KB",
+    "jenis": 11
+  },
+  {
+    "nama": "Pinset anatomis",
+    "jenis": 3
+  },
+  {
+    "nama": "Pinset Chirurgis",
+    "jenis": 3
+  },
+  {
+    "nama": "Pinset sirurgis",
+    "jenis": 3
+  },
+  {
+    "nama": "Piring plasenta",
+    "jenis": 3
+  },
+  {
+    "nama": "Refleks Hammer",
+    "jenis": 3
+  },
+  {
+    "nama": "RJP",
+    "jenis": 10
+  },
+  {
+    "nama": "Sabun mandi bayi",
+    "jenis": 11
+  },
+  {
+    "nama": "Salep mata",
+    "jenis": 11
+  },
+  {
+    "nama": "Sarung",
+    "jenis": 3
+  },
+  {
+    "nama": "Sarung tangan + kaki",
+    "jenis": 3
+  },
+  {
+    "nama": "Selang Nebulizer",
+    "jenis": 11
+  },
+  {
+    "nama": "Sepatu boot",
+    "jenis": 3
+  },
+  {
+    "nama": "Shampoo bayi",
+    "jenis": 11
+  },
+  {
+    "nama": "Sikat gigi",
+    "jenis": 11
+  },
+  {
+    "nama": "Sistem Kerangka Manusia",
+    "jenis": 10
+  },
+  {
+    "nama": "Sistem Perkemihan",
+    "jenis": 10
+  },
+  {
+    "nama": "Sistem Perkemihan Laki-Laki",
+    "jenis": 10
+  },
+  {
+    "nama": "Sonde uterus",
+    "jenis": 3
+  },
+  {
+    "nama": "Speculum vagina",
+    "jenis": 3
+  },
+  {
+    "nama": "Spuit 10cc",
+    "jenis": 11
+  },
+  {
+    "nama": "Spuit 1cc",
+    "jenis": 11
+  },
+  {
+    "nama": "Spuit 30cc",
+    "jenis": 11
+  },
+  {
+    "nama": "Spuit 3cc",
+    "jenis": 11
+  },
+  {
+    "nama": "Spuit 50cc",
+    "jenis": 11
+  },
+  {
+    "nama": "Spuit 5cc",
+    "jenis": 11
+  },
+  {
+    "nama": "Spuit Gliserin",
+    "jenis": 3
+  },
+  {
+    "nama": "Stetoskop ",
+    "jenis": 3
+  },
+  {
+    "nama": "Stick Sprayer Mata Besar",
+    "jenis": 3
+  },
+  {
+    "nama": "Stick Sprayer Mata Kecil",
+    "jenis": 3
+  },
+  {
+    "nama": "Stick Sprayer Mata Sedang",
+    "jenis": 3
+  },
+  {
+    "nama": "Suction Catheter No.14",
+    "jenis": 11
+  },
+  {
+    "nama": "Sungkup Dewasa",
+    "jenis": 11
+  },
+  {
+    "nama": "Suture Pad ",
+    "jenis": 10
+  },
+  {
+    "nama": "Tabung Reaksi",
+    "jenis": 3
+  },
+  {
+    "nama": "Tali dua",
+    "jenis": 3
+  },
+  {
+    "nama": "Tegaderm",
+    "jenis": 11
+  },
+  {
+    "nama": "Tempat Sampel Urin",
+    "jenis": 3
+  },
+  {
+    "nama": "Tenakulum ",
+    "jenis": 3
+  },
+  {
+    "nama": "Tetes Telinga",
+    "jenis": 11
+  },
+  {
+    "nama": "Threeway",
+    "jenis": 11
+  },
+  {
+    "nama": "Tongue Spatel",
+    "jenis": 3
+  },
+  {
+    "nama": "Topi",
+    "jenis": 3
+  },
+  {
+    "nama": "Tourniquet",
+    "jenis": 3
+  },
+  {
+    "nama": "Trolley 3 tingkat",
+    "jenis": 3
+  },
+  {
+    "nama": "Trolley emergency +isi",
+    "jenis": 3
+  },
+  {
+    "nama": "Trolley tindakan 2 tingkat",
+    "jenis": 3
+  },
+  {
+    "nama": "Tromol besar",
+    "jenis": 3
+  },
+  {
+    "nama": "Umbilical cord",
+    "jenis": 3
+  },
+  {
+    "nama": "Under pad/ perlak",
+    "jenis": 3
+  },
+  {
+    "nama": "Urin Bag",
+    "jenis": 11
+  },
+  {
+    "nama": "Vagina",
+    "jenis": 10
+  },
+  {
+    "nama": "Vaksin BCG",
+    "jenis": 11
+  },
+  {
+    "nama": "Vaksin campak",
+    "jenis": 11
+  },
+  {
+    "nama": "Vaksin DPT",
+    "jenis": 11
+  },
+  {
+    "nama": "Vaksin Hepatitis",
+    "jenis": 11
+  },
+  {
+    "nama": "Vaksin Polio",
+    "jenis": 11
+  },
+  {
+    "nama": "Wadah Korentang",
+    "jenis": 3
+  },
+  {
+    "nama": "Wingidel",
+    "jenis": 11
+  }
+]
