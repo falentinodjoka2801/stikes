@@ -384,4 +384,118 @@ class Item extends Controller{
 
         return response()->json($respond);
     }
+    public function stok(Request $request): View{
+        $data   =   [
+            'pageTitle'     =>  'Stok Item',
+            'pageDesc'      =>  'Riwayat Penggunaan Stok Item'
+        ];
+
+        $listItems  =   ItemModel::query()->select(['id', 'kode', 'nama'])->whereIn('jenis', ItemModel::$itemsHaveStock)->get();
+
+        $additionalData =   [
+            'listItems' =>  $listItems
+        ];
+
+        return view('administrator.item.stok', $data)->with($additionalData);
+    }
+    public function stokData(Request $request): JsonResponse{
+        #Collect Data
+        $draw       =   $request->draw;
+
+        $start      =   $request->start;
+        $start      =   (!is_null($start))? $start : 0;
+
+        $length     =   $request->length;
+        $length     =   (!is_null($length))? $length : 10;
+        
+        $search     =   $request->search;
+
+        #Filter Data
+        $item           =   $request->item;
+        $rentangAwal    =   $request->rentangAwal;
+        $rentangAkhir   =   $request->rentangAkhir;
+
+        
+        $recordsTotal       =   ItemStok::query()
+                                ->when(!empty($item), function(Builder $builder) use ($item){
+                                    $builder->where('item', $item);
+                                    return $builder;
+                                })
+                                ->when(!empty($rentangAwal), function(Builder $builder) use ($rentangAwal){
+                                    $rentangAwal    =   $rentangAwal.' 00:00:00';
+                                    $builder->where('createdAt', '>=', $rentangAwal);
+                                    return $builder;
+                                })
+                                ->when(!empty($rentangAkhir), function(Builder $builder) use ($rentangAkhir){
+                                    $rentangAkhir   =   $rentangAkhir.' 23:59:59';
+                                    $builder->where('createdAt', '<=', $rentangAkhir);
+                                    return $builder;
+                                })
+                                ->when(!empty($search), function(Builder $builder) use ($search){
+                                    if(is_array($search)){
+                                        if(array_key_exists('value', $search)){
+                                            $searchValue    =   $search['value'];
+                                            if(!empty($searchValue)){
+                                                $builder->where('keterangan', 'like', '%'.$searchValue.'%');
+                                            }
+                                        }
+                                    }
+
+                                    return $builder;
+                                })
+                                ->orderBy('createdAt', 'desc')
+                                ->count(['id']);   
+
+        $listHistoryStok    =   ItemStok::query()
+                                ->when(!empty($item), function(Builder $builder) use ($item){
+                                    $builder->where('item', $item);
+                                    return $builder;
+                                })
+                                ->when(!empty($rentangAwal), function(Builder $builder) use ($rentangAwal){
+                                    $rentangAwal    =   $rentangAwal.' 00:00:00';
+                                    $builder->where('createdAt', '>=', $rentangAwal);
+                                    return $builder;
+                                })
+                                ->when(!empty($rentangAkhir), function(Builder $builder) use ($rentangAkhir){
+                                    $rentangAkhir   =   $rentangAkhir.' 23:59:59';
+                                    $builder->where('createdAt', '<=', $rentangAkhir);
+                                    return $builder;
+                                })
+                                ->when(!empty($search), function(Builder $builder) use ($search){
+                                    if(is_array($search)){
+                                        if(array_key_exists('value', $search)){
+                                            $searchValue    =   $search['value'];
+                                            if(!empty($searchValue)){
+                                                $builder->where('keterangan', 'like', '%'.$searchValue.'%');
+                                            }
+                                        }
+                                    }
+
+                                    return $builder;
+                                })
+                                ->limit($length)
+                                ->offset($start)
+                                ->orderBy('createdAt', 'desc')
+                                ->get();
+
+        $nomorUrut  =   1;
+        foreach($listHistoryStok as $index => $history){
+            $detailItem    =   $history->item()->select(['nama', 'kode', 'satuan'])->first();
+
+
+            $listHistoryStok[$index]['nomorUrut']   =   $nomorUrut;
+            $listHistoryStok[$index]['item']        =   $detailItem;
+
+            $nomorUrut++;
+        }
+
+        $respond   =   [
+            'listHistoryStok'   =>  $listHistoryStok,
+            'draw'              =>  $draw,
+            'recordsFiltered'   =>  $recordsTotal,
+            'recordsTotal'      =>  $recordsTotal
+        ];
+
+        return response()->json($respond);
+    }
 }

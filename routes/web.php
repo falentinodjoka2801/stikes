@@ -54,6 +54,8 @@ Route::prefix('/admin')->group(function(){
         Route::post('/delete-item', [Item::class, 'deleteItem'])->name('admin.item.delete-item');
         Route::get('/import', [Item::class, 'import'])->name('admin.item.import');
         Route::post('/import', [Item::class, 'import'])->name('admin.item.import');
+        Route::get('/stok', [Item::class, 'stok'])->name('admin.item.stok');
+        Route::get('/stok-data', [Item::class, 'stokData'])->name('admin.item.stok-data');
     });
 
     Route::prefix('/jenis')->middleware('autentikasi')->group(function(){

@@ -69,6 +69,12 @@
                                 <p>Item Baru</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.item.stok')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Laporan Stok</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item {{($page == 'pinjam')? 'menu-is-opening menu-open' : ''}}">
