@@ -254,10 +254,10 @@ class Item extends Controller{
 
             if($hasStock){
                 $getQuantityStok        =   ItemModel::getStokIn($itemId);
-                $quantityStok           =   !empty($getQuantityStok)? $getQuantityStok->quantityStok : 0;
+                $quantityStok           =   !empty($getQuantityStok)? $getQuantityStok->quantity : 0;
                 
                 $getQuantityTerpakai    =   ItemModel::getStokOut($itemId);
-                $quantityTerpakai       =   !empty($getQuantityTerpakai)? $getQuantityTerpakai->quantityTerpakai : 0;
+                $quantityTerpakai       =   !empty($getQuantityTerpakai)? $getQuantityTerpakai->quantity : 0;
 
                 $listItem[$index]['quantityStok']       =   $quantityStok  - $quantityTerpakai;
                 $listItem[$index]['quantityPinjam']     =   $quantityTerpakai;
