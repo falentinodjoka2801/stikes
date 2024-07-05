@@ -16,4 +16,8 @@ class ItemStok extends Model{
     public static array $createdFrom    =   [
         'pengembalian'  =>  'Pengembalian'
     ];
+
+    public function item(): HasOne{
+        return $this->hasOne(Items::class, 'id', 'item');
+    }
 }
