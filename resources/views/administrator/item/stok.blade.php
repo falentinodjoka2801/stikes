@@ -98,20 +98,24 @@
                             onClick='_filter(this, event)'>Filter</button>
                     </form>
                     <hr />
-                    <h5 class='mb-3'><b>Rekapan</b></h5>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered" id='tabelRekapanStok'>
-                            <thead>
-                                <tr>
-                                    <th class='vam text-center' style='width: 75px;'>No.</th>
-                                    <th class='vam'>Item</th>
-                                    <th class='vam'>Stok Terakhir</th>
-                                    <th class='vam text-right'>In</th>
-                                    <th class='vam text-right'>Out</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h5 class='mb-3'><b>Rekapan</b></h5>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered" id='tabelRekapanStok'>
+                                    <thead>
+                                        <tr>
+                                            <th class='vam text-center' style='width: 75px;'>No.</th>
+                                            <th class='vam'>Item</th>
+                                            <th class='vam'>Stok Terakhir</th>
+                                            <th class='vam text-right'>In</th>
+                                            <th class='vam text-right'>Out</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <br />
                     <h5 class='mb-3'><b>Rincian</b></h5>
