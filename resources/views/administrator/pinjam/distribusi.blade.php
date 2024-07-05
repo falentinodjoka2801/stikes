@@ -80,9 +80,9 @@
                                         <th class='vam text-center' colspan='3'>Quantity</th>
                                     </tr>
                                     <tr>
-                                        <th class='text-center'>Request</th>
-                                        <th class='text-center'>Sisa (Tidak Terpakai)</th>
-                                        <th class='text-center'>Distribusi</th>
+                                        <th style='width: 200px;' class='text-right'>Request</th>
+                                        <th style='width: 200px;' class='text-right'>Sisa (Stok Saat Ini)</th>
+                                        <th style='width: 200px;' class='text-right'>Distribusi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -94,15 +94,27 @@
                                             $pinjamItemQuantityDistribusi   =   $pinjamItem->quantityDistribusi;
                                             $pinjamItemQuantityStok         =   $pinjamItem->quantityStok;
 
-                                            $item           =   $pinjamItem->item()->select(['nama', 'kode', 'jenis', 'satuan'])->first();
-                                            $itemJenis      =   $item->jenis;
-                                            $itemSatuan     =   $item->satuan;
+                                            $item                   =   $pinjamItem->item()->select(['nama', 'kode', 'jenis', 'satuan', 'quantityStok', 'id'])->first();
+                                            $itemId                 =   $item->id;
+                                            $itemJenis              =   $item->jenis;
+                                            $itemSatuan             =   $item->satuan;
+                                            $itemQuantityStok       =   $item->quantityStok;
 
                                             if(empty($itemSatuan)){
                                                 $itemSatuan =   'Satuan belum ditentukan';
                                             }
 
                                             $itemHasStock       =   in_array($itemJenis, $itemHaveStock);
+
+                                            $itemStok   =   $itemQuantityStok;
+                                            if($itemHasStock){
+                                                $getItemStokIn      =   \App\Models\Items::getStokIn($itemId);
+                                                $getItemStokOut     =   \App\Models\Items::getStokOut($itemId);
+
+                                                $itemStockIn    =   (!empty($getItemStokIn))? $getItemStokIn->quantity : 0;
+                                                $itemStockOut   =   (!empty($getItemStokOut))? $getItemStokOut->quantity : 0;
+                                                $itemStok       =   $itemStockIn - $itemStockOut;
+                                            }
                                         @endphp
                                         <tr>
                                             <td class='vam text-center'><b>{{$loop->iteration}}</b></td>
@@ -119,11 +131,11 @@
                                                 {{number_format($pinjamItemQuantityRequest)}} {{$itemSatuan}}
                                             </td>
                                             <td class="vam text-right">
-                                                {{number_format($pinjamItemQuantityStok)}} {{$itemSatuan}}
+                                                <b class='text-success'>{{number_format($itemStok)}} {{$itemSatuan}}</b>
                                             </td>
                                             <td class="vam text-right">
                                                 @if($sudahDistribusi)
-                                                    {{number_format($pinjamItemQuantityDistribusi)}} {{$itemSatuan}}
+                                                    <b class='text-info'>{{number_format($pinjamItemQuantityDistribusi)}} {{$itemSatuan}}</b>
                                                 @else
                                                     <div class="input-group">
                                                         <input type="number" name="quantityDistribusi[]" class='form-control text-right'
