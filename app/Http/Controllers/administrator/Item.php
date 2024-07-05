@@ -253,16 +253,10 @@ class Item extends Controller{
             $listItem[$index]['jenis']          =   $jenisNama;
 
             if($hasStock){
-                $getQuantityStok        =   ItemStok::query()->select([DB::raw('SUM(quantity) as quantityStok')])
-                                            ->where('item', $itemId)
-                                            ->where('quantity', '>=', 0)
-                                            ->first();
+                $getQuantityStok        =   ItemModel::getStokIn($itemId);
                 $quantityStok           =   !empty($getQuantityStok)? $getQuantityStok->quantityStok : 0;
                 
-                $getQuantityTerpakai    =   ItemStok::query()->select([DB::raw('ABS(SUM(quantity)) as quantityTerpakai')])
-                                            ->where('item', $itemId)
-                                            ->where('quantity', '<=', -1)
-                                            ->first();
+                $getQuantityTerpakai    =   ItemModel::getStokOut($itemId);
                 $quantityTerpakai       =   !empty($getQuantityTerpakai)? $getQuantityTerpakai->quantityTerpakai : 0;
 
                 $listItem[$index]['quantityStok']       =   $quantityStok  - $quantityTerpakai;
@@ -512,6 +506,118 @@ class Item extends Controller{
 
         $respond   =   [
             'listHistoryStok'   =>  $listHistoryStok,
+            'draw'              =>  $draw,
+            'recordsFiltered'   =>  $recordsTotal,
+            'recordsTotal'      =>  $recordsTotal
+        ];
+
+        return response()->json($respond);
+    }
+    public function rekapStokData(Request $request): JsonResponse{
+        #Collect Data
+        $draw       =   $request->draw;
+
+        $start      =   $request->start;
+        $start      =   (!is_null($start))? $start : 0;
+
+        $length     =   $request->length;
+        $length     =   (!is_null($length))? $length : 10;
+        
+        $search     =   $request->search;
+
+        #Filter Data
+        $item           =   $request->item;
+        $rentangAwal    =   $request->rentangAwal;
+        $rentangAkhir   =   $request->rentangAkhir;
+        
+        $recordsTotal       =   ItemStok::query()
+                                ->select(['item'])
+                                ->when(!empty($item), function(Builder $builder) use ($item){
+                                    $builder->where('item', $item);
+                                    return $builder;
+                                })
+                                ->when(!empty($rentangAwal), function(Builder $builder) use ($rentangAwal){
+                                    $rentangAwal    =   $rentangAwal.' 00:00:00';
+                                    $builder->where('createdAt', '>=', $rentangAwal);
+                                    return $builder;
+                                })
+                                ->when(!empty($rentangAkhir), function(Builder $builder) use ($rentangAkhir){
+                                    $rentangAkhir   =   $rentangAkhir.' 23:59:59';
+                                    $builder->where('createdAt', '<=', $rentangAkhir);
+                                    return $builder;
+                                })
+                                ->when(!empty($search), function(Builder $builder) use ($search){
+                                    if(is_array($search)){
+                                        if(array_key_exists('value', $search)){
+                                            $searchValue    =   $search['value'];
+                                            if(!empty($searchValue)){
+                                                $builder->where('keterangan', 'like', '%'.$searchValue.'%');
+                                            }
+                                        }
+                                    }
+
+                                    return $builder;
+                                })
+                                ->groupBy('item')
+                                ->count(['id']);   
+
+        $listRekapanStok    =   ItemStok::query()
+                                ->select(['item'])
+                                ->when(!empty($item), function(Builder $builder) use ($item){
+                                    $builder->where('item', $item);
+                                    return $builder;
+                                })
+                                ->when(!empty($rentangAwal), function(Builder $builder) use ($rentangAwal){
+                                    $rentangAwal    =   $rentangAwal.' 00:00:00';
+                                    $builder->where('createdAt', '>=', $rentangAwal);
+                                    return $builder;
+                                })
+                                ->when(!empty($rentangAkhir), function(Builder $builder) use ($rentangAkhir){
+                                    $rentangAkhir   =   $rentangAkhir.' 23:59:59';
+                                    $builder->where('createdAt', '<=', $rentangAkhir);
+                                    return $builder;
+                                })
+                                ->when(!empty($search), function(Builder $builder) use ($search){
+                                    if(is_array($search)){
+                                        if(array_key_exists('value', $search)){
+                                            $searchValue    =   $search['value'];
+                                            if(!empty($searchValue)){
+                                                $builder->where('keterangan', 'like', '%'.$searchValue.'%');
+                                            }
+                                        }
+                                    }
+
+                                    return $builder;
+                                })
+                                ->limit($length)
+                                ->offset($start)
+                                ->groupBy('item')
+                                ->get();
+
+        $nomorUrut  =   1;
+        foreach($listRekapanStok as $index => $rekap){
+
+            $detailItem     =   $rekap->item()->select(['id', 'nama', 'kode', 'satuan'])->first();
+            $itemId         =   $detailItem->id;
+
+            $getRekapStokIn     =   ItemModel::getStokIn($itemId);
+            $getRekapStokOut    =   ItemModel::getStokOut($itemId);
+
+            $rekapStokIn    =   (!empty($getRekapStokIn))? $getRekapStokIn->quantity : 0;
+            $rekapStokOut   =   (!empty($getRekapStokOut))? $getRekapStokOut->quantity : 0;
+            $rekapStok      =   $rekapStokIn - $rekapStokOut;
+            
+            $listRekapanStok[$index]['nomorUrut']   =   $nomorUrut;
+            $listRekapanStok[$index]['item']        =   $detailItem;
+            $listRekapanStok[$index]['stok']        =   $rekapStok;
+            $listRekapanStok[$index]['stokIn']      =   $rekapStokIn;
+            $listRekapanStok[$index]['stokOut']     =   $rekapStokOut;
+
+            $nomorUrut++;
+        }
+
+        $respond   =   [
+            'listRekapanStok'   =>  $listRekapanStok,
             'draw'              =>  $draw,
             'recordsFiltered'   =>  $recordsTotal,
             'recordsTotal'      =>  $recordsTotal

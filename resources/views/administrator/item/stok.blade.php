@@ -4,7 +4,10 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col">
+        <div class="col-lg-4">
+            
+        </div>
+        <div class="col-lg-8">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -41,6 +44,23 @@
                             onClick='_filter(this, event)'>Filter</button>
                     </form>
                     <hr />
+                    <h5 class='mb-3'><b>Rekapan</b></h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" id='tabelRekapanStok'>
+                            <thead>
+                                <tr>
+                                    <th class='vam text-center' style='width: 75px;'>No.</th>
+                                    <th class='vam'>Item</th>
+                                    <th class='vam'>Stok Terakhir</th>
+                                    <th class='vam text-right'>In</th>
+                                    <th class='vam text-right'>Out</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <br />
+                    <h5 class='mb-3'><b>Rincian</b></h5>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id='tabelHistoryStok'>
                             <thead>
@@ -73,21 +93,84 @@
 
 <script language='Javascript'>
     let _tabelHistoryStokEl     =   $('#tabelHistoryStok');
+    let _tabelRekapanStokEl     =   $('#tabelRekapanStok');
     let _item                   =   $('#item');
     let _formFilter             =   $('#formFilter');
 
-    let _token          =   `{{csrf_token()}}`;
-    let _url            =   `{{route('admin.item.stok-data')}}`;
+    let _token                  =   `{{csrf_token()}}`;
+    let _urlRincian             =   `{{route('admin.item.stok-data')}}`;
+    let _urlRekapan             =   `{{route('admin.item.rekap-stok-data')}}`;
 
     $('#item').select2({
         theme: 'bootstrap4'
     });
 
-    let _options    =   {
+    let _rekapanOptions    =   {
         processing: true,
         serverSide: true,
         ajax: {
-            url     :   _url,
+            url     :   _urlRekapan,
+            dataSrc :   'listRekapanStok'
+        },
+        columns: [
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    return `<p class='mb-0 text-center'><b>${data.nomorUrut}.</b></p>`;
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    let _item       =   data.item;
+                    let _nama       =   _item.nama;
+                    let _kode       =   _item.kode;
+                    let _satuan     =   _item.satuan;
+
+                    return `<h6 class='mb-0'>${_nama}</h6>
+                            <p class='text-sm text-muted mb-0'><b>Kode</b> ${_kode}</p>`;
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    let _item       =   data.item;
+                    let _satuan     =   _item.satuan;
+                    let _stok       =   data.stok;
+
+                    return `<b class='text-success'>${numeral(_stok).format('0,0')} ${_satuan}</b>`;
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    let _item           =   data.item;
+                    let _satuan         =   _item.satuan;
+                    let _stokIn         =   data.stokIn;
+
+                    return `<div class='text-success text-right'>${numeral(_stokIn).format('0,0')} ${_satuan}</div>`;
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    let _item           =   data.item;
+                    let _satuan         =   _item.satuan;
+                    let _stokOut        =   data.stokOut;
+
+                    return `<div class='text-danger text-right'>${numeral(_stokOut).format('0,0')} ${_satuan}</div>`;
+                }
+            }
+        ]
+    }
+    let _tabelRekapanStok =   _tabelRekapanStokEl.DataTable(_rekapanOptions);
+
+    
+    let _historyOptions    =   {
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url     :   _urlRincian,
             dataSrc :   'listHistoryStok'
         },
         columns: [
@@ -152,16 +235,18 @@
             }
         ]
     }
-    let _tabelHistoryStok =   _tabelHistoryStokEl.DataTable(_options);
+    let _tabelHistoryStok =   _tabelHistoryStokEl.DataTable(_historyOptions);
 
     async function _filter(thisContext, event){
         event.preventDefault();
 
         let _el     =   $(thisContext);
-        let _serialize      =   _formFilter.serialize();
-        let _newAjaxURL     =   `${_url}?${_serialize}`;
+        let _serialize              =   _formFilter.serialize();
+        let _newAjaxRekapanURL      =   `${_urlRekapan}?${_serialize}`;
+        let _newAjaxRincianURL      =   `${_urlRincian}?${_serialize}`;
 
-        _tabelHistoryStok.ajax.url(_newAjaxURL).load();
+        _tabelHistoryStok.ajax.url(_newAjaxRincianURL).load();
+        _tabelRekapanStok.ajax.url(_newAjaxRekapanURL).load();
     }
 </script>
 @endsection

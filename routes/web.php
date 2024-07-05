@@ -56,6 +56,7 @@ Route::prefix('/admin')->group(function(){
         Route::post('/import', [Item::class, 'import'])->name('admin.item.import');
         Route::get('/stok', [Item::class, 'stok'])->name('admin.item.stok');
         Route::get('/stok-data', [Item::class, 'stokData'])->name('admin.item.stok-data');
+        Route::get('/rekap-stok-data', [Item::class, 'rekapStokData'])->name('admin.item.rekap-stok-data');
     });
 
     Route::prefix('/jenis')->middleware('autentikasi')->group(function(){
