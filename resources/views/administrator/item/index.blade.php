@@ -44,8 +44,8 @@
                                     <th rowspan='2' class='vam text-center' style='width: 100px;'>Action</th>
                                 </tr>
                                 <tr>
-                                    <th class='text-center vam' style='width: 150px;'>Stok</th>
-                                    <th class='text-center vam' style='width: 150px;'>Pinjam</th>
+                                    <th class='text-center vam' style='width: 175px;'>Stok/Tersedia</th>
+                                    <th class='text-center vam' style='width: 175px;'>Pinjam/Terpakai</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>

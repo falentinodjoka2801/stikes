@@ -131,9 +131,15 @@ class Pinjam extends Controller
         try{
             DB::beginTransaction();
 
+            $administrator      =   session()->get('administrator');
+            $administratorId    =   $administrator->id;
+
             $idPeminjaman       =   $request->idPeminjaman;
             $items              =   $request->item;
+
             $stokKembalis       =   $request->stokKembali;
+            $jumlahRusaks       =   $request->jumlahRusak;
+            $keterangans        =   $request->keterangan;
 
             $pinjam     =   PinjamModel::find($idPeminjaman);
             if(empty($pinjam)){
@@ -158,8 +164,7 @@ class Pinjam extends Controller
                 $itemJenis          =   $detailItem->jenis;
                 $itemQuantityPinjam =   $detailItem->quantityPinjam;
                 $itemQuantityStok   =   $detailItem->quantityStok;
-
-                $stokKembali    =   (in_array($itemJenis, Items::$itemsHaveStock))? $stokKembalis[$i] : null;
+                
 
                 $pinjamItem     =   PinjamItem::query()
                                     ->where('pinjam', $idPeminjaman)
@@ -169,22 +174,18 @@ class Pinjam extends Controller
                     throw new Exception('Item '.$itemNama.' tidak ada dalam peminjaman #'.$pinjamNomor.'!');
                 }
 
-                $pinjamItemQuantityDistribusi  =   $pinjamItem->quantityDistribusi;
+                $itemHasStok                    =   in_array($itemJenis, Items::$itemsHaveStock);
+                $pinjamItemQuantityDistribusi   =   $pinjamItem->quantityDistribusi;
 
-                $detailItem->quantityPinjam =   $itemQuantityPinjam - $pinjamItemQuantityDistribusi;
-                $detailItem->quantityStok   =   $itemQuantityStok + $pinjamItemQuantityDistribusi;
-                $detailItem->save();
+                $keterangan     =   $keterangans[$i];
 
-                #Pengurangan Stok Untuk Item yang memiliki stok
-                if(!empty($stokKembali)){
-                    $administrator      =   session()->get('administrator');
-                    $administratorId    =   $administrator->id;
-
-                    $stokSaatPeminjaman     =   $pinjamItem->stokPinjam;
+                if($itemHasStok){
+                    $stokKembali            =   $stokKembalis[$i];
                     $stokSaatPengembalian   =   abs($stokKembali);
 
-                    $jumlahPemakaian    =   $stokSaatPeminjaman - $stokSaatPengembalian;
+                    $jumlahPemakaian        =   $pinjamItemQuantityDistribusi - $stokSaatPengembalian;
 
+                    #Pengurangan Stok Item
                     $itemStok               =   new ItemStok();
                     $itemStok->item         =   $item;
                     $itemStok->quantity     =   -$jumlahPemakaian;
@@ -193,11 +194,33 @@ class Pinjam extends Controller
                     $itemStok->createdAt    =   $dateTimeToday;
                     $itemStok->save();
 
-                    $pinjamItem->stokKembali    =   $stokSaatPengembalian;
+                    #Update Pinjam Item
+                    $pinjamItem->quantityKembali    =   $stokKembali;
+                    $pinjamItem->keterangan         =   $keterangan;
+                    $pinjamItem->save();
+
+                    #Update Item
+                    $detailItem->quantityPinjam =   $itemQuantityPinjam - $jumlahPemakaian;
+                    $detailItem->quantityStok   =   $itemQuantityStok + $jumlahPemakaian;
+                    $detailItem->save();
+                }else{
+                    #Update Item
+                    $detailItem->quantityPinjam =   $itemQuantityPinjam - $pinjamItemQuantityDistribusi;
+                    $detailItem->quantityStok   =   $itemQuantityStok + $pinjamItemQuantityDistribusi;
+                    $detailItem->save();
+
+                    #Update Pinjam Item
+                    $kembaliRusak   =   $jumlahRusaks[$i];
+                    $kembaliBagus   =   $pinjamItemQuantityDistribusi - $kembaliRusak;
+
+                    $pinjamItem->quantityKembaliBagus   =   $kembaliBagus;
+                    $pinjamItem->quantityKembaliRusak   =   $kembaliRusak;
+                    $pinjamItem->keterangan             =   $keterangan;
                     $pinjamItem->save();
                 }
             }
 
+            $pinjam->returnedBy =   $administratorId;
             $pinjam->returnedAt =   $dateTimeToday;
             $pinjam->save();
 

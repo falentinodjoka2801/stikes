@@ -5,7 +5,6 @@
     $pinjamId           =   $pinjam->id;
     $pinjamNomor        =   $pinjam->nomor;
     $pinjamCreatedAt    =   $pinjam->createdAt;
-    $pinjamReturnedAt   =   $pinjam->returnedAt;
     $distributedAt      =   $pinjam->distributedAt;
 
     $peminjam   =   $pinjam->peminjam()->select(['nama', 'npm'])->first();
@@ -53,14 +52,14 @@
                             </tr>
                             @if($sudahDistribusi)
                                 @php
-                                    $dateDiff   =   date_diff(date_create($pinjamCreatedAt), date_create($pinjamReturnedAt));
+                                    $dateDiff   =   date_diff(date_create($pinjamCreatedAt), date_create($distributedAt));
                                 @endphp
                                 <tr>
-                                    <td style='width: 150px;' class='text-left'>Pengembalian</td>
-                                    <td>Dikembalikan pada <b class='text-primary'>{{formattedDateTime($pinjamReturnedAt)}}</b></td>
+                                    <td style='width: 150px;' class='text-left'>Distribusi</td>
+                                    <td>Dikembalikan pada <b class='text-primary'>{{formattedDateTime($distributedAt)}}</b></td>
                                 </tr>
                                 <tr>
-                                    <td style='width: 150px;' class='text-left'>Durasi Peminjaman</td>
+                                    <td style='width: 150px;' class='text-left'>Durasi Distribusi</td>
                                     <td><b class='text-primary'>{{$dateDiff->d}} Hari</b> <small class='text-muted'>{{$dateDiff->h}} Jam {{$dateDiff->i}} Menit</small></td>
                                 </tr>
                             @endif

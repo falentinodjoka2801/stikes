@@ -77,18 +77,25 @@
                                     <tr>
                                         <th class='vam text-center' style='width: 50px;'>No.</th>
                                         <th class='vam text-left'>Item</th>
-                                        <th class='vam text-left' style='width: 250px;'>Jumlah Pengembalian</th>
+                                        <th class='vam text-right' style='width: 150px'>Jumlah Distribusi</th>
+                                        <th class='vam text-left' style='width: 350px;'>Jumlah Pengembalian</th>
+                                        <th class='vam text-left'>Keterangan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($pinjamItems as $pinjamItem)
                                         @php
-                                            $pinjamItemItem             =   $pinjamItem->item;
-                                            $pinjamItemStokPinjam       =   $pinjamItem->stokPinjam;
-                                            $pinjamItemStokKembali      =   $pinjamItem->stokKembali;
+                                            $pinjamItemItem                 =   $pinjamItem->item;
+                                            $pinjamItemStokPinjam           =   $pinjamItem->stokPinjam;
+                                            $pinjamItemStokKembali          =   $pinjamItem->stokKembali;
+                                            $pinjamItemQuantityDistribusi   =   $pinjamItem->quantityDistribusi;
+                                            $pinjamItemKeterangan           =   $pinjamItem->keterangan;
 
-                                            $item       =   $pinjamItem->item()->select(['nama', 'kode', 'jenis'])->first();
-                                            $itemJenis  =   $item->jenis;
+                                            $item       =   $pinjamItem->item()->select(['nama', 'kode', 'jenis', 'satuan'])->first();
+                                            $itemNama       =   $item->nama;
+                                            $itemKode       =   $item->kode;
+                                            $itemJenis      =   $item->jenis;
+                                            $itemSatuan     =   $item->satuan;
 
                                             $itemHasStock   =   in_array($itemJenis, $itemHaveStock);
                                         @endphp
@@ -96,14 +103,17 @@
                                             <td class='vam text-center'><b>{{$loop->iteration}}</b></td>
                                             <td class='vam text-left'>
                                                 @if(!empty($item))
-                                                    <h6 class='mb-1'>{{$item->nama}}</h6>
-                                                    <p class='text-sm mb-0 text-muted'><b>Kode</b> {{$item->kode}}</p>
+                                                    <h6 class='mb-1'>{{$itemNama}}</h6>
+                                                    <p class='text-sm mb-0 text-muted'><b>Kode</b> {{$itemKode}}</p>
                                                     <input type="hidden" name="item[]" value='{{$pinjamItemItem}}' />
                                                 @else
                                                     <i class='text-sm text-muted'>Item tidak ditemukan!</i>
                                                 @endif
                                             </td>
-                                            <td class="vam text-left">
+                                            <td class="vam text-right">
+                                                <b>{{number_format($pinjamItemQuantityDistribusi)}} {{$itemSatuan}}</b>
+                                            </td>
+                                            <td class="vam text-left jumlah-rusak-td">
                                                 @if($sudahPengembalian)
                                                     @if($itemHasStock)
                                                         @php
@@ -115,11 +125,35 @@
                                                         <p class="text-sm text-muted mb-0">Terpakai <b class='text-danger'>{{number_format($jumlahTerpakai)}} satuan</b></p>
                                                     @endif
                                                 @else
-                                                    <input type="text" class="form-control" name='stokKembali[]' placeholder='Stok Kembali'
-                                                        {{($itemHasStock)? '' : 'readonly'}} />
-                                                    @if(!$itemHasStock)
-                                                        <p class="text-sm text-muted mb-0 mt-1">Hanya aktif jika Item memiliki <b class='text-info'>stok</b> seperti BHP, dsb</p>
-                                                    @endif
+                                                    <div style='display: {{($itemHasStock)? "block" : "none"}}'>
+                                                        <div class="input-group">
+                                                            <input type="number" name='stokKembali[]' placeholder='Stok Kembali' class='form-control' value='0'
+                                                                data-jumlah-distribusi='{{$pinjamItemQuantityDistribusi}}' />
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">{{$itemSatuan}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style='display: {{(!$itemHasStock)? "block" : "none"}}'>
+                                                        <div class="input-group jumlah-rusak-container">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">Jumlah Rusak</span>
+                                                            </div>
+                                                            <input type="number" name="jumlahRusak[]" placeholder='Jumlah Rusak' class='form-control' value='0'
+                                                                onChange='_jumlahRusakChanged(this)' data-jumlah-distribusi='{{$pinjamItemQuantityDistribusi}}' />
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">{{$itemSatuan}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <p class="text-sm text-muted jumlah-bagus-container mb-0 mt-1">Jumlah Bagus <b class='text-success jumlah-bagus'>{{number_format($pinjamItemQuantityDistribusi)}}</b> <b class="text-success">{{$itemSatuan}}</b></p>
+                                                    </div>    
+                                                @endif
+                                            </td>
+                                            <td class='vam text-left'>
+                                                @if(!$sudahPengembalian)
+                                                    <textarea name="keterangan[]" class="form-control" placeholder='Keterangan (Opsional)'></textarea>
+                                                @else
+                                                    {{$pinjamItemKeterangan}}
                                                 @endif
                                             </td>
                                         </tr>
@@ -146,6 +180,7 @@
 
 <script src='{{asset("custom/js/form-submission.js")}}'></script>
 <script src='{{asset("custom/js/custom-alert.js")}}'></script>
+<script src='{{asset("admin-lte/plugins/numeral/numeral.js")}}'></script>
 
 <script language='Javascript'>
     async function _onSubmit(thisContext, event){
@@ -164,6 +199,18 @@
                 location.reload();
             }
         });
+    }
+
+    async function _jumlahRusakChanged(thisContext){
+        let _el =   $(thisContext);
+        let _parentTd           =   _el.parents('.jumlah-rusak-td');
+        let _jumlahBagusEl      =   _parentTd.find('.jumlah-bagus');
+
+        let _jumlahRusak        =   _el.val();
+        let _jumlahDistribusi   =   _el.data('jumlahDistribusi');
+        let _jumlahBagus        =   _jumlahDistribusi - _jumlahRusak;
+
+        _jumlahBagusEl.text(numeral(_jumlahBagus).format('0,0'));
     }
 </script>
 @endsection

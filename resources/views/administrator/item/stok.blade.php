@@ -17,29 +17,29 @@
                 </div>
                 <div class="card-body">
                     <h5 class='mb-3'><b>Filter</b></h5>
-                        <form id="formFilter">
-                            <div class="row">
-                                <div class="form-group col-lg-8">
-                                    <label for="item">Item</label>
-                                    <select name="item" id="item" class="form-control">
-                                        <option value="">-- Item --</option>
-                                        @foreach($listItems as $item)
-                                            <option value="{{$item->id}}">{{$item->kode}} | {{$item->nama}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group col-lg-4">
-                                    <label for="rentangWaktu">Rentang Waktu</label>
-                                    <div class="input-group">
-                                        <input type="date" class="form-control" name='rentangAwal' />
-                                        <div class="input-group-text">s/d</div>
-                                        <input type="date" class="form-control" name='rentangAkhir' />
-                                    </div>
+                    <form id="formFilter">
+                        <div class="row">
+                            <div class="form-group col-lg-7">
+                                <label for="item">Item</label>
+                                <select name="item" id="item" class="form-control">
+                                    <option value="">-- Item --</option>
+                                    @foreach($listItems as $item)
+                                        <option value="{{$item->id}}">{{$item->kode}} | {{$item->nama}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-5">
+                                <label for="rentangWaktu">Rentang Waktu</label>
+                                <div class="input-group">
+                                    <input type="date" class="form-control" name='rentangAwal' />
+                                    <div class="input-group-text">s/d</div>
+                                    <input type="date" class="form-control" name='rentangAkhir' />
                                 </div>
                             </div>
-                            <button class="btn btn-success" id='buttonFilter' name='buttonFilter' type='button'
-                                onClick='_filter(this, event)'>Filter</button>
-                        </form>
+                        </div>
+                        <button class="btn btn-success" id='buttonFilter' name='buttonFilter' type='button'
+                            onClick='_filter(this, event)'>Filter</button>
+                    </form>
                     <hr />
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id='tabelHistoryStok'>
