@@ -405,10 +405,27 @@ class Item extends Controller{
             'pageDesc'      =>  'Riwayat Penggunaan Stok Item'
         ];
 
-        $listItems  =   ItemModel::query()->select(['id', 'kode', 'nama'])->whereIn('jenis', ItemModel::$itemsHaveStock)->get();
+        $listItems          =   ItemModel::query()->select(['id', 'kode', 'nama'])->whereIn('jenis', ItemModel::$itemsHaveStock)->get();
+        $listStokMenipis    =   ItemStok::query()
+                                ->select(['item', DB::raw('SUM(quantity) as quantity')])
+                                ->groupBy('item')
+                                ->get();
+
+        $listStokMenipisFiltered    =   [];
+        foreach($listStokMenipis as $index  => $stokMenipis){
+            $item   =   $stokMenipis->item()->select(['nama', 'kode', 'satuan', 'id', 'stokMinimum'])->first();
+
+            $itemStokMinimum    =   $item->stokMinimum;
+            $itemQuantity       =   $stokMenipis->quantity;
+            if($itemQuantity <= $itemStokMinimum){
+                $listStokMenipisFiltered[$index]['item']          =   $item;
+                $listStokMenipisFiltered[$index]['stokSaatIni']   =   $itemQuantity;
+            }
+        }
 
         $additionalData =   [
-            'listItems' =>  $listItems
+            'listItems'         =>  $listItems,
+            'listStokMenipis'   =>  $listStokMenipisFiltered
         ];
 
         return view('administrator.item.stok', $data)->with($additionalData);

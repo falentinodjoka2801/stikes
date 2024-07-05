@@ -5,7 +5,61 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-4">
-            
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">
+                            <h6 class="mb-0">Laporan Stok Menipis</h6>
+                        </div>
+                        <div class="col text-right">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class='mb-3'><b>Item dengan Stok Menipis</b></h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" id='tabelStokMenipis'>
+                            <thead>
+                                <tr>
+                                    <th class='vam text-center' style='width: 75px;'>No.</th>
+                                    <th class='vam'>Item</th>
+                                    <th class='vam text-right'>Stok Minimum</th>
+                                    <th class='vam text-right'>Stok Saat Ini</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if(count($listStokMenipis) >= 1)
+                                    @foreach($listStokMenipis as $stokMenipis)
+                                        @php
+                                            $item               =   $stokMenipis['item'];
+                                            $itemStokSaatIni    =   $stokMenipis['stokSaatIni'];
+
+                                            $itemNama           =   $item->nama;
+                                            $itemKode           =   $item->kode;
+                                            $itemSatuan         =   $item->satuan;
+                                            $itemStokMinimum    =   $item->stokMinimum;
+
+                                        @endphp
+                                        <tr>
+                                            <td class='vam text-center'><b>{{$loop->iteration}}</b></td>
+                                            <td class='vam'>
+                                                <h6 class='mb-1'>{{$itemNama}}</h6>
+                                                <p class='text-sm text-muted mb-0'><b>Kode</b> {{$itemKode}}</p>
+                                            </td>
+                                            <td class='vam text-right'><b class='text-info'>{{number_format($itemStokMinimum)}} {{$itemSatuan}}</b></td>
+                                            <td class='vam text-right'><b class='text-danger'>{{number_format($itemStokSaatIni)}} {{$itemSatuan}}</b></td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan='4' class='text-center'>Belum ada item dengan Stok Minim/Menipis</td>
+                                    </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-lg-8">
             <div class="card">
