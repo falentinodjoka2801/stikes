@@ -90,7 +90,6 @@
                                         @php
                                             $pinjamItemItem                 =   $pinjamItem->item;
                                             $pinjamItemStokPinjam           =   $pinjamItem->stokPinjam;
-                                            $pinjamItemStokKembali          =   $pinjamItem->stokKembali;
                                             $pinjamItemQuantityRequest      =   $pinjamItem->quantityRequest;
                                             $pinjamItemQuantityDistribusi   =   $pinjamItem->quantityDistribusi;
                                             $pinjamItemQuantityStok         =   $pinjamItem->quantityStok;

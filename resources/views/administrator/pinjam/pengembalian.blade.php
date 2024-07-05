@@ -86,16 +86,17 @@
                                     @foreach($pinjamItems as $pinjamItem)
                                         @php
                                             $pinjamItemItem                 =   $pinjamItem->item;
-                                            $pinjamItemStokPinjam           =   $pinjamItem->stokPinjam;
-                                            $pinjamItemStokKembali          =   $pinjamItem->stokKembali;
+                                            $pinjamItemQuantityKembali      =   $pinjamItem->quantityKembali;
                                             $pinjamItemQuantityDistribusi   =   $pinjamItem->quantityDistribusi;
                                             $pinjamItemKeterangan           =   $pinjamItem->keterangan;
+                                            $pinjamItemKembaliBagus         =   $pinjamItem->quantityKembaliBagus;
+                                            $pinjamItemKembaliRusak         =   $pinjamItem->quantityKembaliRusak;
 
-                                            $item       =   $pinjamItem->item()->select(['nama', 'kode', 'jenis', 'satuan'])->first();
-                                            $itemNama       =   $item->nama;
-                                            $itemKode       =   $item->kode;
-                                            $itemJenis      =   $item->jenis;
-                                            $itemSatuan     =   $item->satuan;
+                                            $item                       =   $pinjamItem->item()->select(['nama', 'kode', 'jenis', 'satuan'])->first();
+                                            $itemNama                   =   $item->nama;
+                                            $itemKode                   =   $item->kode;
+                                            $itemJenis                  =   $item->jenis;
+                                            $itemSatuan                 =   $item->satuan;
 
                                             $itemHasStock   =   in_array($itemJenis, $itemHaveStock);
                                         @endphp
@@ -117,12 +118,18 @@
                                                 @if($sudahPengembalian)
                                                     @if($itemHasStock)
                                                         @php
-                                                            $jumlahTerpakai =   $pinjamItemStokPinjam - $pinjamItemStokKembali;
+                                                            $jumlahTerpakai =   $pinjamItemQuantityDistribusi - $pinjamItemQuantityKembali;
                                                         @endphp
-                                                        <h6 class="mb-1 text-success">{{number_format($pinjamItemStokKembali)}} Satuan</h6>
-                                                        <p class="text-sm text-muted mb-0">Stok saat peminjaman <b class='text-info'>{{number_format($pinjamItemStokPinjam)}} satuan</b></p>
-                                                        <p class="text-sm text-muted mb-0">Stok saat pengembalian <b class='text-primary'>{{number_format($pinjamItemStokKembali)}} satuan</b></p>
-                                                        <p class="text-sm text-muted mb-0">Terpakai <b class='text-danger'>{{number_format($jumlahTerpakai)}} satuan</b></p>
+                                                        <h6 class="mb-1 text-success">{{number_format($pinjamItemQuantityKembali)}} {{$itemSatuan}}</h6>
+                                                        <p class="text-sm text-muted mb-0">Stok saat pengembalian <b class='text-primary'>{{number_format($pinjamItemQuantityKembali)}} {{$itemSatuan}}</b></p>
+                                                        <p class="text-sm text-muted mb-0">Terpakai <b class='text-danger'>{{number_format($jumlahTerpakai)}} {{$itemSatuan}}</b></p>
+                                                    @else
+                                                        @if($pinjamItemKembaliRusak >= 1)
+                                                            <p class="text-sm text-muted mb-0">Bagus <b class='text-success'>{{number_format($pinjamItemKembaliBagus)}} {{$itemSatuan}}</b></p>
+                                                            <p class="text-sm text-muted mb-0">Rusak <b class='text-danger'>{{number_format($pinjamItemKembaliRusak)}} {{$itemSatuan}}</b></p>
+                                                        @else
+                                                            <span class="text-sm text-muted">Semua kembali dalam keadaan <b class='text-success'>Bagus</b></span>
+                                                        @endif
                                                     @endif
                                                 @else
                                                     <div style='display: {{($itemHasStock)? "block" : "none"}}'>
