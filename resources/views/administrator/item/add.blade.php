@@ -31,7 +31,7 @@
                             <input type="hidden" name="id" value='{{$item->id}}' />
                         @endif
                         <div class="row">
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-3">
                                 <label for="nama">Nama</label>
                                 <input type="text" class="form-control" name='nama' id="nama" placeholder='Nama Item' required
                                     value='{{($doesUpdate)? $item->nama : ""}}' />
@@ -54,7 +54,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-lg-2">
+                            <div class="form-group col-lg-3">
                                 <label for="quantityStok">Quantity Stok & Satuan</label>
                                 <div class="input-group">
                                     <input type="number" class="form-control" name='quantityStok' id="quantityStok" 
@@ -64,7 +64,13 @@
                                         placeholder='Satuan' value='{{($doesUpdate)? $item->satuan : ""}}' />
                                 </div>
                             </div>
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-1">
+                                <label for="stokMinimum">Stok Minimum</label>
+                                <input type="number" class="form-control" name='stokMinimum' id="stokMinimum" 
+                                    placeholder='Stok Minimum'
+                                    value='{{($doesUpdate)? $item->stokMinimum : ""}}' />                                
+                            </div>
+                            <div class="form-group col-lg-3">
                                 <label for="kelompok">Kelompok</label>
                                 <input type="text" class="form-control" name='kelompok' id="kelompok" 
                                     placeholder='Kelompok Item'

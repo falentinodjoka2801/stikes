@@ -82,6 +82,7 @@ class Item extends Controller{
             $kelompok       =   $request->kelompok;
             $quantityStok   =   $request->quantityStok;
             $satuan         =   $request->satuan;
+            $stokMinimum    =   $request->stokMinimum;
 
             $doesUpdate             =   !empty($id);
             $canUpdateQuantityStok  =   true;
@@ -149,6 +150,7 @@ class Item extends Controller{
             }
             
             $item->satuan           =   $satuan;
+            $item->stokMinimum      =   $stokMinimum;
             $saveItem               =   $item->save();
             $itemId                 =   $item->id;
 
