@@ -204,15 +204,16 @@ class Pinjam extends Controller
                     $detailItem->quantityStok   =   $itemQuantityStok + $jumlahPemakaian;
                     $detailItem->save();
                 }else{
-                    #Update Item
-                    $detailItem->quantityPinjam =   $itemQuantityPinjam - $pinjamItemQuantityDistribusi;
-                    $detailItem->quantityStok   =   $itemQuantityStok + $pinjamItemQuantityDistribusi;
-                    $detailItem->save();
-
-                    #Update Pinjam Item
                     $kembaliRusak   =   $jumlahRusaks[$i];
                     $kembaliBagus   =   $pinjamItemQuantityDistribusi - $kembaliRusak;
 
+                    #Update Item
+                    #Jika ada item yang rusak akan mengurangi quantityStok
+                    $detailItem->quantityPinjam =   $itemQuantityPinjam - $pinjamItemQuantityDistribusi;
+                    $detailItem->quantityStok   =   $itemQuantityStok + $pinjamItemQuantityDistribusi - $kembaliRusak;
+                    $detailItem->save();
+
+                    #Update Pinjam Item
                     $pinjamItem->quantityKembaliBagus   =   $kembaliBagus;
                     $pinjamItem->quantityKembaliRusak   =   $kembaliRusak;
                     $pinjamItem->keterangan             =   $keterangan;
