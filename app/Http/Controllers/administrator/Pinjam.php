@@ -25,21 +25,23 @@ class Pinjam extends Controller
     public function peminjaman(): View{
         $pageTitle  =   'Peminjaman';
         $pageDesc   =   'Daftar Peminjaman Alat dan Ruangan';
+        $pagePath   =   ['Pinjam & Kembali', 'Peminjaman'];
 
         $listStatusPeminjaman   =   PinjamModel::$statusPeminjaman;
         $additionalData         =   [
             'listStatusPeminjaman'  =>  $listStatusPeminjaman
         ];
         
-        return view('administrator.pinjam.peminjaman', compact(['pageTitle', 'pageDesc']))->with($additionalData);
+        return view('administrator.pinjam.peminjaman', compact(['pageTitle', 'pageDesc', 'pagePath']))->with($additionalData);
     }
     public function pengembalian(Request $request, ?string $encryptedIdPeminjaman = null): View{
         try{
             $pageTitle  =   'Pengembalian';
             $pageDesc   =   'Pengembalian Peminjaman Alat dan Ruangan';
+            $pagePath   =   ['Pinjam & Kembali', 'Pengembalian'];
 
             if(empty($encryptedIdPeminjaman)){
-                return view('administrator.pinjam.input-peminjaman', compact(['pageTitle', 'pageDesc']));
+                return view('administrator.pinjam.input-peminjaman', compact(['pageTitle', 'pageDesc', 'pagePath']));
             }
 
             $idPeminjaman   =   decrypt($encryptedIdPeminjaman);
@@ -53,7 +55,7 @@ class Pinjam extends Controller
                 'itemHaveStock' =>  Items::$itemsHaveStock
             ];
 
-            return view('administrator.pinjam.pengembalian', compact(['pageTitle', 'pageDesc']))->with($additionalData);
+            return view('administrator.pinjam.pengembalian', compact(['pageTitle', 'pageDesc', 'pagePath']))->with($additionalData);
         }catch(Exception $e){
             abort(500, $e->getMessage());
         }

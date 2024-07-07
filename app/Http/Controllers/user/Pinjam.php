@@ -26,12 +26,14 @@ class Pinjam extends Controller
     public function index(): View{
         $pageTitle  =   'Peminjaman';
         $pageDesc   =   'Riwayat Peminjaman';
+        $pagePath   =   ['Peminjaman', 'Riwayat Peminjaman'];
         
-        return view('user.pinjam.index', compact(['pageTitle', 'pageDesc']));
+        return view('user.pinjam.index', compact(['pageTitle', 'pageDesc', 'pagePath']));
     }
     public function add(){
         $pageTitle  =   'Peminjaman';
         $pageDesc   =   'Halaman Peminjaman Alat dan Ruangan';
+        $pagePath   =   ['Peminjaman', 'Pengajuan Peminjaman'];
 
         $listJenis  =   Jenis::query()->select(['id', 'nama'])->get();
 
@@ -39,7 +41,7 @@ class Pinjam extends Controller
             'listJenis' =>  $listJenis
         ];
 
-        return view('user.pinjam.add', compact(['pageTitle', 'pageDesc']))->with($additionalData);
+        return view('user.pinjam.add', compact(['pageTitle', 'pageDesc', 'pagePath']))->with($additionalData);
     }
     public function save(Request $request): JsonResponse{
         $status     =   false;

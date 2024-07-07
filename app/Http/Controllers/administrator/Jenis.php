@@ -19,7 +19,9 @@ use Illuminate\View\View;
 class Jenis extends Controller{
     public function index(Request $request): View{
         $data   =   [
-            'pageTitle'     =>  'List Jenis'
+            'pageTitle'     =>  'List Jenis',
+            'pageDesc'      =>  'Jenis - jenis barang inventaris',
+            'pagePath'      =>  ['Jenis', 'List Jenis']
         ];
         return view('administrator.jenis.index', $data);
     }
@@ -101,7 +103,8 @@ class Jenis extends Controller{
 
             $data   =   [
                 'pageTitle'     =>  ($doesUpdate)? 'Update Jenis' : 'Jenis Baru',
-                'pageDesc'      =>  ($doesUpdate)? $jenis->nama : '',
+                'pageDesc'      =>  ($doesUpdate)? $jenis->nama : 'Tambah Jenis Baru',
+                'pagePath'      =>  ['Jenis', ($doesUpdate)? 'Update Jenis' : 'Jenis Baru'], 
                 'jenis'         =>  $jenis
             ];
             return view('administrator.jenis.add', $data);

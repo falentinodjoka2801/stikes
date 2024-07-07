@@ -24,7 +24,8 @@ class Item extends Controller{
     public function index(Request $request): View{
         $data   =   [
             'pageTitle'     =>  'List Item',
-            'pageDesc'      =>  'Daftar Alat, Ruang, BHP, dsb'
+            'pageDesc'      =>  'Daftar Alat, Ruang, BHP, dsb',
+            'pagePath'      =>  ['Item', 'List Item']
         ];
 
         $listJenis  =   Jenis::query()->select(['id', 'nama'])->get();
@@ -52,6 +53,7 @@ class Item extends Controller{
             $data   =   [
                 'pageTitle'     =>  ($doesUpdate)? 'Update Item' : 'Item Baru',
                 'pageDesc'      =>  ($doesUpdate)? $item->nama : '',
+                'pagePath'      =>  ['Item', ($doesUpdate)? 'Update Item' : 'Item Baru'],
                 'listJenis'     =>  $listJenis,
                 'item'          =>  $item
             ];
@@ -317,6 +319,7 @@ class Item extends Controller{
             $data   =   [
                 'pageTitle'     =>  'Detail Item',
                 'pageDesc'      =>  $item->nama,
+                'pagePath'      =>  ['Item', 'Detail Item'],
                 'item'          =>  $item
             ];
             return view('administrator.item.detail', $data);
