@@ -31,10 +31,12 @@ class Item extends Controller{
             'pagePath'      =>  ['Item', 'List Item']
         ];
 
-        $listJenis  =   Jenis::query()->select(['id', 'nama'])->get();
+        $listKategoriTransaksi  =   KategoriTransaksi::query()->in()->excludeInisialisasi()->select(['id', 'nama'])->get();
+        $listJenis              =   Jenis::query()->select(['id', 'nama'])->get();
 
         $additionalData     =   [
-            'listJenis' =>  $listJenis
+            'listJenis'             =>  $listJenis,
+            'listKategoriTransaksi' =>  $listKategoriTransaksi
         ];
 
         return view('administrator.item.index', $data)->with($additionalData);

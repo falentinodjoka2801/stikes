@@ -2,6 +2,21 @@
 
 @section('content')
 
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="modalAddStock" aria-hidden="true" id="modalAddStock">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title">Form Penambahan Stok</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @include('administrator/item/form-add-stock', ['submitCallback' => '_loadDataItem'])
+            </div> 
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col">
@@ -65,10 +80,12 @@
 <link rel="stylesheet" href='{{asset("admin-lte/plugins/sweetalert2/sweetalert2.min.css")}}' />
 <script src='{{asset("custom/js/custom-alert.js")}}'></script>
 <script src='{{asset("admin-lte/plugins/numeral/numeral.js")}}'></script>
+<script src='{{asset("custom/js/form-submission.js")}}'></script>
 
 <script language='Javascript'>
     let _jenisItem      =   $('#jenisItem');
     let _tabelItemEl    =   $('#tabelItem');
+    let _modalAddStock  =   $('#modalAddStock');
     let _token          =   `{{csrf_token()}}`;
     let _url            =   `{{route('admin.item.data')}}`;
 
@@ -78,6 +95,10 @@
         ajax: {
             url     :   _url,
             dataSrc :   'listItem'
+        },
+        createdRow: function(row, data, dataIndex){
+            $(row).addClass('item');
+            $(row).data('item', data);
         },
         columns: [
             {
@@ -108,7 +129,10 @@
                         _satuanHTML =   `<b>${_satuan}</b>`;
                     }
 
-                    return `<div class='text-center'>${numeral(_quantityStok).format('0,0')} ${_satuanHTML}</div>`;
+                    return `<div class='text-center'>
+                                ${numeral(_quantityStok).format('0,0')} ${_satuanHTML}
+                                <span class='ml-1 cp fa fa-plus-circle text-success' onClick='_addStock(this)'></span>
+                            </div>`;
                 }
             },
             {
@@ -192,6 +216,33 @@
         let _newAjaxURL             =   `${_url}?jenis=${_selectedJenisItem}`;
 
         _tabelItem.ajax.url(_newAjaxURL).load();
+    }
+
+    async function _addStock(thisContext){
+        let _el         =   $(thisContext);
+        let _parent     =   _el.parents('.item');
+        let _item       =   _parent.data('item');
+
+        let _itemId     =   _item.id;
+        let _itemName   =   _item.nama;
+        let _itemSatuan =   _item.satuan;
+    
+        let _itemContainer  =   _modalAddStock.find('#itemContainer');
+        let _itemSatuanEl   =   _modalAddStock.find('#itemSatuan');
+        let _itemHTML       =   `<div class='form-group'>
+                                    <label for='item'>Item</label>
+                                    <h6>${_itemName}</h6>
+                                    <input type='hidden' name='item' id='item' value='${_itemId}' />
+                                </div>`;
+
+        _itemSatuanEl.text(_itemSatuan);
+        _itemContainer.html(_itemHTML);
+        _modalAddStock.modal('show');
+    }
+
+    async function _loadDataItem(){
+        _tabelItem.ajax.reload();
+        _modalAddStock.find('form').trigger('reset');
     }
 </script>
 @endsection
