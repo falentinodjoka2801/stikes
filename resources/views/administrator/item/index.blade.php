@@ -9,7 +9,8 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h6 class="mb-0">Item</h6>
+                            <h6 class="mb-1">Item</h6>
+                            <p class="text-sm mb-0 text-muted">List data master Item (Barang, Ruang, dsb)</p>
                         </div>
                         <div class="col text-right">
                             <a href="{{route('admin.item.add')}}">

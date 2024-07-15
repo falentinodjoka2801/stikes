@@ -12,9 +12,7 @@
                     <div class="row">
                         <div class="col">
                             <h6 class="mb-1">{{($doesUpdate)? 'Update Jenis' : 'Jenis Baru'}}</h6>
-                            @if($doesUpdate)
-                                <p class='text-sm text-muted mb-0'>{{$jenis->nama}}</p>
-                            @endif
+                            <p class='text-sm text-muted mb-0'>{{($doesUpdate)? $jenis->nama : 'Form penambahan Jenis Item baru'}}</p>
                         </div>
                         <div class="col text-right">
                             <a href="{{route('admin.jenis')}}">

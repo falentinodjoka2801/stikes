@@ -9,7 +9,8 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h6 class="mb-0">Jenis</h6>
+                            <h6 class="mb-1">Jenis</h6>
+                            <p class="text-sm mb-0 text-muted">List data master Jenis Item</p>
                         </div>
                         <div class="col text-right">
                             <a href="{{route('admin.jenis.add')}}">
