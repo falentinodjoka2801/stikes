@@ -12,9 +12,13 @@ class ItemStok extends Model{
     protected $keyType          =   'integer';
     public $timestamps          =   false;
 
-    public static string $createdFrom_pengembalian  =   'pengembalian';
+    public static string $createdFrom_pengembalian      =   'pengembalian';
+    public static string $createdFrom_item              =   'item';
+    public static string $createdFrom_stockMinimum      =   'stockMinimum';
     public static array $createdFrom    =   [
-        'pengembalian'  =>  'Pengembalian'
+        'pengembalian'  =>  'Pengembalian',
+        'item'          =>  'Item',
+        'stockMinimum'  =>  'Stock Minimum'
     ];
 
     public function item(): HasOne{
