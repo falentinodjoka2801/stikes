@@ -1,3 +1,8 @@
+@php
+    if(!isset($pagePath)){
+        $pagePath   =   [];
+    }
+@endphp
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
@@ -11,10 +16,20 @@
                 @endif
             </div><!-- /.col -->
             <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard v1</li>
-                </ol>
+                @if(count($pagePath))
+                    <ol class="breadcrumb float-sm-right">
+                        @foreach($pagePath as $path)
+                            @php
+                                $active     =   ($loop->last)? 'active' : '';
+                            @endphp
+                            @if($loop->first)
+                                <li class="breadcrumb-item {{$active}}"><a href=''>{{$path}}</a></li>
+                            @else
+                                <li class="breadcrumb-item {{$active}}">{{$path}}</li>
+                            @endif
+                        @endforeach
+                    </ol>
+                @endif
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->

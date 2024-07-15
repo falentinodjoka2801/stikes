@@ -13,8 +13,6 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h5 class='mb-1'><b>Pengembalian Peminjaman</b></h5>
-                    <br />
                     <form action="{{route('admin.pinjam.proses-nomor-peminjaman')}}" method='post' id="formPilihPeminjaman">
                         @csrf
                         <div class="form-group">
