@@ -13,9 +13,12 @@ use App\Http\Controllers\Controller;
 use App\Models\ItemDetail;
 use App\Models\ItemStok;
 use App\Models\Jenis;
+use App\Models\KategoriTransaksi;
 
 use Exception;
+
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -160,8 +163,9 @@ class Item extends Controller{
                 $itemStock              =   new ItemStok();
                 $itemStock->item        =   $itemId;
                 $itemStock->quantity    =   $quantityStok;
+                $itemStock->kategori    =   5; #inisialisasi
                 $itemStock->createdBy   =   $administratorId;
-                $itemStock->createdFrom =   'item';
+                $itemStock->createdFrom =   ItemStok::$createdFrom_item;
                 $itemStock->createdAt   =   $dateTimeToday;
                 $itemStock->save();
             }
@@ -410,11 +414,12 @@ class Item extends Controller{
             'pageDesc'      =>  'Riwayat Penggunaan Stok Item'
         ];
 
-        $listItems          =   ItemModel::query()->select(['id', 'kode', 'nama'])->whereIn('jenis', ItemModel::$itemsHaveStock)->get();
-        $listStokMenipis    =   ItemStok::query()
-                                ->select(['item', DB::raw('SUM(quantity) as quantity')])
-                                ->groupBy('item')
-                                ->get();
+        $listKategoriTransaksi  =   KategoriTransaksi::query()->in()->excludeInisialisasi()->select(['id', 'nama'])->get();
+        $listItems              =   ItemModel::query()->select(['id', 'kode', 'nama'])->whereIn('jenis', ItemModel::$itemsHaveStock)->get();
+        $listStokMenipis        =   ItemStok::query()
+                                    ->select(['item', DB::raw('SUM(quantity) as quantity')])
+                                    ->groupBy('item')
+                                    ->get();
 
         $listStokMenipisFiltered    =   [];
         foreach($listStokMenipis as $index  => $stokMenipis){
@@ -429,8 +434,9 @@ class Item extends Controller{
         }
 
         $additionalData =   [
-            'listItems'         =>  $listItems,
-            'listStokMenipis'   =>  $listStokMenipisFiltered
+            'listItems'             =>  $listItems,
+            'listStokMenipis'       =>  $listStokMenipisFiltered,
+            'listKategoriTransaksi' =>  $listKategoriTransaksi
         ];
 
         return view('administrator.item.stok', $data)->with($additionalData);
@@ -517,11 +523,14 @@ class Item extends Controller{
 
         $nomorUrut  =   1;
         foreach($listHistoryStok as $index => $history){
-            $detailItem    =   $history->item()->select(['nama', 'kode', 'satuan'])->first();
+            $detailItem                 =   $history->item()->select(['nama', 'kode', 'satuan'])->first();
+            $historyKategoriTransaksi   =   $history->kategori;
 
+            $detailKategoriTransaksi    =   KategoriTransaksi::query()->select(['id', 'nama', 'inOut'])->find($historyKategoriTransaksi);
 
-            $listHistoryStok[$index]['nomorUrut']   =   $nomorUrut;
-            $listHistoryStok[$index]['item']        =   $detailItem;
+            $listHistoryStok[$index]['nomorUrut']           =   $nomorUrut;
+            $listHistoryStok[$index]['item']                =   $detailItem;
+            $listHistoryStok[$index]['kategori']            =   $detailKategoriTransaksi;
 
             $nomorUrut++;
         }
@@ -647,22 +656,85 @@ class Item extends Controller{
 
         return response()->json($respond);
     }
-    public function import(Request $request){
-        $listItemDanStok    =   json_decode(file_get_contents('item-dan-stok.json'), true);
-        foreach($listItemDanStok as $index => $itemAndStok){
-            $nama   =   $itemAndStok['nama'];
-            $jenis  =   $itemAndStok['jenis'];
-            $stok   =   $itemAndStok['stok'];
+    public function addStock(Request $request): View|JsonResponse{
+        $item               =   $request->item;
+        $quantity           =   $request->quantity;
+        $kategoriTransaksi  =   $request->kategoriTransaksi;
+        $createdFrom        =   $request->createdFrom;
+        $keterangan         =   $request->keterangan;
 
-            if($jenis != 11){ #bukan BHP
-                $item   =   ItemModel::where('nama', $nama)->first();
-                if(!empty($item)){
-                    $item->quantityStok     =   $stok;
-                    $item->save();
+        if(!empty($item) && !empty($quantity) && !empty($kategoriTransaksi) && !empty($createdFrom)){
+            $status     =   false;
+            $message    =   'Gagal menambah stok item!';
+            $data       =   null;
+
+            try{
+                DB::beginTransaction();
+
+                $administrator      =   session()->get('administrator');
+                $administratorId    =   $administrator->id;
+                $dateTimeToday      =   date('Y-m-d H:i:s');
+
+                #Checking Item
+                $detailItem     =   ItemModel::query()->find($item);
+                if(empty($detailItem)){
+                    throw new Exception('Item tidak dikenal!');
                 }
+                
+                #Checking Kategori Transaksi
+                $detailKategoriTransaksi    =   KategoriTransaksi::query()->select(['id'])->find($kategoriTransaksi);
+                if(empty($detailKategoriTransaksi)){
+                    throw new Exception('Kategori Transaksi tidak dikenal!');
+                }
+                
+                #Detail Item
+                $itemId         =   $detailItem->id;
+                $itemName       =   $detailItem->nama;
+                $itemSatuan     =   $detailItem->satuan;
+
+                #Checking Quantity
+                if($quantity <= 0){
+                    throw new Exception('Minimal quantity penambahan stock 1 '.$itemSatuan.'!');
+                }
+
+                #Checking Created From
+                if(!in_array($createdFrom, array_keys(ItemStok::$createdFrom))){
+                    throw new Exception('Created From code tidak dikenal!');
+                }
+
+
+                $itemStock  =   new ItemStok();
+                $itemStock->item        =   $itemId;
+                $itemStock->quantity    =   $quantity;
+                $itemStock->keterangan  =   !empty($keterangan)? $keterangan : null;
+                $itemStock->createdBy   =   $administratorId;
+                $itemStock->createdFrom =   $createdFrom;
+                $itemStock->createdAt   =   $dateTimeToday;
+                $itemStock->kategori    =   $kategoriTransaksi;
+                $saveItemStock  =   $itemStock->save();
+                
+                if($saveItemStock){
+                    $itemStockId    =   $itemStock->id;
+                
+                    $status     =   true;
+                    $message    =   'Berhasil menambahkan stok Item '.$itemName.'!';
+                    $data       =   ['id' => $itemStockId];
+                }                
+
+                if($status){
+                    DB::commit();
+                }
+            }catch(QueryException $e){
+                DB::rollBack();
+                $message    =   $e->getMessage();
+            }catch(Exception $e){
+                DB::rollBack();
+                $message    =   $e->getMessage();
             }
 
-            // var_dump($itemAndStok).'<br />';
+            $apiRespondFormat   =   new APIRespondFormat($status, $message, $data);
+            $respond            =   $apiRespondFormat->getRespond();
+            return response()->json($respond);
         }
     }
 }

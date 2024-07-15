@@ -1,10 +1,61 @@
 @extends('administrator.index')
 
 @section('content')
-
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="modalAddStock" aria-hidden="true" id="modalAddStock">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title">Form Penambahan Stok</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('admin.item.proses-add-stock')}}" id="formAddStock"
+                    method='post' onSubmit='_onSubmit(this, event)'>
+                    <div id="itemContainer"></div>
+                    @csrf
+                    <input type="hidden" name="createdFrom" id='createdFrom' value='{{\App\Models\ItemStok::$createdFrom_stockMinimum}}' />
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label for="kategoriTransaksi">Kategori Penambahan</label>
+                                <select name="kategoriTransaksi" id="kategoriTransaksi" class="form-control" required>
+                                    <option value="">-- Pilih Kategori Penambahan Stok --</option>
+                                    @foreach($listKategoriTransaksi as $kategoriTransaksi)
+                                        <option value="{{$kategoriTransaksi->id}}">{{$kategoriTransaksi->nama}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="form-group">
+                                <label for="quantity">Quantity</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="quantity" placeholder='Quantity'
+                                        name='quantity' />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id='itemSatuan'></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="keterangan">Keterangan (opsional)</label>
+                        <textarea class="form-control" id="keterangan" placeholder='Keterangan'
+                            name='keterangan'></textarea>
+                    </div>
+                    <hr />
+                    <button class="btn btn-success" type='submit' id='buttonSubmit'>Proses Penambahan Stok</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-5">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -25,6 +76,7 @@
                                     <th class='vam'>Item</th>
                                     <th class='vam text-right'>Stok Minimum</th>
                                     <th class='vam text-right'>Stok Saat Ini</th>
+                                    <th class='vam text-center'>Act</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +92,7 @@
                                             $itemStokMinimum    =   $item->stokMinimum;
 
                                         @endphp
-                                        <tr>
+                                        <tr class='stok-minimum' data-item='{{json_encode($item)}}'>
                                             <td class='vam text-center'><b>{{$loop->iteration}}</b></td>
                                             <td class='vam'>
                                                 <h6 class='mb-1'>{{$itemNama}}</h6>
@@ -48,12 +100,13 @@
                                             </td>
                                             <td class='vam text-right'><b class='text-info'>{{number_format($itemStokMinimum)}} {{$itemSatuan}}</b></td>
                                             <td class='vam text-right'><b class='text-danger'>{{number_format($itemStokSaatIni)}} {{$itemSatuan}}</b></td>
+                                            <td class='vam text-center'>
+                                                <button class="btn btn-sm btn-success" onClick='_addStock(this)'>
+                                                    <span class="fa fa-plus-circle mr-1"></span> Stok
+                                                </button>
+                                            </td>
                                         </tr>
                                     @endforeach
-                                @else
-                                    <tr>
-                                        <td colspan='4' class='text-center'>Belum ada item dengan Stok Minim/Menipis</td>
-                                    </tr>
                                 @endif
                             </tbody>
                         </table>
@@ -61,7 +114,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-7">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -142,28 +195,42 @@
 <script language='Javascript' src='{{asset("admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js")}}'></script>
 <link rel='stylesheet' href='{{asset("admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css")}}' />
 
+<script src='{{asset("admin-lte/plugins/sweetalert2/sweetalert2.min.js")}}'></script>
+<link rel="stylesheet" href='{{asset("admin-lte/plugins/sweetalert2/sweetalert2.min.css")}}' />
 <script src='{{asset("admin-lte/plugins/select2/js/select2.min.js")}}'></script>
 <link rel="stylesheet" href='{{asset("admin-lte/plugins/select2/css/select2.min.css")}}' />
 <link rel="stylesheet" href='{{asset("admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")}}' />
 
 <script src='{{asset("custom/js/date-converter.js")}}'></script>
 <script src='{{asset("admin-lte/plugins/numeral/numeral.js")}}'></script>
+<script src='{{asset("custom/js/form-submission.js")}}'></script>
+<script src='{{asset("custom/js/custom-alert.js")}}'></script>
 
 <script language='Javascript'>
     let _tabelHistoryStokEl     =   $('#tabelHistoryStok');
     let _tabelRekapanStokEl     =   $('#tabelRekapanStok');
+    let _tabelStokMenipisEl     =   $('#tabelStokMenipis');
     let _item                   =   $('#item');
     let _formFilter             =   $('#formFilter');
+    let _modalAddStock          =   $('#modalAddStock');
 
     let _token                  =   `{{csrf_token()}}`;
     let _urlRincian             =   `{{route('admin.item.stok-data')}}`;
     let _urlRekapan             =   `{{route('admin.item.rekap-stok-data')}}`;
 
+
     $('#item').select2({
         theme: 'bootstrap4'
     });
 
-    let _rekapanOptions    =   {
+    let _tabelStokMenipisOptions    =   {
+        language: {
+            emptyTable: `Belum ada barang dengan stok menipis!`
+        }
+    };   
+    let _tabelStokMenipis           =   _tabelStokMenipisEl.DataTable(_tabelStokMenipisOptions);
+
+    let _rekapanOptions     =   {
         processing: true,
         serverSide: true,
         ajax: {
@@ -221,8 +288,7 @@
             }
         ]
     }
-    let _tabelRekapanStok =   _tabelRekapanStokEl.DataTable(_rekapanOptions);
-
+    let _tabelRekapanStok   =   _tabelRekapanStokEl.DataTable(_rekapanOptions);
     
     let _historyOptions    =   {
         processing: true,
@@ -260,12 +326,14 @@
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let _item           =   data.item;
-                    let _satuan         =   _item.satuan;
-                    let _quantity       =   data.quantity;
+                    let _item               =   data.item;
+                    let _satuan             =   _item.satuan;
+                    let _quantity           =   data.quantity;
+                    let _kategoriTransaksi  =   data.kategori;
 
-                    let _satuanHTML     =   ``;
-                    let _className      =   `text-success`;
+                    let _satuanHTML             =   ``;
+                    let _className              =   `text-success`;
+                    let _kategoriTransaksiHTML  =   ``;
 
                     if(_satuan != null){
                         _satuanHTML =   `<b>${_satuan}</b>`;
@@ -275,7 +343,22 @@
                         _className      =   `text-danger`;
                     }
 
-                    return `<div class='text-right'><b class='${_className}'>${numeral(_quantity).format('0,0')} ${_satuanHTML}</b></div>`;
+                    if(_kategoriTransaksi != null){
+                        let _kategoriTransaksiNama  =   _kategoriTransaksi.nama;
+                        let _kategoriTransaksiInOut =   _kategoriTransaksi.inOut;
+
+                        let _in     =   `{{\App\Models\KategoriTransaksi::$in}}`;
+                        let _out    =   `{{\App\Models\KategoriTransaksi::$out}}`;
+
+                        _kategoriTransaksiHTML      =   `<span class='badge badge-${((_kategoriTransaksiInOut == _in)? 'success' : 'danger')}'>${_kategoriTransaksiNama}</span>`;
+                    }
+
+                    return `<div class='text-right'>
+                                <p class='mb-1'>
+                                    <b class='${_className}'>${numeral(_quantity).format('0,0')} ${_satuanHTML}</b>
+                                </p>
+                                ${_kategoriTransaksiHTML}
+                            </div>`;
                 }
             },
             {
@@ -305,6 +388,46 @@
 
         _tabelHistoryStok.ajax.url(_newAjaxRincianURL).load();
         _tabelRekapanStok.ajax.url(_newAjaxRekapanURL).load();
+    }
+
+    async function _addStock(thisContext){
+        let _el         =   $(thisContext);
+        let _parent     =   _el.parents('.stok-minimum');
+        let _item       =   _parent.data('item');
+
+        let _itemId     =   _item.id;
+        let _itemName   =   _item.nama;
+        let _itemSatuan =   _item.satuan;
+    
+        let _itemContainer  =   _modalAddStock.find('#itemContainer');
+        let _itemSatuanEl   =   _modalAddStock.find('#itemSatuan');
+        let _itemHTML       =   `<div class='form-group'>
+                                    <label for='item'>Item</label>
+                                    <h6>${_itemName}</h6>
+                                    <input type='hidden' name='item' id='item' value='${_itemId}' />
+                                </div>`;
+
+        _itemSatuanEl.text(_itemSatuan);
+        _itemContainer.html(_itemHTML);
+        _modalAddStock.modal('show');
+    }
+
+    async function _onSubmit(thisContext, event){
+        event.preventDefault();
+        
+        await submitForm(thisContext, async (decodedResponseFromServer) => {
+            let _status     =   decodedResponseFromServer.status;
+            let _message    =   decodedResponseFromServer.message;
+
+            let _swalTitle      =   `Penambahan Stok`;
+            let _swalMessage    =   (_message != null)? _message : ((_status)? `Berhasil!` : `Gagal!`);
+            let _swalType       =   (_status)? 'success' : 'error';    
+
+            await notifikasi(_swalTitle, _swalMessage, _swalType);
+            if(_status){
+                location.reload();
+            }
+        });
     }
 </script>
 @endsection

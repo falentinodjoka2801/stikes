@@ -57,6 +57,7 @@ Route::prefix('/admin')->group(function(){
         Route::get('/stok', [Item::class, 'stok'])->name('admin.item.stok');
         Route::get('/stok-data', [Item::class, 'stokData'])->name('admin.item.stok-data');
         Route::get('/rekap-stok-data', [Item::class, 'rekapStokData'])->name('admin.item.rekap-stok-data');
+        Route::post('/add-stock', [Item::class, 'addStock'])->name('admin.item.proses-add-stock');
     });
 
     Route::prefix('/jenis')->middleware('autentikasi')->group(function(){
