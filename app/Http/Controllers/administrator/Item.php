@@ -262,17 +262,6 @@ class Item extends Controller{
             $listItem[$index]['hasDetail']      =   $hasDetail;
             $listItem[$index]['jenis']          =   $jenisNama;
 
-            if($hasStock){
-                $getQuantityStok        =   ItemModel::getStokIn($itemId);
-                $quantityStok           =   !empty($getQuantityStok)? $getQuantityStok->quantity : 0;
-                
-                $getQuantityTerpakai    =   ItemModel::getStokOut($itemId);
-                $quantityTerpakai       =   !empty($getQuantityTerpakai)? $getQuantityTerpakai->quantity : 0;
-
-                $listItem[$index]['quantityStok']       =   $quantityStok  - $quantityTerpakai;
-                $listItem[$index]['quantityPinjam']     =   $quantityTerpakai;
-            }
-
             $nomorUrut++;
         }
 
@@ -416,8 +405,15 @@ class Item extends Controller{
             'pageDesc'      =>  'Riwayat Penggunaan Stok Item'
         ];
 
+        $itemIdInStock  =   [];
+        $itemsInStock   =   ItemStok::query()->select(['item'])->groupBy('item')->get();
+        foreach($itemsInStock as $item){
+            $itemId             =   $item->item;
+            $itemIdInStock[]    =   $itemId;
+        }
+
         $listKategoriTransaksi  =   KategoriTransaksi::query()->in()->excludeInisialisasi()->select(['id', 'nama'])->get();
-        $listItems              =   ItemModel::query()->select(['id', 'kode', 'nama'])->whereIn('jenis', ItemModel::$itemsHaveStock)->get();
+        $listItems              =   ItemModel::query()->select(['id', 'kode', 'nama'])->whereIn('id', $itemIdInStock)->get();
         $listStokMenipis        =   ItemStok::query()
                                     ->select(['item', DB::raw('SUM(quantity) as quantity')])
                                     ->groupBy('item')
@@ -704,7 +700,6 @@ class Item extends Controller{
                     throw new Exception('Created From code tidak dikenal!');
                 }
 
-
                 $itemStock  =   new ItemStok();
                 $itemStock->item        =   $itemId;
                 $itemStock->quantity    =   $quantity;
@@ -717,6 +712,15 @@ class Item extends Controller{
                 
                 if($saveItemStock){
                     $itemStockId    =   $itemStock->id;
+
+                    $getQuantityTerbaru =   ItemStok::query()
+                                            ->select([DB::raw('SUM(quantity) as quantityTerbaru')])
+                                            ->where('item', $itemId)
+                                            ->first();
+                    $quantityTerbaru    =   !empty($getQuantityTerbaru)? $getQuantityTerbaru->quantityTerbaru : 0;
+
+                    $detailItem->quantityStok   =   $quantityTerbaru;
+                    $detailItem->save();
                 
                     $status     =   true;
                     $message    =   'Berhasil menambahkan stok Item '.$itemName.'!';
