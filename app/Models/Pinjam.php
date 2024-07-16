@@ -19,10 +19,12 @@ class Pinjam extends Model{
         return $this->hasOne(Mahasiswa::class, 'npm', 'createdBy');
     }
 
-    public static string $statusPeminjaman_dipinjam        =   'dipinjam';
-    public static string $statusPeminjaman_dikembalikan    =   '';
+    public static string $statusPeminjaman_dipinjam             =   'dipinjam';
+    public static string $statusPeminjaman_distribusi           =   'distribusi';
+    public static string $statusPeminjaman_dikembalikan         =   'dikembalikan';
     public static array $statusPeminjaman   =   [
-        'dipinjam'      =>  'Sedang Dipinjam',
-        'dikembalikan'  =>  'Sudah Dikembalikan'
+        'dipinjam'          =>  'Sedang Dipinjam',
+        'distribusi'        =>  'Butuh Distribusi',
+        'dikembalikan'      =>  'Sudah Dikembalikan'
     ];
 }
