@@ -106,8 +106,6 @@ class Item extends Controller{
                 throw new Exception('Jenis tidak terdefinisi!');
             }
             
-            $itemHasStok            =   in_array($detailJenis->id, ItemModel::$itemsHaveStock);
-
             $dateToday      =   date('Y-m-d');
             $dateTimeToday  =   date('Y-m-d H:i:s');
             if(!$doesUpdate){
@@ -161,7 +159,8 @@ class Item extends Controller{
             $saveItem               =   $item->save();
             $itemId                 =   $item->id;
 
-            if($itemHasStok){
+            if($canUpdateQuantityStok){
+                #Insert Stock Inisialisasi
                 $itemStock              =   new ItemStok();
                 $itemStock->item        =   $itemId;
                 $itemStock->quantity    =   $quantityStok;
