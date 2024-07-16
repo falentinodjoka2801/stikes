@@ -9,7 +9,8 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h6 class="mb-0">Riwayat Peminjaman</h6>
+                            <h6 class="mb-1">Riwayat Peminjaman</h6>
+                            <p class="text-sm text-muted mb-0">Riwayat Peminjaman Alat, Ruang, dsb</p>
                         </div>
                         <div class="col text-right">
                             <a href="{{route('user.pinjam.add')}}">
@@ -24,12 +25,13 @@
                             <thead>
                                 <tr>
                                     <th class='text-center vam' rowspan='2' style='width: 75px;'>No.</th>
-                                    <th rowspan='2' class='vam'>Nomor</th>
+                                    <th rowspan='2' class='vam'>Nomor Peminjaman</th>
                                     <th rowspan='2' class='vam' style='width: 100px;'>Status</th>
-                                    <th colspan='2' class='text-center vam' style='width: 27.5%;'>Tanggal</th>
+                                    <th colspan='3' class='text-center vam' style='width: 27.5%;'>Tanggal</th>
                                 </tr>
                                 <tr>
                                     <th>Peminjaman</th>
+                                    <th>Distribusi</th>
                                     <th>Pengembalian</th>
                                 </tr>
                             </thead>
@@ -76,10 +78,16 @@
             {
                 data: null,
                 render: function(data, type, row, meta) {
-                    let _returnedAt      =   data.returnedAt;
+                    let _distributedAt  =   data.distributedAt;
+                    let _returnedAt     =   data.returnedAt;
 
-                    let _statusHTML                 =   `<span class='badge badge-info'>Sedang Peminjaman</span>`;
+                    let _statusHTML                 =   `<span class='badge badge-info'>Menunggu Proses Distribusi</span>`;
                     let _tanggalPengambalianHTML    =   ``;
+
+                    if(_distributedAt != null){
+                        _statusHTML =   `<span class='badge badge-info'>Sedang Peminjaman</span>`;
+                    }
+
                     if(_returnedAt != null){
                         _statusHTML                 =   `<span class='badge badge-success'>Sudah Pengembalian</span>`;
                         _tanggalPengambalianHTML    =   `<p class='text-sm text-muted mb-0'>Pengembalian pada <b>${convertDateTime(_returnedAt)}</b></p>`;
@@ -93,6 +101,14 @@
                     let _createdAt      =   data.createdAt;
 
                     return `${convertDateTime(_createdAt)}`;
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    let _distributedAt  =   data.distributedAt;
+
+                    return `${convertDateTime(_distributedAt)}`;
                 }
             },
             {

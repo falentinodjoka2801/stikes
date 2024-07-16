@@ -28,7 +28,21 @@ class Pinjam extends Controller
         $pagePath   =   ['Pinjam & Kembali', 'Peminjaman'];
 
         $listStatusPeminjaman   =   PinjamModel::$statusPeminjaman;
+        $getListPeminjam        =   PinjamModel::query()
+                                    ->select(['createdBy'])
+                                    ->with(['peminjam' => function($builder){
+                                        $builder->select(['npm', 'nama']);
+                                        return $builder;
+                                    }])
+                                    ->groupBy('createdBy')
+                                    ->get();
+        $listPeminjam           =   $getListPeminjam->map(function(PinjamModel $pinjam){
+                                        $peminjam   =   $pinjam->peminjam;
+                                        return $peminjam;
+                                    });
+
         $additionalData         =   [
+            'listPeminjam'          =>  $listPeminjam,
             'listStatusPeminjaman'  =>  $listStatusPeminjaman
         ];
         
@@ -75,6 +89,7 @@ class Pinjam extends Controller
 
         #Filter
         $statusPeminjaman   =   $request->statusPeminjaman;
+        $peminjam           =   $request->peminjam;
         
         $recordsTotal   =   PinjamModel::count(['id']);   
 
@@ -82,10 +97,20 @@ class Pinjam extends Controller
                                     ->with(['peminjam'])
                                     ->when(!empty($statusPeminjaman), function(Builder $builder) use ($statusPeminjaman){
                                         if($statusPeminjaman == PinjamModel::$statusPeminjaman_dipinjam){
-                                            return $builder->where('returnedAt', '=', null);
-                                        }else{
-                                            return $builder->where('returnedAt', '!=', null);
+                                            $builder->where('returnedAt', '=', null);
                                         }
+                                        if($statusPeminjaman == PinjamModel::$statusPeminjaman_distribusi){
+                                            $builder->where('distributedAt', '=', null);
+                                        }
+                                        if($statusPeminjaman == PinjamModel::$statusPeminjaman_dikembalikan){
+                                            $builder->where('returnedAt', '!=', null);
+                                        }
+
+                                        return $builder;
+                                    })
+                                    ->when(!empty($peminjam), function(Builder $builder) use ($peminjam){
+                                        $builder->where('createdBy', $peminjam);
+                                        return $builder;
                                     })
                                     ->when(!empty($search), function(Builder $builder) use ($search){
                                         if(is_array($search)){
