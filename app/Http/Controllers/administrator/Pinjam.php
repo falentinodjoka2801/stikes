@@ -162,6 +162,7 @@ class Pinjam extends Controller
                 $item           =   $items[$i];
 
                 $detailItem         =   Items::query()->select(['id', 'nama', 'jenis', 'quantityPinjam', 'quantityStok'])->find($item);
+                $itemId             =   $detailItem->id;
                 $itemNama           =   $detailItem->nama;
                 $itemJenis          =   $detailItem->jenis;
                 $itemQuantityPinjam =   $detailItem->quantityPinjam;
@@ -208,6 +209,19 @@ class Pinjam extends Controller
                 }else{
                     $kembaliRusak   =   $jumlahRusaks[$i];
                     $kembaliBagus   =   $pinjamItemQuantityDistribusi - $kembaliRusak;
+
+                    #Pengurangan Stok Item
+                    if($kembaliRusak >= 1){
+                        $itemStock              =   new ItemStok();
+                        $itemStock->item        =   $itemId;
+                        $itemStock->quantity    =   -$kembaliRusak;
+                        $itemStock->keterangan  =   !empty($keterangan)? $keterangan : null;
+                        $itemStock->createdBy   =   $administratorId;
+                        $itemStock->createdFrom =   ItemStok::$createdFrom_pengembalian;
+                        $itemStock->createdAt   =   $dateTimeToday;
+                        $itemStock->kategori    =   4;
+                        $itemStock->save();
+                    }
 
                     #Update Item
                     #Jika ada item yang rusak akan mengurangi quantityStok
