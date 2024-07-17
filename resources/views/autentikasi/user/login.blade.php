@@ -35,7 +35,7 @@
                                 <span class="fas fa-at"></span>
                             </div>
                         </div>
-                        <input type="text" class="form-control" placeholder="NPM"
+                        <input type="number" class="form-control" placeholder="NPM"
                             name='username' required />
                     </div>
                     <div class="input-group mb-3" id='passwordInputGroup'>

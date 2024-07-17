@@ -22,6 +22,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use Exception;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Validator;
 
 class Autentikasi extends Controller{
     public function login(): View{
@@ -35,6 +36,25 @@ class Autentikasi extends Controller{
         try{
             $username   =   $request->username;
             $password   =   $request->password;
+
+            $validator  =   Validator::make($request->all(), [
+                'username'  =>  'required|numeric',
+                'password'  =>  'required'
+            ], [
+                'username'  =>  [
+                    'required'  =>  'NPM harus diinput!',
+                    'numeric'   =>  'NPM yang benar berupa angka!'
+                ],
+                'password'  =>  [
+                    'required'  =>  'Password harus diinput!'
+                ]
+            ]);
+
+            if($validator->fails()){
+                $errorMessage   =   $validator->errors();
+
+                throw new Exception($errorMessage);
+            }
 
             $mahasiswa  =   Mahasiswa::query()->where(function(Builder $builder) use ($username, $password){
                 $builder->where('npm', '=', $username);
