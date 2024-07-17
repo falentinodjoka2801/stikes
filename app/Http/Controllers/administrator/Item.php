@@ -742,4 +742,31 @@ class Item extends Controller{
             return response()->json($respond);
         }
     }
+    public function import(Request $request){
+        $listItemDanStok    =   json_decode(file_get_contents('item-dan-stok.json'), true);
+        foreach($listItemDanStok as $index => $itemAndStok){
+            $nama   =   $itemAndStok['nama'];
+            $jenis  =   $itemAndStok['jenis'];
+            $stok   =   array_key_exists('stok', $itemAndStok)? $itemAndStok['stok'] : 0;
+
+            if($jenis != 11 && $stok >= 1){ #bukan BHP
+                $item   =   ItemModel::where('nama', $nama)->first();
+                if(!empty($item)){
+                    $itemId     =   $item->id;
+
+                    $item->quantityStok     =   $stok;
+                    $item->save();
+
+                    $itemStok               =   new ItemStok();
+                    $itemStok->item         =   $itemId;
+                    $itemStok->quantity     =   $stok;
+                    $itemStok->createdBy    =   2;
+                    $itemStok->createdFrom  =   'inisialisasi';
+                    $itemStok->createdAt    =   date('Y-m-d H:i:s');
+                    $itemStok->kategori     =   5; #Inisialisasi
+                    $itemStok->save();
+                }
+            }
+        }
+    }
 }

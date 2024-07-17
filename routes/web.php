@@ -52,8 +52,8 @@ Route::prefix('/admin')->group(function(){
         Route::get('/detail/{encryptedId}', [Item::class, 'detail'])->name('admin.item.detail');
         Route::post('/save-item', [Item::class, 'saveItem'])->name('admin.item.save-item');
         Route::post('/delete-item', [Item::class, 'deleteItem'])->name('admin.item.delete-item');
-        Route::get('/import', [Item::class, 'import'])->name('admin.item.import');
-        Route::post('/import', [Item::class, 'import'])->name('admin.item.import');
+        // Route::get('/import', [Item::class, 'import'])->name('admin.item.import');
+        // Route::post('/import', [Item::class, 'import'])->name('admin.item.import');
         Route::get('/stok', [Item::class, 'stok'])->name('admin.item.stok');
         Route::get('/stok-data', [Item::class, 'stokData'])->name('admin.item.stok-data');
         Route::get('/rekap-stok-data', [Item::class, 'rekapStokData'])->name('admin.item.rekap-stok-data');
