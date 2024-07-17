@@ -217,9 +217,11 @@ class Pinjam extends Controller
                     $itemStok               =   new ItemStok();
                     $itemStok->item         =   $item;
                     $itemStok->quantity     =   -$jumlahPemakaian;
+                    $itemStok->keterangan   =   !empty($keterangan)? $keterangan : null;
                     $itemStok->createdBy    =   $administratorId;
                     $itemStok->createdFrom  =   ItemStok::$createdFrom_pengembalian;
                     $itemStok->createdAt    =   $dateTimeToday;
+                    $itemStok->kategori     =   4;
                     $itemStok->save();
 
                     #Update Pinjam Item
