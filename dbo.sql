@@ -1,10 +1,10 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Local SQL Server
+ Source Server         : Localhost
  Source Server Type    : SQL Server
  Source Server Version : 16001000 (16.00.1000)
- Source Host           : DESKTOP-QP17IL6\SQLEXPRESS:1433
+ Source Host           : DESKTOP-SIAKMAR\SQLEXPRESS:1433
  Source Catalog        : stikes
  Source Schema         : dbo
 
@@ -12,7 +12,7 @@
  Target Server Version : 16001000 (16.00.1000)
  File Encoding         : 65001
 
- Date: 05/07/2024 22:25:11
+ Date: 17/07/2024 09:47:35
 */
 
 
@@ -2708,7 +2708,8 @@ CREATE TABLE [dbo].[item_stok] (
   [keterangan] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT NULL NULL,
   [createdBy] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
   [createdFrom] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [createdAt] datetime  NOT NULL
+  [createdAt] datetime  NOT NULL,
+  [kategori] int  NOT NULL
 )
 GO
 
@@ -2720,6 +2721,411 @@ GO
 -- Records of item_stok
 -- ----------------------------
 SET IDENTITY_INSERT [dbo].[item_stok] ON
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'1', N'1', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'2', N'7', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'3', N'8', N'6', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'4', N'9', N'18', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'5', N'10', N'5', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'6', N'11', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'7', N'12', N'3', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'8', N'13', N'5', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'9', N'14', N'3', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'10', N'15', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'11', N'16', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'12', N'17', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'13', N'18', N'5', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'14', N'21', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'15', N'22', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'16', N'23', N'5', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'17', N'24', N'6', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'18', N'25', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'19', N'27', N'4', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'20', N'28', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'21', N'37', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'22', N'38', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'23', N'39', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'24', N'40', N'5', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'25', N'41', N'3', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'26', N'42', N'4', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'27', N'43', N'3', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'28', N'44', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'29', N'45', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'30', N'46', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'31', N'47', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'32', N'48', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'33', N'49', N'7', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'34', N'50', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'35', N'51', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'36', N'55', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'37', N'56', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'38', N'57', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'39', N'58', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'40', N'59', N'3', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'41', N'62', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'42', N'63', N'3', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'43', N'64', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'44', N'65', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'45', N'66', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'46', N'69', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'47', N'70', N'10', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'48', N'71', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'49', N'72', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'50', N'73', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'51', N'74', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'52', N'75', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'53', N'76', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'54', N'77', N'4', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'55', N'78', N'10', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'56', N'79', N'7', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'57', N'80', N'10', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'58', N'81', N'3', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'59', N'82', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'60', N'83', N'7', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'61', N'84', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'62', N'85', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'63', N'86', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'64', N'87', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'65', N'88', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'66', N'89', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'67', N'90', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'68', N'91', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'69', N'92', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'70', N'93', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'71', N'94', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'72', N'95', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'73', N'96', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'74', N'97', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'75', N'98', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'76', N'99', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'77', N'100', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'78', N'101', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'79', N'102', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'80', N'103', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'81', N'104', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'82', N'105', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'83', N'106', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:14.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'84', N'108', N'11', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'85', N'115', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'86', N'116', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'87', N'117', N'36', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'88', N'121', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'89', N'122', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'90', N'123', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'91', N'124', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'92', N'126', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'93', N'128', N'3', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'94', N'129', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'95', N'130', N'10', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'96', N'131', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'97', N'132', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'98', N'133', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'99', N'134', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'100', N'135', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'101', N'137', N'15', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'102', N'138', N'6', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'103', N'139', N'10', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'104', N'140', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'105', N'141', N'6', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'106', N'142', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'107', N'145', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'108', N'146', N'5', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'109', N'148', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'110', N'151', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'111', N'152', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'112', N'153', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'113', N'154', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'114', N'155', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'115', N'162', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'116', N'163', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'117', N'164', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'118', N'165', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'119', N'166', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'120', N'169', N'3', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'121', N'170', N'10', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'122', N'171', N'5', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'123', N'173', N'8', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'124', N'174', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'125', N'177', N'7', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'126', N'178', N'5', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'127', N'179', N'4', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'128', N'180', N'3', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'129', N'181', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'130', N'182', N'4', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'131', N'183', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'132', N'184', N'5', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'133', N'185', N'2', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'134', N'187', N'4', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
+GO
+
+INSERT INTO [dbo].[item_stok] ([id], [item], [quantity], [keterangan], [createdBy], [createdFrom], [createdAt], [kategori]) VALUES (N'135', N'193', N'1', NULL, N'2', N'inisialisasi', N'2024-07-17 09:26:15.000', N'5')
 GO
 
 SET IDENTITY_INSERT [dbo].[item_stok] OFF
@@ -2760,13 +3166,13 @@ GO
 SET IDENTITY_INSERT [dbo].[items] ON
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'1', N'A20240703100', N'½ koher', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', N'2', N'2024-07-05 15:37:50.000', NULL, N'pcs', NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'1', N'A20240703100', N'½ koher', N'3', N'1', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'2', N'BHP202407032001', N'Abocath No.18', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', N'2', N'2024-07-04 10:31:51.000', NULL, N'pcs', NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'2', N'BHP202407032001', N'Abocath No.18', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'3', N'BHP20240703300', N'Abocath No.20', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', N'2', N'2024-07-05 15:35:00.000', NULL, N'ml', N'1000')
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'3', N'BHP20240703300', N'Abocath No.20', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'4', N'BHP20240703400', N'Abocath No.24', N'11', N'0', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -2787,7 +3193,7 @@ GO
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'9', N'A20240703900', N'Arteri Klem Lurus', N'3', N'18', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
-INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'10', N'A202407031001', N'Baju bayi', N'3', N'5', N'0', N'2', N'2024-07-03 12:03:03.000', N'5', N'2024-07-03 14:23:06.000', N'Baju', N'potong', NULL)
+INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'10', N'A202407031001', N'Baju bayi', N'3', N'5', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
 GO
 
 INSERT INTO [dbo].[items] ([id], [kode], [nama], [jenis], [quantityStok], [quantityPinjam], [createdBy], [createdAt], [updatedBy], [updatedAt], [kelompok], [satuan], [stokMinimum]) VALUES (N'11', N'A20240703110', N'Baju pasien + celana', N'3', N'2', N'0', N'2', N'2024-07-03 12:03:03.000', NULL, NULL, NULL, NULL, NULL)
@@ -3391,6 +3797,58 @@ GO
 
 
 -- ----------------------------
+-- Table structure for kategori_transaksi
+-- ----------------------------
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[kategori_transaksi]') AND type IN ('U'))
+	DROP TABLE [dbo].[kategori_transaksi]
+GO
+
+CREATE TABLE [dbo].[kategori_transaksi] (
+  [id] int  IDENTITY(1,1) NOT NULL,
+  [nama] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [keterangan] nvarchar(250) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT NULL NULL,
+  [createdBy] int  NOT NULL,
+  [createdAt] datetime  NOT NULL,
+  [updatedBy] int DEFAULT NULL NULL,
+  [updatedAt] datetime DEFAULT NULL NULL,
+  [inOut] nvarchar(3) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL
+)
+GO
+
+ALTER TABLE [dbo].[kategori_transaksi] SET (LOCK_ESCALATION = TABLE)
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'in, out',
+'SCHEMA', N'dbo',
+'TABLE', N'kategori_transaksi',
+'COLUMN', N'inOut'
+GO
+
+
+-- ----------------------------
+-- Records of kategori_transaksi
+-- ----------------------------
+SET IDENTITY_INSERT [dbo].[kategori_transaksi] ON
+GO
+
+INSERT INTO [dbo].[kategori_transaksi] ([id], [nama], [keterangan], [createdBy], [createdAt], [updatedBy], [updatedAt], [inOut]) VALUES (N'1', N'Ganti Rusak', N'Penggantian yang rusak', N'1', N'2024-07-15 11:28:23.000', NULL, NULL, N'in')
+GO
+
+INSERT INTO [dbo].[kategori_transaksi] ([id], [nama], [keterangan], [createdBy], [createdAt], [updatedBy], [updatedAt], [inOut]) VALUES (N'3', N'Pembelian', NULL, N'1', N'2024-07-15 11:29:04.000', NULL, NULL, N'in')
+GO
+
+INSERT INTO [dbo].[kategori_transaksi] ([id], [nama], [keterangan], [createdBy], [createdAt], [updatedBy], [updatedAt], [inOut]) VALUES (N'4', N'Pemakaian', N'Digunakan untuk Item yang memiliki stok (BHP, dsb)', N'1', N'2024-07-15 11:29:22.000', NULL, NULL, N'out')
+GO
+
+INSERT INTO [dbo].[kategori_transaksi] ([id], [nama], [keterangan], [createdBy], [createdAt], [updatedBy], [updatedAt], [inOut]) VALUES (N'5', N'Inisialisasi', N'Stok awal', N'1', N'2024-07-15 11:43:44.000', NULL, NULL, N'in')
+GO
+
+SET IDENTITY_INSERT [dbo].[kategori_transaksi] OFF
+GO
+
+
+-- ----------------------------
 -- Table structure for mahasiswa
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[mahasiswa]') AND type IN ('U'))
@@ -3827,14 +4285,14 @@ GO
 -- ----------------------------
 -- Auto increment value for item_stok
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[item_stok]', RESEED, 1)
+DBCC CHECKIDENT ('[dbo].[item_stok]', RESEED, 135)
 GO
 
 
 -- ----------------------------
 -- Auto increment value for items
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[items]', RESEED, 195)
+DBCC CHECKIDENT ('[dbo].[items]', RESEED, 197)
 GO
 
 
@@ -3849,6 +4307,22 @@ GO
 -- Primary Key structure for table jenis
 -- ----------------------------
 ALTER TABLE [dbo].[jenis] ADD CONSTRAINT [PK__jenis__3213E83F16C812A0] PRIMARY KEY CLUSTERED ([id])
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
+-- Auto increment value for kategori_transaksi
+-- ----------------------------
+DBCC CHECKIDENT ('[dbo].[kategori_transaksi]', RESEED, 5)
+GO
+
+
+-- ----------------------------
+-- Primary Key structure for table kategori_transaksi
+-- ----------------------------
+ALTER TABLE [dbo].[kategori_transaksi] ADD CONSTRAINT [PK__kategori__3213E83F585070A0] PRIMARY KEY CLUSTERED ([id])
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
 ON [PRIMARY]
 GO
