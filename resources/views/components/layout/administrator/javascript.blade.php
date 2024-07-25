@@ -12,5 +12,32 @@
 <script src="{{asset('admin-lte/dist/js/adminlte.js')}}"></script>
 
 <script language='Javascript'>
-    $('[data-toggle=tooltip]').tooltip();
+    async function copy(stringToCopy, callback = null){
+        navigator.clipboard.writeText(stringToCopy);
+        
+        if(callback == null){
+            alert('Coppied!');
+        }else{
+            callback.call();
+        }
+    }
+    async function fileHandler(thisContext){
+        try{
+            let _el         =   $(thisContext);
+            let imgData     =   _el.prop('files')[0];
+            let _preview    =   _el.data('preview');
+
+            let _previewEl  =   $(_preview);
+
+            let fileReader  =   new FileReader();
+            fileReader.readAsDataURL(imgData);
+            fileReader.onload   =   (e) =>  {
+                let imgResult   =   e.target.result;
+
+                _previewEl.attr('src', imgResult);
+            }
+        }catch(error){
+            console.log(`${error.name} : ${error.message}`);
+        }
+    }
 </script>

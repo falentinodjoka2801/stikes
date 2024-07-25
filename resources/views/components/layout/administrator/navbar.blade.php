@@ -15,6 +15,11 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.profile.index')}}">
+                <i class="fas fa-user"></i>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{route('admin.logout')}}">
                 <i class="fas fa-power-off text-danger"></i>
             </a>
