@@ -6,6 +6,7 @@ use App\Http\Controllers\administrator\Autentikasi;
 use App\Http\Controllers\administrator\Item;
 use App\Http\Controllers\administrator\Jenis;
 use App\Http\Controllers\administrator\Pinjam as AdministratorPinjam;
+use App\Http\Controllers\administrator\Profile as AdministratorProfile;
 
 #User Controller
 use App\Http\Controllers\user\Home as UserHome;
@@ -78,6 +79,12 @@ Route::prefix('/admin')->group(function(){
         Route::get('/peminjaman-data', [AdministratorPinjam::class, 'peminjamanData'])->name('admin.pinjam.peminjaman-data');
         Route::post('/proses-pengembalian', [AdministratorPinjam::class, 'prosesPengembalian'])->name('admin.pinjam.proses-pengembalian');
         Route::post('/proses-distribusi', [AdministratorPinjam::class, 'prosesDistribusi'])->name('admin.pinjam.proses-distribusi');
+    });
+
+    Route::prefix('/profile')->middleware('autentikasi')->group(function(){
+        Route::get('', [AdministratorProfile::class, 'index'])->name('admin.profile.index');
+        Route::post('/save', [AdministratorProfile::class, 'save'])->name('admin.profile.save');
+        Route::post('/save-ganti-password', [AdministratorProfile::class, 'saveGantiPassword'])->name('admin.profile.save-ganti-password');
     });
 });
 
