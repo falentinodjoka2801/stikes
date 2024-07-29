@@ -278,6 +278,7 @@
         let _el                 =   $(thisContext);
         let _parent             =   _el.parents('.item-detail-container');
         let _barcodeContainer   =   _parent.find('.barcode-container');
+        let _barcodeImage       =   _barcodeContainer.find('.barcode');
         let _barcodeHTML        =   _barcodeContainer.html();
 
         let _item       =   _parent.data('item');
@@ -287,9 +288,13 @@
         let _html       =   `<div class='text-center'>
                                 <h5 class='mb-0'>${_itemNama}</h5>
                                 <p class='text-sm mb-1'>${_itemKode}</p>
-                                ${_barcodeHTML}
+                                <a href='${_barcodeImage.attr('src')}' download>
+                                    ${_barcodeHTML}
+                                </a>
                                 <br />
-                                <p class='mt-1 text-sm'>Klik kanan, pilih Save Image as untuk mendownload gambar</p>
+                                <a href='${_barcodeImage.attr('src')}' download>
+                                    <button class='btn btn-link'>Download</button>
+                                </a>
                             </div>`;
         
         let _modalBody  =   _modalBarcode.find('.modal-body');
