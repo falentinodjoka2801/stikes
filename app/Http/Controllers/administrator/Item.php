@@ -483,7 +483,6 @@ class Item extends Controller{
 
                                     return $builder;
                                 })
-                                ->orderBy('createdAt', 'desc')
                                 ->count(['id']);   
 
         $listHistoryStok    =   ItemStok::query()
@@ -515,7 +514,6 @@ class Item extends Controller{
                                 })
                                 ->limit($length)
                                 ->offset($start)
-                                ->orderBy('createdAt', 'desc')
                                 ->get();
 
         $nomorUrut  =   1;
