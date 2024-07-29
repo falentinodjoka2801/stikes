@@ -2,6 +2,20 @@
 
 @section('content')
 
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalBarcode" aria-hidden="true" id="modalBarcode">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title">Barcode Item</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div> 
+        </div>
+    </div>
+</div>
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="modalAddStock" aria-hidden="true" id="modalAddStock">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -78,14 +92,16 @@
 
 <script src='{{asset("admin-lte/plugins/sweetalert2/sweetalert2.min.js")}}'></script>
 <link rel="stylesheet" href='{{asset("admin-lte/plugins/sweetalert2/sweetalert2.min.css")}}' />
-<script src='{{asset("custom/js/custom-alert.js")}}'></script>
 <script src='{{asset("admin-lte/plugins/numeral/numeral.js")}}'></script>
+<script src='{{asset("admin-lte/plugins/JsBarcode/JsBarcode.all.min.js")}}'></script>
+<script src='{{asset("custom/js/custom-alert.js")}}'></script>
 <script src='{{asset("custom/js/form-submission.js")}}'></script>
 
 <script language='Javascript'>
     let _jenisItem      =   $('#jenisItem');
     let _tabelItemEl    =   $('#tabelItem');
     let _modalAddStock  =   $('#modalAddStock');
+    let _modalBarcode   =   $('#modalBarcode');
     let _token          =   `{{csrf_token()}}`;
     let _url            =   `{{route('admin.item.data')}}`;
 
@@ -114,8 +130,18 @@
                     let _kode       =   data.kode;
                     let _jenis      =   data.jenis;
 
-                    return `<h6 class='mb-0'>${_nama} <span class='ml-1'><span class='badge badge-info'>${_jenis}</span></span></h6>
-                            <p class='text-sm text-muted mb-0'><b>Kode</b> ${_kode}</p>`;
+                    return `<div class='item-detail-container' data-item='${JSON.stringify(data)}'>
+                                <h6 class='mb-0'>${_nama} <span class='ml-1'><span class='badge badge-info'>${_jenis}</span></span></h6>
+                                <p class='text-sm text-muted mb-2'><b>Kode</b> ${_kode}</p>
+                                <div class='barcode-container' style='display:none;'>
+                                    <img class='barcode'
+                                        jsbarcode-value='${_kode}'
+                                        jsbarcode-text='${_nama}'
+                                        jsbarcode-textmargin="0"
+                                        jsbarcode-fontoptions="bold" />
+                                </div>
+                                <p class='text-sm mb-0 cp' onClick='_showBarcode(this)'><b>Download Barcode</b></p>
+                            </div>`;
                 }
             },
             {
@@ -175,7 +201,10 @@
                     return `${_actionHTML}`;
                 }
             }
-        ]
+        ],
+        drawCallback: (settings) => {
+            JsBarcode(".barcode").init();
+        }
     }
     let _tabelItem =   _tabelItemEl.DataTable(_options);
 
@@ -243,6 +272,29 @@
     async function _loadDataItem(){
         _tabelItem.ajax.reload();
         _modalAddStock.find('form').trigger('reset');
+    }
+
+    async function _showBarcode(thisContext){
+        let _el                 =   $(thisContext);
+        let _parent             =   _el.parents('.item-detail-container');
+        let _barcodeContainer   =   _parent.find('.barcode-container');
+        let _barcodeHTML        =   _barcodeContainer.html();
+
+        let _item       =   _parent.data('item');
+        let _itemNama   =   _item.nama;
+        let _itemKode   =   _item.kode;
+
+        let _html       =   `<div class='text-center'>
+                                <h5 class='mb-0'>${_itemNama}</h5>
+                                <p class='text-sm mb-1'>${_itemKode}</p>
+                                ${_barcodeHTML}
+                                <br />
+                                <p class='mt-1 text-sm'>Klik kanan, pilih Save Image as untuk mendownload gambar</p>
+                            </div>`;
+        
+        let _modalBody  =   _modalBarcode.find('.modal-body');
+        _modalBody.html(_html);
+        _modalBarcode.modal('show');
     }
 </script>
 @endsection
