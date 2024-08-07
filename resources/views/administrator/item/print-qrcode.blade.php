@@ -45,25 +45,25 @@
 </head>
 
 <body>
-    <table>
-        @foreach ($listItems as $index => $row)
-            @if ($index % 2 == 0)
-                <tr>
-            @endif
-            <td>
-                <img src="https://barcode.tec-it.com/barcode.ashx?data={{ $row->kode }}&code=QRCode&translate-esc=on&dpi=&eclevel=L"
-                    alt="{{ $row->kode }}">
-                <h6>
-                    {{ $row->nama }}
-                </h6>
-            </td>
-            @if ($index % 2 == 1)
-                </tr>
-            @endif
-        @endforeach
-        @if (count($listItems) % 2 != 0)
+    <table border='0' style='width: 100%;'>
+        @foreach ($listItems as $row)
+            <tr>
+                <td>
+                    <img src="https://barcode.tec-it.com/barcode.ashx?data={{ $row->kode }}&code=QRCode&translate-esc=on&dpi=&eclevel=L"
+                        alt="{{ $row->kode }}" style='margin-top: 5px;'>
+                    <p style='font-size: 10px; margin-top: 0px;'>
+                        {{ $row->nama }}
+                    </p>
+                </td>
+                <td>
+                    <img src="https://barcode.tec-it.com/barcode.ashx?data={{ $row->kode }}&code=QRCode&translate-esc=on&dpi=&eclevel=L"
+                        alt="{{ $row->kode }}" style='margin-top: 5px;'>
+                    <p style='font-size: 10px; margin-top: 0px;'>
+                        {{ $row->nama }}
+                    </p>
+                </td>
             </tr>
-        @endif
+        @endforeach
     </table>
 </body>
 </html>
