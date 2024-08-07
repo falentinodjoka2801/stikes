@@ -767,4 +767,13 @@ class Item extends Controller{
             }
         }
     }
+    public function cetakQRCode(Request $request){
+        $items  =   $request->item;
+
+        $listItems  =   ItemModel::query()->select(['kode', 'nama'])->whereIn('id', $items)->get();
+        $data       =   [
+            'listItems' =>  $listItems
+        ];
+        return view('administrator.item.print-qrcode', $data);
+    }
 }

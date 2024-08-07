@@ -2,16 +2,24 @@
 
 @section('content')
 
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalBarcode" aria-hidden="true" id="modalBarcode">
-    <div class="modal-dialog">
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalCetakQRCode" aria-hidden="true" id="modalCetakQRCode">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <p class="modal-title">Barcode Item</p>
+                <p class="modal-title">Cetak QR Code</p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+                <form action="{{route('admin.item.cetak-qrcode')}}" id="formCetakQRCode" type='post'>
+                    <div class="form-group">
+                        <label for="item">Item</label>
+                        <select name="item[]" id="item" class="form-control"
+                            multiple></select>
+                    </div>
+                    <button id="buttonSubmit" type="submit" class='btn btn-success'><span class="fa fa-print mr-1"></span> Print</button>
+                </form>
             </div> 
         </div>
     </div>
@@ -43,8 +51,10 @@
                         </div>
                         <div class="col text-right">
                             <a href="{{route('admin.item.add')}}">
-                                <button class="btn btn-link">Item Baru</button>
+                                <button class="btn btn-success"><span class="fa fa-plus-circle mr-1"></span> Item Baru</button>
                             </a>
+                            <button id="buttonCetakQRCode" class="btn btn-primary"
+                                onClick='_cetakQRCode(this)'><span class="fa fa-qrcode mr-1"></span> Cetak QR Code</button>
                         </div>
                     </div>
                 </div>
@@ -93,17 +103,63 @@
 <script src='{{asset("admin-lte/plugins/sweetalert2/sweetalert2.min.js")}}'></script>
 <link rel="stylesheet" href='{{asset("admin-lte/plugins/sweetalert2/sweetalert2.min.css")}}' />
 <script src='{{asset("admin-lte/plugins/numeral/numeral.js")}}'></script>
-<script src='{{asset("admin-lte/plugins/JsBarcode/JsBarcode.all.min.js")}}'></script>
 <script src='{{asset("custom/js/custom-alert.js")}}'></script>
 <script src='{{asset("custom/js/form-submission.js")}}'></script>
+<script src='{{asset("admin-lte/plugins/select2/js/select2.min.js")}}'></script>
+<link rel="stylesheet" href="{{asset('admin-lte/plugins/select2/css/select2.min.css')}}" />
+<link rel="stylesheet" href="{{asset('admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}" />
 
 <script language='Javascript'>
     let _jenisItem      =   $('#jenisItem');
     let _tabelItemEl    =   $('#tabelItem');
     let _modalAddStock  =   $('#modalAddStock');
-    let _modalBarcode   =   $('#modalBarcode');
     let _token          =   `{{csrf_token()}}`;
     let _url            =   `{{route('admin.item.data')}}`;
+    let _modalCetakQRCode   =   $('#modalCetakQRCode');
+    let _item               =   $('#item');
+    let _selectedItemsContainer     =   $('#selectedItemsContainer');
+
+    _item.select2({
+        dropdownParent: _modalCetakQRCode,
+        placeholder: "Cari item di sini dengan nama item",
+        theme: 'bootstrap4',
+        language: {
+            noResults: function() {
+                return "Tidak ada data ditemukan";
+            }
+        },
+        ajax: {
+            url: "{{route('admin.item.data')}}",
+            dataType: 'json',
+            type: "GET",
+            data: function (params) {
+                return `search[value]=${params.term}`;
+            },
+            processResults: function (data, params) {
+                params.current_page = params.current_page || 1;
+                
+                let _listItems  =   data.listItem;
+
+                return {
+                    results: $.map(_listItems, function (item) {
+                        let _itemId     =   item.id;
+                        let _itemNama   =   item.nama;
+
+                        if(_itemNama == null){
+                            _itemNama   =   `-`;
+                        }
+
+                        return {
+                            text: `${_itemNama}`,
+                            id: item.id
+                        }
+                        
+                    })
+                };
+            },
+            cache: true
+        }
+    });
 
     let _options    =   {
         processing: true,
@@ -132,15 +188,7 @@
 
                     return `<div class='item-detail-container' data-item='${JSON.stringify(data)}'>
                                 <h6 class='mb-0'>${_nama} <span class='ml-1'><span class='badge badge-info'>${_jenis}</span></span></h6>
-                                <p class='text-sm text-muted mb-2'><b>Kode</b> ${_kode}</p>
-                                <div class='barcode-container' style='display:none;'>
-                                    <img class='barcode'
-                                        jsbarcode-value='${_kode}'
-                                        jsbarcode-text='${_nama}'
-                                        jsbarcode-textmargin="0"
-                                        jsbarcode-fontoptions="bold" />
-                                </div>
-                                <p class='text-sm mb-0 cp' onClick='_showBarcode(this)'><b>Download Barcode</b></p>
+                                <p class='text-sm text-muted mb-0'><b>Kode</b> ${_kode}</p>
                             </div>`;
                 }
             },
@@ -201,10 +249,7 @@
                     return `${_actionHTML}`;
                 }
             }
-        ],
-        drawCallback: (settings) => {
-            JsBarcode(".barcode").init();
-        }
+        ]
     }
     let _tabelItem =   _tabelItemEl.DataTable(_options);
 
@@ -273,33 +318,12 @@
         _tabelItem.ajax.reload();
         _modalAddStock.find('form').trigger('reset');
     }
-
-    async function _showBarcode(thisContext){
-        let _el                 =   $(thisContext);
-        let _parent             =   _el.parents('.item-detail-container');
-        let _barcodeContainer   =   _parent.find('.barcode-container');
-        let _barcodeImage       =   _barcodeContainer.find('.barcode');
-        let _barcodeHTML        =   _barcodeContainer.html();
-
-        let _item       =   _parent.data('item');
-        let _itemNama   =   _item.nama;
-        let _itemKode   =   _item.kode;
-
-        let _html       =   `<div class='text-center'>
-                                <h5 class='mb-0'>${_itemNama}</h5>
-                                <p class='text-sm mb-1'>${_itemKode}</p>
-                                <a href='${_barcodeImage.attr('src')}' download>
-                                    ${_barcodeHTML}
-                                </a>
-                                <br />
-                                <a href='${_barcodeImage.attr('src')}' download>
-                                    <button class='btn btn-link'>Download</button>
-                                </a>
-                            </div>`;
-        
-        let _modalBody  =   _modalBarcode.find('.modal-body');
-        _modalBody.html(_html);
-        _modalBarcode.modal('show');
+    async function _cetakQRCode(thisContext){
+        _modalCetakQRCode.modal('show');
+    }
+    async function _printQRCode(thisContext, eventContext){
+        eventContext.preventDefault();
+        await submitForm(thisContext);
     }
 </script>
 @endsection

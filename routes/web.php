@@ -58,6 +58,7 @@ Route::prefix('/admin')->group(function(){
         Route::get('/stok-data', [Item::class, 'stokData'])->name('admin.item.stok-data');
         Route::get('/rekap-stok-data', [Item::class, 'rekapStokData'])->name('admin.item.rekap-stok-data');
         Route::post('/add-stock', [Item::class, 'addStock'])->name('admin.item.proses-add-stock');
+        Route::get('/cetak-qrcode', [Item::class, 'cetakQRCode'])->name('admin.item.cetak-qrcode');
     });
 
     Route::prefix('/jenis')->middleware('autentikasi')->group(function(){
